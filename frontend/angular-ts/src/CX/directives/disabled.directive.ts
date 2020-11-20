@@ -8,7 +8,6 @@ export class DisabledDirective {
 
   @Input('appDisabled') set disabledDirective(condition: boolean) {
     const action = condition ? 'enable' : 'disable';
-    // @ts-ignore
     setTimeout(() => this.ngControl.control[action](), 0);
   }
 
