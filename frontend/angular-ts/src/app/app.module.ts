@@ -27,7 +27,7 @@ import { SimpleReuseStrategy } from '../CX/services/SimpleReuseStrategy';
     {
       provide: RouteReuseStrategy,
       useClass: SimpleReuseStrategy
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })
