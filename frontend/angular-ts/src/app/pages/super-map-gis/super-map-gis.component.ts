@@ -81,22 +81,23 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
         requestVertexNormals: true,
         isSct: false,
       }), // 使用地形服务
-      'homeButton': true,
-      'sceneModePicker': true,
-      'navigationHelpButton': false,
-      'infoBox': false,
-      'vrButton': false,
-      'fullscreenButton': false,
-      'geocoder': false,
-      'showRenderLoopErrors': true,
-      'center': {'y': 34.826718, 'x': 114.375556, 'z': 58000.0, 'pitch': -30},
-      'minzoom': 1,
-      'maxzoom': 50000000,
-      'style': {'atmosphere': true, 'lighting': false, 'fog': false, 'testTerrain': false},
-      'contextmenu': true,
-      'mouseZoom': true,
-      'navigation': false,
+      homeButton: true,
+      sceneModePicker: true,
+      navigationHelpButton: false,
+      infoBox: false,
+      vrButton: false,
+      fullscreenButton: false,
+      geocoder: false,
+      showRenderLoopErrors: false,
+      center: {y: 34.826718, x: 114.375556, z: 58000.0, pitch: -30},
+      style: {atmosphere: true, lighting: false, fog: false, testTerrain: false},
+      contextmenu: false,
+      mouseZoom: false,
+      navigation: false,
     });
+
+    this.viewer.scene.screenSpaceCameraController.minimumZoomDistance = 500; // 最小级别
+    this.viewer.scene.screenSpaceCameraController.maximumZoomDistance = 10000000; // 最大级别
 
     this.scene = this.viewer.scene;
 
@@ -105,19 +106,22 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
     imageryLayers.addImageryProvider(new Cesium.TiandituImageryProvider({
       credit: new Cesium.Credit('天地图全球影像服务     数据来源：国家地理信息公共服务平台 & 四川省测绘地理信息局'),
       token: '95304915c6b414cf00e4a65beca9c8da',
-    }))
+    }));
     // 初始化天地图全球中文注记服务，并添加至影像图层
     const labelImagery = new Cesium.TiandituImageryProvider({
       mapStyle: Cesium.TiandituMapsStyle.CIA_C, // 天地图全球中文注记服务（经纬度投影）
       token: '95304915c6b414cf00e4a65beca9c8da',
-    })
+    });
     imageryLayers.addImageryProvider(labelImagery);
+    const credit = this.viewer.scene.frameState.creditDisplay;
+    credit.container.removeChild(credit._cesiumCreditContainer);
+    credit.container.removeChild(credit._expandLink);
 
     this.setAreaBorderLine();
 
     setTimeout(() => {
       this.setCrewAddress();
-    }, 2000)
+    }, 2000);
     this.viewerEvent();
   }
 
@@ -125,7 +129,7 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
   * 地图事件
   * */
   viewerEvent(): void {
-    const handler = new Cesium.ScreenSpaceEventHandler(this.viewer.scene.canvas)
+    const handler = new Cesium.ScreenSpaceEventHandler(this.viewer.scene.canvas);
     handler.setInputAction(e => {
       // 获取点击位置笛卡尔坐标
       const position = this.scene.pickPosition(e.position);
@@ -134,13 +138,14 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
 
       const pick = this.viewer.scene.pick(e.position); // 获取点击点位信息
 
-      console.log(pick.id);
-      console.log(pick.id.type);
-      this.viewer.entities.remove(pick);
-      if (pick.id.type === 'crewAddress') {
-        this.viewer.entities.remove(pick);
+      console.log(pick);
+      console.log(pick);
+      if (pick && pick.id && pick.id.type === 'crewAddress') {
+        const longitude = Cesium.Math.toDegrees(pick.id.data.longitude);
+        const latitude = Cesium.Math.toDegrees(pick.id.data.latitude);
+        this.gotoAddress(longitude, latitude, 1000);
       }
-    }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
+    }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
   }
 
   /*
@@ -183,6 +188,7 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
           // disableDepthTestDistance: Number.POSITIVE_INFINITY
         },
         type: 'crewAddress',
+        data: item
       });
 
       this.viewer.entities.add({
@@ -201,9 +207,9 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
           eyeOffset: new Cesium.Cartesian3(0, 0, -10),
           heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
           // disableDepthTestDistance: Number.POSITIVE_INFINITY,
-        }
+        },
       });
-    })
+    });
 
   }
 
@@ -215,15 +221,20 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
       .subscribe(res => {
         res.features.forEach(item => {
           this.viewer.entities.add({
+            polygon: {
+              hierarchy: {
+                positions: Cesium.Cartesian3.fromDegreesArray(_.flattenDeep(item.geometry.coordinates)),
+              },
+              material: Cesium.Color.BLUE.withAlpha(0.1),
+            },
             polyline: {
               positions: Cesium.Cartesian3.fromDegreesArray(_.flattenDeep(item.geometry.coordinates)),
-              width : 5,
-              material : Cesium.Color.WHEAT
+              material: Cesium.Color.TAN,
             },
-            type: 'line',
+            type: 'poly',
           });
-        })
-      })
+        });
+      });
   }
 
   /*
@@ -236,7 +247,7 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
       // 视角
       pitch: Cesium.Math.toRadians(-35),
       roll: 0.0,
-    }
+    };
     this.viewer.camera.flyTo({
       destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, height),
       duration: 3,
