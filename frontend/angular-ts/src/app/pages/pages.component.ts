@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRouteSnapshot, ChildActivationEnd, NavigationEnd, Router } from '@angular/router';
 import { filter, map, last, first } from 'rxjs/operators';
 
@@ -7,16 +7,17 @@ import { filter, map, last, first } from 'rxjs/operators';
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.scss']
 })
-export class PagesComponent implements OnInit {
+export class PagesComponent implements OnInit, OnChanges {
 
   constructor(
     private router: Router
   ) {
+    console.log(2);
     // @ts-ignore
     this.router.events
       .pipe(
         // filter(event => event instanceof NavigationEnd  ),
-        first(),
+        // first(),
       )
       .subscribe(event => {
         console.log(event);
@@ -24,6 +25,10 @@ export class PagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(1);
   }
 
 }

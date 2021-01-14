@@ -10,11 +10,15 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'superMapGis',
+        redirectTo: 'map',
       },
       {
         path: 'superMapGis',
         loadChildren: () => import('./super-map-gis/super-map-gis.module').then(m => m.SuperMapGisModule)
+      },
+      {
+        path: 'map',
+        loadChildren: () => import('./map/map.module').then(m => m.MapModule)
       }
     ],
   },
