@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import L from 'leaflet';
-import {tiandituTileLayer} from '@supermap/iclient-leaflet';
+import {tiandituTileLayer, tiledMapLayer} from '@supermap/iclient-leaflet';
 
 @Component({
   selector: 'app-map',
@@ -23,13 +23,17 @@ export class MapComponent implements OnInit, AfterViewInit {
       zoom: 2,
       crs: L.CRS.TianDiTu_WGS84
     });
+    tiledMapLayer(url).addTo(map);
     tiandituTileLayer({
       layerType: 'img',
-      key: '1d109683f4d84198e37a38c442d68311'
+      key: '95304915c6b414cf00e4a65beca9c8da'
+    }).addTo(map);
+    tiandituTileLayer({
+      key: '95304915c6b414cf00e4a65beca9c8da'
     }).addTo(map);
     tiandituTileLayer({
       isLabel: true,
-      key: '1d109683f4d84198e37a38c442d68311'
+      key: '95304915c6b414cf00e4a65beca9c8da'
     }).addTo(map);
   }
 

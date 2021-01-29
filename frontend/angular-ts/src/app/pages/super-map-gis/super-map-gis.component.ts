@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import * as _ from 'lodash';
 
@@ -30,6 +31,7 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
 
   constructor(
     private superMapGisService: SuperMapGisService,
+    private route: ActivatedRoute
   ) {
     this.userPlaceList = [
       {
@@ -58,6 +60,8 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
   // longitude: 1.9819805572034528
 
   ngOnInit(): void {
+    this.route.data.subscribe(res => console.log(res));
+    console.log(1);
   }
 
   ngAfterViewInit() {
@@ -83,6 +87,7 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
       }), // 使用地形服务
       homeButton: true,
       sceneModePicker: true,
+      selectionIndicator: false, // 去除选中Entity聚焦框
       navigationHelpButton: false,
       infoBox: false,
       vrButton: false,
@@ -98,10 +103,16 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
 
     this.viewer.scene.screenSpaceCameraController.minimumZoomDistance = 500; // 最小级别
     this.viewer.scene.screenSpaceCameraController.maximumZoomDistance = 10000000; // 最大级别
+    this.viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK); // 清除默认鼠标双击事件
+
 
     this.scene = this.viewer.scene;
 
-    this.scene.globe.depthTestAgainstTerrain = false; // 解决标点显示不全问题
+    /*
+    * 解决标点显示不全问题
+    * 去除深度检测
+    * */
+    this.scene.globe.depthTestAgainstTerrain = false;
     const imageryLayers = this.viewer.imageryLayers;
     imageryLayers.addImageryProvider(new Cesium.TiandituImageryProvider({
       credit: new Cesium.Credit('天地图全球影像服务     数据来源：国家地理信息公共服务平台 & 四川省测绘地理信息局'),
@@ -113,6 +124,10 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
       token: '95304915c6b414cf00e4a65beca9c8da',
     });
     imageryLayers.addImageryProvider(labelImagery);
+
+    /*
+    * 去除supermap等文字图标
+    * */
     const credit = this.viewer.scene.frameState.creditDisplay;
     credit.container.removeChild(credit._cesiumCreditContainer);
     credit.container.removeChild(credit._expandLink);
@@ -146,6 +161,9 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
         this.gotoAddress(longitude, latitude, 1000);
       }
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+    handler.setInputAction(e => {
+      console.log(1);
+    }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
   }
 
   /*
