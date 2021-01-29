@@ -10,6 +10,7 @@ import { SuperMapGisComponent } from './super-map-gis.component';
   imports: [
     CommonModule,
     SuperMapGisRoutingModule
-  ]
+  ],
+  exports: [SuperMapGisComponent]
 })
 export class SuperMapGisModule { }

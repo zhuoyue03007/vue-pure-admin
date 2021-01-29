@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './pages.component';
+import { DataResolverService } from './data-resolver.service';
 
 const routes: Routes = [
   {
@@ -14,7 +15,10 @@ const routes: Routes = [
       },
       {
         path: 'superMapGis',
-        loadChildren: () => import('./super-map-gis/super-map-gis.module').then(m => m.SuperMapGisModule)
+        loadChildren: () => import('./super-map-gis/super-map-gis.module').then(m => m.SuperMapGisModule),
+        resolve: {
+          data: DataResolverService
+        }
       },
       {
         path: 'map',
