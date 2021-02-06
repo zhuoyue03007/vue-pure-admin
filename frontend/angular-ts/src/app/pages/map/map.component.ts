@@ -10,6 +10,8 @@ import {tiandituTileLayer, tiledMapLayer} from '@supermap/iclient-leaflet';
 })
 export class MapComponent implements OnInit, AfterViewInit {
 
+  index = 1;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -147,9 +147,9 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
     const handler = new Cesium.ScreenSpaceEventHandler(this.viewer.scene.canvas);
     handler.setInputAction(e => {
       // 获取点击位置笛卡尔坐标
-      const position = this.scene.pickPosition(e.position);
+      // const position = this.scene.pickPosition(e.position);
       // 将笛卡尔坐标转化为经纬度坐标
-      const cartographic = Cesium.Cartographic.fromCartesian(position);
+      // const cartographic = Cesium.Cartographic.fromCartesian(position);
 
       const pick = this.viewer.scene.pick(e.position); // 获取点击点位信息
 
@@ -161,7 +161,7 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
         this.gotoAddress(longitude, latitude, 1000);
       }
     }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-    handler.setInputAction(e => {
+    handler.setInputAction(() => {
       console.log(1);
     }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
   }
