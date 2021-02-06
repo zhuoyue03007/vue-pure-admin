@@ -1,0 +1,2355 @@
+Index: ../angular-ts/package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../angular-ts/package-lock.json	(revision a707234f5f3c03bfb9138499b27032c70a98fe66)
++++ ../angular-ts/package-lock.json	(date 1609837341162)
+@@ -1524,6 +1524,19 @@
+         "schema-utils": "^2.7.0"
+       }
+     },
++    "@mapbox/point-geometry": {
++      "version": "0.1.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz",
++      "integrity": "sha1-ioP5M1x4YO/6Lu7KJUMyqgru2PI="
++    },
++    "@mapbox/vector-tile": {
++      "version": "1.3.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@mapbox/vector-tile/-/vector-tile-1.3.1.tgz",
++      "integrity": "sha1-06dMkEAtBuiexm3knsgX/1NAlmY=",
++      "requires": {
++        "@mapbox/point-geometry": "~0.1.0"
++      }
++    },
+     "@ngtools/webpack": {
+       "version": "11.0.1",
+       "resolved": "https://registry.npm.taobao.org/@ngtools/webpack/download/@ngtools/webpack-11.0.1.tgz",
+@@ -1605,6 +1618,1366 @@
+         "semver-intersect": "1.4.0"
+       }
+     },
++    "@supermap/iclient-common": {
++      "version": "10.1.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@supermap/iclient-common/-/iclient-common-10.1.1.tgz",
++      "integrity": "sha1-TiPgS/8SaPx5gpSp+neZMmoOPDA=",
++      "requires": {
++        "elasticsearch": "16.7.1",
++        "fetch-ie8": "1.5.0",
++        "fetch-jsonp": "1.1.3",
++        "lodash.topairs": "4.3.0",
++        "promise-polyfill": "8.1.3"
++      }
++    },
++    "@supermap/iclient-leaflet": {
++      "version": "10.1.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@supermap/iclient-leaflet/-/iclient-leaflet-10.1.1.tgz",
++      "integrity": "sha1-sDgHk0tzXgbROHU7S1ALM5LlUUY=",
++      "requires": {
++        "@mapbox/vector-tile": "1.3.1",
++        "@supermap/iclient-common": "10.1.1",
++        "@turf/turf": "5.1.6",
++        "echarts": "4.9.0",
++        "jsonsql": "0.2.5",
++        "leaflet": "1.7.1",
++        "mapv": "2.0.56",
++        "pbf": "3.2.1",
++        "proj4": "2.6.2",
++        "xlsx": "0.16.8"
++      }
++    },
++    "@turf/along": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/along/-/along-5.1.5.tgz",
++      "integrity": "sha1-YdbmplhKzdq1asVYTge/jL5fi+s=",
++      "requires": {
++        "@turf/bearing": "^5.1.5",
++        "@turf/destination": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/area": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/area/-/area-5.1.5.tgz",
++      "integrity": "sha1-79iZv9Jgzb0VQbKjwVX4pdLu+h0=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/bbox": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/bbox/-/bbox-5.1.5.tgz",
++      "integrity": "sha1-MFHfUUrUxQ9KT5uKLRX9i2hA7aM=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/bbox-clip": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/bbox-clip/-/bbox-clip-5.1.5.tgz",
++      "integrity": "sha1-M2S1Mo3/nzz0HZ4C7a/zdNFQzIQ=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "lineclip": "^1.1.5"
++      }
++    },
++    "@turf/bbox-polygon": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/bbox-polygon/-/bbox-polygon-5.1.5.tgz",
++      "integrity": "sha1-auuk7VHYXSluD3w4uIwznwHu4CQ=",
++      "requires": {
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/bearing": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/bearing/-/bearing-5.1.5.tgz",
++      "integrity": "sha1-egt5ATbE70eX8CRjBdRcvi0ns/c=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/bezier-spline": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/bezier-spline/-/bezier-spline-5.1.5.tgz",
++      "integrity": "sha1-WaJ7ul17l+8Vqz/VpA+9I4cEm8o=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/boolean-clockwise": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-clockwise/-/boolean-clockwise-5.1.5.tgz",
++      "integrity": "sha1-MwK32sYsXikaB4nimvcoM4f6nes=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/boolean-contains": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-contains/-/boolean-contains-5.1.5.tgz",
++      "integrity": "sha1-WW1jruY2961T7pn5/yTJaZSg7xQ=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/boolean-point-on-line": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/boolean-crosses": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-crosses/-/boolean-crosses-5.1.5.tgz",
++      "integrity": "sha1-Ab+uollvFk3kpNMlCU3HwlXHFdY=",
++      "requires": {
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/line-intersect": "^5.1.5",
++        "@turf/polygon-to-line": "^5.1.5"
++      }
++    },
++    "@turf/boolean-disjoint": {
++      "version": "5.1.6",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-disjoint/-/boolean-disjoint-5.1.6.tgz",
++      "integrity": "sha1-P72HCEsmkTP1/RVyXes8ZnX7ip0=",
++      "requires": {
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/line-intersect": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/polygon-to-line": "^5.1.5"
++      }
++    },
++    "@turf/boolean-equal": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-equal/-/boolean-equal-5.1.5.tgz",
++      "integrity": "sha1-Kfj21gu4RQff12WzIlTbjnLJOKQ=",
++      "requires": {
++        "@turf/clean-coords": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "geojson-equality": "0.1.6"
++      }
++    },
++    "@turf/boolean-overlap": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-overlap/-/boolean-overlap-5.1.5.tgz",
++      "integrity": "sha1-DU5kxSx3CijpPZ7834qLg3OsznU=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/line-intersect": "^5.1.5",
++        "@turf/line-overlap": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "geojson-equality": "0.1.6"
++      }
++    },
++    "@turf/boolean-parallel": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-parallel/-/boolean-parallel-5.1.5.tgz",
++      "integrity": "sha1-c5NYR16ltlx+GCejw+DopofTqF0=",
++      "requires": {
++        "@turf/clean-coords": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/line-segment": "^5.1.5",
++        "@turf/rhumb-bearing": "^5.1.5"
++      }
++    },
++    "@turf/boolean-point-in-polygon": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-point-in-polygon/-/boolean-point-in-polygon-5.1.5.tgz",
++      "integrity": "sha1-8BzBlNHgMKVIv9qYHLpDz9YpQbc=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/boolean-point-on-line": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-point-on-line/-/boolean-point-on-line-5.1.5.tgz",
++      "integrity": "sha1-9jPF/4Aq0ku48Vja269v9KAj3Xs=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/boolean-within": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/boolean-within/-/boolean-within-5.1.5.tgz",
++      "integrity": "sha1-RxBdVtB1Kp0Pv81Dw2pfkUnchpc=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/boolean-point-on-line": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/buffer": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/buffer/-/buffer-5.1.5.tgz",
++      "integrity": "sha1-hByWJ8+5dLEirE4alW8EZrwCMcQ=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/center": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/projection": "^5.1.5",
++        "d3-geo": "1.7.1",
++        "turf-jsts": "*"
++      }
++    },
++    "@turf/center": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/center/-/center-5.1.5.tgz",
++      "integrity": "sha1-RKss2VT2PA03dX9xWKmcPvURS4A=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/center-mean": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/center-mean/-/center-mean-5.1.5.tgz",
++      "integrity": "sha1-jI6YdTkeXwnw5uePXWYbiLIQigo=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/center-median": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/center-median/-/center-median-5.1.5.tgz",
++      "integrity": "sha1-u0Yb/noqSGAdikcnaFcYcjoUqHI=",
++      "requires": {
++        "@turf/center-mean": "^5.1.5",
++        "@turf/centroid": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/center-of-mass": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/center-of-mass/-/center-of-mass-5.1.5.tgz",
++      "integrity": "sha1-TTvXnYhJjbq4Mk1PafAyL2Uguco=",
++      "requires": {
++        "@turf/centroid": "^5.1.5",
++        "@turf/convex": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/centroid": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/centroid/-/centroid-5.1.5.tgz",
++      "integrity": "sha1-d4radCFjNQIa2P0OemWoNJ1Tx2k=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/circle": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/circle/-/circle-5.1.5.tgz",
++      "integrity": "sha1-mxV3g1UIq1L7HBCypQZcuiuHtqU=",
++      "requires": {
++        "@turf/destination": "^5.1.5",
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/clean-coords": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/clean-coords/-/clean-coords-5.1.5.tgz",
++      "integrity": "sha1-EoAKmKeMmkUqcuxChJPEOs8q2h8=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/clone": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/clone/-/clone-5.1.5.tgz",
++      "integrity": "sha1-JT6NNUdxgZduM636tQoPAqfw42c=",
++      "requires": {
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/clusters": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/clusters/-/clusters-5.1.5.tgz",
++      "integrity": "sha1-ZzpeXxsZycq6vFfJCO6t1oIiTdQ=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/clusters-dbscan": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/clusters-dbscan/-/clusters-dbscan-5.1.5.tgz",
++      "integrity": "sha1-V4H7TmVsdHoLjpk333MYHAMJ4m8=",
++      "requires": {
++        "@turf/clone": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "density-clustering": "1.3.0"
++      }
++    },
++    "@turf/clusters-kmeans": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/clusters-kmeans/-/clusters-kmeans-5.1.5.tgz",
++      "integrity": "sha1-/W3+qLEzuovcI3CsPKzuFYejAvE=",
++      "requires": {
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "skmeans": "0.9.7"
++      }
++    },
++    "@turf/collect": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/collect/-/collect-5.1.5.tgz",
++      "integrity": "sha1-/pjJqMIY7PJP/DPXApUXt8GbKj4=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "rbush": "^2.0.1"
++      },
++      "dependencies": {
++        "quickselect": {
++          "version": "1.1.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/quickselect/-/quickselect-1.1.1.tgz",
++          "integrity": "sha1-hS5BLOQY8jetW2YNcM/6xkeulMI="
++        },
++        "rbush": {
++          "version": "2.0.2",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/rbush/-/rbush-2.0.2.tgz",
++          "integrity": "sha1-u2AFwnMbe6HVqaA1dykn0WphRgU=",
++          "requires": {
++            "quickselect": "^1.0.1"
++          }
++        }
++      }
++    },
++    "@turf/combine": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/combine/-/combine-5.1.5.tgz",
++      "integrity": "sha1-uxS976VVBDVxlfwaEkzX1TqMiQU=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/concave": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/concave/-/concave-5.1.5.tgz",
++      "integrity": "sha1-I7uqw4fQNLlldKG9cNBZI3qdIRA=",
++      "requires": {
++        "@turf/clone": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/tin": "^5.1.5",
++        "topojson-client": "3.x",
++        "topojson-server": "3.x"
++      }
++    },
++    "@turf/convex": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/convex/-/convex-5.1.5.tgz",
++      "integrity": "sha1-Dfk3fdACIWzpghsH9wXgN9rj4B0=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "concaveman": "*"
++      }
++    },
++    "@turf/destination": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/destination/-/destination-5.1.5.tgz",
++      "integrity": "sha1-7TU4G9zoO73cvQei4rzivd/7zCY=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/difference": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/difference/-/difference-5.1.5.tgz",
++      "integrity": "sha1-ok1pCnvKgD8QkKnuO52Qb8Q3H0I=",
++      "requires": {
++        "@turf/area": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "turf-jsts": "*"
++      }
++    },
++    "@turf/dissolve": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/dissolve/-/dissolve-5.1.5.tgz",
++      "integrity": "sha1-LPEzqQIdIWODHD16lY1lB/nYGTg=",
++      "requires": {
++        "@turf/boolean-overlap": "^5.1.5",
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/line-intersect": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/union": "^5.1.5",
++        "geojson-rbush": "2.1.0",
++        "get-closest": "*"
++      }
++    },
++    "@turf/distance": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/distance/-/distance-5.1.5.tgz",
++      "integrity": "sha1-Oc8YIEu/h1h9cH5gmmARiQkVZAk=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/ellipse": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/ellipse/-/ellipse-5.1.5.tgz",
++      "integrity": "sha1-1XyrhTmFkgzeYCKKeNgEWAJcVL4=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/rhumb-destination": "^5.1.5",
++        "@turf/transform-rotate": "^5.1.5"
++      }
++    },
++    "@turf/envelope": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/envelope/-/envelope-5.1.5.tgz",
++      "integrity": "sha1-UBMwnFP91D369LWIplw/7X28EIo=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/bbox-polygon": "^5.1.5",
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/explode": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/explode/-/explode-5.1.5.tgz",
++      "integrity": "sha1-sSsvd0AEobSPYrqVsgocZVo94Rg=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/flatten": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/flatten/-/flatten-5.1.5.tgz",
++      "integrity": "sha1-2iknBnEz7WFpsLnWB7khVoiqE1g=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/flip": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/flip/-/flip-5.1.5.tgz",
++      "integrity": "sha1-Q29kOnIvDKU7n85jjkaT2zYIpoo=",
++      "requires": {
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/great-circle": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/great-circle/-/great-circle-5.1.5.tgz",
++      "integrity": "sha1-3r+2cc5HVQnLY3MBwV/PzPo1mpM=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/helpers": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/helpers/-/helpers-5.1.5.tgz",
++      "integrity": "sha1-FTQFInq5M9AEpbuWQantmZ/L4M8="
++    },
++    "@turf/hex-grid": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/hex-grid/-/hex-grid-5.1.5.tgz",
++      "integrity": "sha1-m3ul/s9QUfHoWJL3E/zlxVBQKmo=",
++      "requires": {
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/intersect": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/interpolate": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/interpolate/-/interpolate-5.1.5.tgz",
++      "integrity": "sha1-DxLwq3VtbdEK+ykMpuh3ve8BPqo=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/centroid": "^5.1.5",
++        "@turf/clone": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/hex-grid": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/point-grid": "^5.1.5",
++        "@turf/square-grid": "^5.1.5",
++        "@turf/triangle-grid": "^5.1.5"
++      }
++    },
++    "@turf/intersect": {
++      "version": "5.1.6",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/intersect/-/intersect-5.1.6.tgz",
++      "integrity": "sha1-E//M63pSnCp+XWaBqzumcfho6V8=",
++      "requires": {
++        "@turf/clean-coords": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/truncate": "^5.1.5",
++        "turf-jsts": "*"
++      }
++    },
++    "@turf/invariant": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/invariant/-/invariant-5.1.5.tgz",
++      "integrity": "sha1-9Z9P76CSJLFdzhZR+QPIaNV6JOE=",
++      "requires": {
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/isobands": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/isobands/-/isobands-5.1.5.tgz",
++      "integrity": "sha1-a0TO9YTVUaMTBBh68jtKFYLj8I0=",
++      "requires": {
++        "@turf/area": "^5.1.5",
++        "@turf/bbox": "^5.1.5",
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/explode": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/isolines": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/isolines/-/isolines-5.1.5.tgz",
++      "integrity": "sha1-irTn9Cuz38VGFOW/FVln9+VdLeE=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/kinks": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/kinks/-/kinks-5.1.5.tgz",
++      "integrity": "sha1-irtpYdm7AQchO63fLCwmQNAlaYA=",
++      "requires": {
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/length": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/length/-/length-5.1.5.tgz",
++      "integrity": "sha1-86X4ZMK5lqi7RxeUU1ofrxLuvvs=",
++      "requires": {
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/line-arc": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-arc/-/line-arc-5.1.5.tgz",
++      "integrity": "sha1-AHinRHg1oSrkFKIR+aZNEYYVDhU=",
++      "requires": {
++        "@turf/circle": "^5.1.5",
++        "@turf/destination": "^5.1.5",
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/line-chunk": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-chunk/-/line-chunk-5.1.5.tgz",
++      "integrity": "sha1-kQqFwFwG2dD5w4l3oF4IGNUIXEI=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/length": "^5.1.5",
++        "@turf/line-slice-along": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/line-intersect": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-intersect/-/line-intersect-5.1.5.tgz",
++      "integrity": "sha1-DikHGuQDKV5JFyO8SfXPrI0R3fM=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/line-segment": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "geojson-rbush": "2.1.0"
++      }
++    },
++    "@turf/line-offset": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-offset/-/line-offset-5.1.5.tgz",
++      "integrity": "sha1-KrWy8In4yRPiMdmUN4553KkLWh4=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/line-overlap": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-overlap/-/line-overlap-5.1.5.tgz",
++      "integrity": "sha1-lDxvh6A4bcQ9+sEdKz/5wRLNP2A=",
++      "requires": {
++        "@turf/boolean-point-on-line": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/line-segment": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/nearest-point-on-line": "^5.1.5",
++        "geojson-rbush": "2.1.0"
++      }
++    },
++    "@turf/line-segment": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-segment/-/line-segment-5.1.5.tgz",
++      "integrity": "sha1-Mgeq7lRqskw9jcPMY/kcdwuAE+U=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/line-slice": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-slice/-/line-slice-5.1.5.tgz",
++      "integrity": "sha1-Hs/OFGKjeFeXVM7fRGTN4mgp8rU=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/nearest-point-on-line": "^5.1.5"
++      }
++    },
++    "@turf/line-slice-along": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-slice-along/-/line-slice-along-5.1.5.tgz",
++      "integrity": "sha1-7drQoh70efKWihG9LdcomiEy6aU=",
++      "requires": {
++        "@turf/bearing": "^5.1.5",
++        "@turf/destination": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/line-split": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-split/-/line-split-5.1.5.tgz",
++      "integrity": "sha1-Wy30w3YZty73JbUWPPmSbVVArLc=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/line-intersect": "^5.1.5",
++        "@turf/line-segment": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/nearest-point-on-line": "^5.1.5",
++        "@turf/square": "^5.1.5",
++        "@turf/truncate": "^5.1.5",
++        "geojson-rbush": "2.1.0"
++      }
++    },
++    "@turf/line-to-polygon": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/line-to-polygon/-/line-to-polygon-5.1.5.tgz",
++      "integrity": "sha1-ITz0Gmj4Ikd4ujnTGH3sPouBhlo=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/mask": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/mask/-/mask-5.1.5.tgz",
++      "integrity": "sha1-mrD+8aJyyY/j70kvn/thggayQtU=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/union": "^5.1.5",
++        "rbush": "^2.0.1"
++      },
++      "dependencies": {
++        "quickselect": {
++          "version": "1.1.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/quickselect/-/quickselect-1.1.1.tgz",
++          "integrity": "sha1-hS5BLOQY8jetW2YNcM/6xkeulMI="
++        },
++        "rbush": {
++          "version": "2.0.2",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/rbush/-/rbush-2.0.2.tgz",
++          "integrity": "sha1-u2AFwnMbe6HVqaA1dykn0WphRgU=",
++          "requires": {
++            "quickselect": "^1.0.1"
++          }
++        }
++      }
++    },
++    "@turf/meta": {
++      "version": "5.1.6",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/meta/-/meta-5.1.6.tgz",
++      "integrity": "sha1-wgqGPt7Qhp+yhUje6Ik0G8y0akY=",
++      "requires": {
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/midpoint": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/midpoint/-/midpoint-5.1.5.tgz",
++      "integrity": "sha1-4mH2srDqgSTM7/VSomLdRlydBfA=",
++      "requires": {
++        "@turf/bearing": "^5.1.5",
++        "@turf/destination": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/nearest-point": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/nearest-point/-/nearest-point-5.1.5.tgz",
++      "integrity": "sha1-EgUN5Bw5hEMiTHl43g9iE5ANNPs=",
++      "requires": {
++        "@turf/clone": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/nearest-point-on-line": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/nearest-point-on-line/-/nearest-point-on-line-5.1.5.tgz",
++      "integrity": "sha1-VgauKX8VlHUkvqUaKp71HsG/nDY=",
++      "requires": {
++        "@turf/bearing": "^5.1.5",
++        "@turf/destination": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/line-intersect": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/nearest-point-to-line": {
++      "version": "5.1.6",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/nearest-point-to-line/-/nearest-point-to-line-5.1.6.tgz",
++      "integrity": "sha1-0wt2BuVqPc6X9NttRdNSRw4LP4g=",
++      "requires": {
++        "@turf/helpers": "6.x",
++        "@turf/invariant": "6.x",
++        "@turf/meta": "6.x",
++        "@turf/point-to-line-distance": "^5.1.5",
++        "object-assign": "*"
++      },
++      "dependencies": {
++        "@turf/helpers": {
++          "version": "6.1.4",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/helpers/-/helpers-6.1.4.tgz",
++          "integrity": "sha1-1v1+vmeC3ZyH3KVVm9pcSK5MODY="
++        },
++        "@turf/invariant": {
++          "version": "6.1.2",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/invariant/-/invariant-6.1.2.tgz",
++          "integrity": "sha1-YBPtYhn5rC7a2psx4d+lkY6wovc=",
++          "requires": {
++            "@turf/helpers": "6.x"
++          }
++        },
++        "@turf/meta": {
++          "version": "6.0.2",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/meta/-/meta-6.0.2.tgz",
++          "integrity": "sha1-65KVESbSSmE6wbe5nXM/zCD9MM8=",
++          "requires": {
++            "@turf/helpers": "6.x"
++          }
++        }
++      }
++    },
++    "@turf/planepoint": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/planepoint/-/planepoint-5.1.5.tgz",
++      "integrity": "sha1-GLvfAG91ne9eQsagBsn53oGyt/8=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/point-grid": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/point-grid/-/point-grid-5.1.5.tgz",
++      "integrity": "sha1-MFFBJI9Quv42zn5mukuX56sjaIc=",
++      "requires": {
++        "@turf/boolean-within": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/point-on-feature": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/point-on-feature/-/point-on-feature-5.1.5.tgz",
++      "integrity": "sha1-MMfwMkMCd8ZBjZbSieRba/shP+c=",
++      "requires": {
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/center": "^5.1.5",
++        "@turf/explode": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/nearest-point": "^5.1.5"
++      }
++    },
++    "@turf/point-to-line-distance": {
++      "version": "5.1.6",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/point-to-line-distance/-/point-to-line-distance-5.1.6.tgz",
++      "integrity": "sha1-lU9stoVGQgoDDYSAOSUDJklw0tg=",
++      "requires": {
++        "@turf/bearing": "6.x",
++        "@turf/distance": "6.x",
++        "@turf/helpers": "6.x",
++        "@turf/invariant": "6.x",
++        "@turf/meta": "6.x",
++        "@turf/projection": "6.x",
++        "@turf/rhumb-bearing": "6.x",
++        "@turf/rhumb-distance": "6.x"
++      },
++      "dependencies": {
++        "@turf/bearing": {
++          "version": "6.0.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/bearing/-/bearing-6.0.1.tgz",
++          "integrity": "sha1-jaXRcJLlcfFwzee/suWw10kjyS0=",
++          "requires": {
++            "@turf/helpers": "6.x",
++            "@turf/invariant": "6.x"
++          }
++        },
++        "@turf/clone": {
++          "version": "6.0.2",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/clone/-/clone-6.0.2.tgz",
++          "integrity": "sha1-dWPOu7Pi4Z82FZm7JERn4NzCBck=",
++          "requires": {
++            "@turf/helpers": "6.x"
++          }
++        },
++        "@turf/distance": {
++          "version": "6.0.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/distance/-/distance-6.0.1.tgz",
++          "integrity": "sha1-B2Hyh4QobnhlpCfE5+NZNWnC3qg=",
++          "requires": {
++            "@turf/helpers": "6.x",
++            "@turf/invariant": "6.x"
++          }
++        },
++        "@turf/helpers": {
++          "version": "6.1.4",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/helpers/-/helpers-6.1.4.tgz",
++          "integrity": "sha1-1v1+vmeC3ZyH3KVVm9pcSK5MODY="
++        },
++        "@turf/invariant": {
++          "version": "6.1.2",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/invariant/-/invariant-6.1.2.tgz",
++          "integrity": "sha1-YBPtYhn5rC7a2psx4d+lkY6wovc=",
++          "requires": {
++            "@turf/helpers": "6.x"
++          }
++        },
++        "@turf/meta": {
++          "version": "6.0.2",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/meta/-/meta-6.0.2.tgz",
++          "integrity": "sha1-65KVESbSSmE6wbe5nXM/zCD9MM8=",
++          "requires": {
++            "@turf/helpers": "6.x"
++          }
++        },
++        "@turf/projection": {
++          "version": "6.0.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/projection/-/projection-6.0.1.tgz",
++          "integrity": "sha1-vecK6EQbnO/d8m1xx9t0vD2XkrE=",
++          "requires": {
++            "@turf/clone": "6.x",
++            "@turf/helpers": "6.x",
++            "@turf/meta": "6.x"
++          }
++        },
++        "@turf/rhumb-bearing": {
++          "version": "6.0.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/rhumb-bearing/-/rhumb-bearing-6.0.1.tgz",
++          "integrity": "sha1-GCxMIf6VHgl/tGiuEo3CLvYHjz8=",
++          "requires": {
++            "@turf/helpers": "6.x",
++            "@turf/invariant": "6.x"
++          }
++        },
++        "@turf/rhumb-distance": {
++          "version": "6.0.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/rhumb-distance/-/rhumb-distance-6.0.1.tgz",
++          "integrity": "sha1-rhxcgjtLBPdc1/wkD3+TZH24vdQ=",
++          "requires": {
++            "@turf/helpers": "6.x",
++            "@turf/invariant": "6.x"
++          }
++        }
++      }
++    },
++    "@turf/points-within-polygon": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/points-within-polygon/-/points-within-polygon-5.1.5.tgz",
++      "integrity": "sha1-K4VaXfOq2lfC7oIKB1SrlJKKIzc=",
++      "requires": {
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/polygon-tangents": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/polygon-tangents/-/polygon-tangents-5.1.5.tgz",
++      "integrity": "sha1-K/AJkUcwJbF44lDcfLmuVAm71lI=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/polygon-to-line": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/polygon-to-line/-/polygon-to-line-5.1.5.tgz",
++      "integrity": "sha1-I7tEjYTcTGUZmaxhGjbZHFklA2o=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/polygonize": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/polygonize/-/polygonize-5.1.5.tgz",
++      "integrity": "sha1-BJP6EYefOdELmtAs5qI+lC0IqjI=",
++      "requires": {
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/envelope": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/projection": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/projection/-/projection-5.1.5.tgz",
++      "integrity": "sha1-JFF+7rLzaBa6n3EueubWo2jt91c=",
++      "requires": {
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/random": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/random/-/random-5.1.5.tgz",
++      "integrity": "sha1-sy78k0Vgroulfo67UfJBw5+6Lns=",
++      "requires": {
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/rewind": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/rewind/-/rewind-5.1.5.tgz",
++      "integrity": "sha1-nqPbSmi3PB/R3RH1djGxQ8/vock=",
++      "requires": {
++        "@turf/boolean-clockwise": "^5.1.5",
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/rhumb-bearing": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/rhumb-bearing/-/rhumb-bearing-5.1.5.tgz",
++      "integrity": "sha1-rPalAkJ+uMSeGM2mrg7/qwxd3NI=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/rhumb-destination": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/rhumb-destination/-/rhumb-destination-5.1.5.tgz",
++      "integrity": "sha1-sbKuuSFUfyrAwamUtqEw+SRjx0I=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/rhumb-distance": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/rhumb-distance/-/rhumb-distance-5.1.5.tgz",
++      "integrity": "sha1-GAaFdiX0IlOE2tQT5p85U4/192U=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/sample": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/sample/-/sample-5.1.5.tgz",
++      "integrity": "sha1-6ctEikeJzFbuPeLdZ4HiNDQ1tBE=",
++      "requires": {
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/sector": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/sector/-/sector-5.1.5.tgz",
++      "integrity": "sha1-rCu5TBPt1gNPb9wrZwCBNdIPXgc=",
++      "requires": {
++        "@turf/circle": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/line-arc": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/shortest-path": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/shortest-path/-/shortest-path-5.1.5.tgz",
++      "integrity": "sha1-hUroCW9rw+EwD6ynfz6PZ9j5Nas=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/bbox-polygon": "^5.1.5",
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/clean-coords": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/transform-scale": "^5.1.5"
++      }
++    },
++    "@turf/simplify": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/simplify/-/simplify-5.1.5.tgz",
++      "integrity": "sha1-Csjyei60IYGD7dmZjDJ1q+QIuSY=",
++      "requires": {
++        "@turf/clean-coords": "^5.1.5",
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/square": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/square/-/square-5.1.5.tgz",
++      "integrity": "sha1-qnsh5gM8ySUsOlvW89iNq9b+0YA=",
++      "requires": {
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/square-grid": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/square-grid/-/square-grid-5.1.5.tgz",
++      "integrity": "sha1-G9X3uesU8LYLwjH+/nNR0aMvGlE=",
++      "requires": {
++        "@turf/boolean-contains": "^5.1.5",
++        "@turf/boolean-overlap": "^5.1.5",
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/intersect": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/standard-deviational-ellipse": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/standard-deviational-ellipse/-/standard-deviational-ellipse-5.1.5.tgz",
++      "integrity": "sha1-hc0oO14ayljyG9ZkEuQUtW2FIyQ=",
++      "requires": {
++        "@turf/center-mean": "^5.1.5",
++        "@turf/ellipse": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/points-within-polygon": "^5.1.5"
++      }
++    },
++    "@turf/tag": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/tag/-/tag-5.1.5.tgz",
++      "integrity": "sha1-0e4aUIjs/UoUEQGcmCOczypJfSA=",
++      "requires": {
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/tesselate": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/tesselate/-/tesselate-5.1.5.tgz",
++      "integrity": "sha1-MqWU6cIaAEIKn5DSxD3z4RZgYc0=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "earcut": "^2.0.0"
++      }
++    },
++    "@turf/tin": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/tin/-/tin-5.1.5.tgz",
++      "integrity": "sha1-KCI+r8X76a6azKgc3P6l0UJMkX0=",
++      "requires": {
++        "@turf/helpers": "^5.1.5"
++      }
++    },
++    "@turf/transform-rotate": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/transform-rotate/-/transform-rotate-5.1.5.tgz",
++      "integrity": "sha1-0Jbt2eMA/jFQadVNjkWMQJIh7fs=",
++      "requires": {
++        "@turf/centroid": "^5.1.5",
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/rhumb-bearing": "^5.1.5",
++        "@turf/rhumb-destination": "^5.1.5",
++        "@turf/rhumb-distance": "^5.1.5"
++      }
++    },
++    "@turf/transform-scale": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/transform-scale/-/transform-scale-5.1.5.tgz",
++      "integrity": "sha1-cP064BhWz3uunxWtVhzf6PiQAbk=",
++      "requires": {
++        "@turf/bbox": "^5.1.5",
++        "@turf/center": "^5.1.5",
++        "@turf/centroid": "^5.1.5",
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/rhumb-bearing": "^5.1.5",
++        "@turf/rhumb-destination": "^5.1.5",
++        "@turf/rhumb-distance": "^5.1.5"
++      }
++    },
++    "@turf/transform-translate": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/transform-translate/-/transform-translate-5.1.5.tgz",
++      "integrity": "sha1-Uwolf7Hccmja3Ks05nkB6yo97GM=",
++      "requires": {
++        "@turf/clone": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "@turf/rhumb-destination": "^5.1.5"
++      }
++    },
++    "@turf/triangle-grid": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/triangle-grid/-/triangle-grid-5.1.5.tgz",
++      "integrity": "sha1-ezZ2IQhVTBTyjK/zxIsc/ILI3IE=",
++      "requires": {
++        "@turf/distance": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/intersect": "^5.1.5",
++        "@turf/invariant": "^5.1.5"
++      }
++    },
++    "@turf/truncate": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/truncate/-/truncate-5.1.5.tgz",
++      "integrity": "sha1-nu37Oxi6gfLJjT6tCUMcyhiErYk=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5"
++      }
++    },
++    "@turf/turf": {
++      "version": "5.1.6",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/turf/-/turf-5.1.6.tgz",
++      "integrity": "sha1-wxIlkoh+0jS3VGi4qMRb+Ib7+PY=",
++      "requires": {
++        "@turf/along": "5.1.x",
++        "@turf/area": "5.1.x",
++        "@turf/bbox": "5.1.x",
++        "@turf/bbox-clip": "5.1.x",
++        "@turf/bbox-polygon": "5.1.x",
++        "@turf/bearing": "5.1.x",
++        "@turf/bezier-spline": "5.1.x",
++        "@turf/boolean-clockwise": "5.1.x",
++        "@turf/boolean-contains": "5.1.x",
++        "@turf/boolean-crosses": "5.1.x",
++        "@turf/boolean-disjoint": "5.1.x",
++        "@turf/boolean-equal": "5.1.x",
++        "@turf/boolean-overlap": "5.1.x",
++        "@turf/boolean-parallel": "5.1.x",
++        "@turf/boolean-point-in-polygon": "5.1.x",
++        "@turf/boolean-point-on-line": "5.1.x",
++        "@turf/boolean-within": "5.1.x",
++        "@turf/buffer": "5.1.x",
++        "@turf/center": "5.1.x",
++        "@turf/center-mean": "5.1.x",
++        "@turf/center-median": "5.1.x",
++        "@turf/center-of-mass": "5.1.x",
++        "@turf/centroid": "5.1.x",
++        "@turf/circle": "5.1.x",
++        "@turf/clean-coords": "5.1.x",
++        "@turf/clone": "5.1.x",
++        "@turf/clusters": "5.1.x",
++        "@turf/clusters-dbscan": "5.1.x",
++        "@turf/clusters-kmeans": "5.1.x",
++        "@turf/collect": "5.1.x",
++        "@turf/combine": "5.1.x",
++        "@turf/concave": "5.1.x",
++        "@turf/convex": "5.1.x",
++        "@turf/destination": "5.1.x",
++        "@turf/difference": "5.1.x",
++        "@turf/dissolve": "5.1.x",
++        "@turf/distance": "5.1.x",
++        "@turf/ellipse": "5.1.x",
++        "@turf/envelope": "5.1.x",
++        "@turf/explode": "5.1.x",
++        "@turf/flatten": "5.1.x",
++        "@turf/flip": "5.1.x",
++        "@turf/great-circle": "5.1.x",
++        "@turf/helpers": "5.1.x",
++        "@turf/hex-grid": "5.1.x",
++        "@turf/interpolate": "5.1.x",
++        "@turf/intersect": "5.1.x",
++        "@turf/invariant": "5.1.x",
++        "@turf/isobands": "5.1.x",
++        "@turf/isolines": "5.1.x",
++        "@turf/kinks": "5.1.x",
++        "@turf/length": "5.1.x",
++        "@turf/line-arc": "5.1.x",
++        "@turf/line-chunk": "5.1.x",
++        "@turf/line-intersect": "5.1.x",
++        "@turf/line-offset": "5.1.x",
++        "@turf/line-overlap": "5.1.x",
++        "@turf/line-segment": "5.1.x",
++        "@turf/line-slice": "5.1.x",
++        "@turf/line-slice-along": "5.1.x",
++        "@turf/line-split": "5.1.x",
++        "@turf/line-to-polygon": "5.1.x",
++        "@turf/mask": "5.1.x",
++        "@turf/meta": "5.1.x",
++        "@turf/midpoint": "5.1.x",
++        "@turf/nearest-point": "5.1.x",
++        "@turf/nearest-point-on-line": "5.1.x",
++        "@turf/nearest-point-to-line": "5.1.x",
++        "@turf/planepoint": "5.1.x",
++        "@turf/point-grid": "5.1.x",
++        "@turf/point-on-feature": "5.1.x",
++        "@turf/point-to-line-distance": "5.1.x",
++        "@turf/points-within-polygon": "5.1.x",
++        "@turf/polygon-tangents": "5.1.x",
++        "@turf/polygon-to-line": "5.1.x",
++        "@turf/polygonize": "5.1.x",
++        "@turf/projection": "5.1.x",
++        "@turf/random": "5.1.x",
++        "@turf/rewind": "5.1.x",
++        "@turf/rhumb-bearing": "5.1.x",
++        "@turf/rhumb-destination": "5.1.x",
++        "@turf/rhumb-distance": "5.1.x",
++        "@turf/sample": "5.1.x",
++        "@turf/sector": "5.1.x",
++        "@turf/shortest-path": "5.1.x",
++        "@turf/simplify": "5.1.x",
++        "@turf/square": "5.1.x",
++        "@turf/square-grid": "5.1.x",
++        "@turf/standard-deviational-ellipse": "5.1.x",
++        "@turf/tag": "5.1.x",
++        "@turf/tesselate": "5.1.x",
++        "@turf/tin": "5.1.x",
++        "@turf/transform-rotate": "5.1.x",
++        "@turf/transform-scale": "5.1.x",
++        "@turf/transform-translate": "5.1.x",
++        "@turf/triangle-grid": "5.1.x",
++        "@turf/truncate": "5.1.x",
++        "@turf/union": "5.1.x",
++        "@turf/unkink-polygon": "5.1.x",
++        "@turf/voronoi": "5.1.x"
++      }
++    },
++    "@turf/union": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/union/-/union-5.1.5.tgz",
++      "integrity": "sha1-UyhbYJQEf8WNlqrA6pCGXsNNRUs=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "turf-jsts": "*"
++      }
++    },
++    "@turf/unkink-polygon": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/unkink-polygon/-/unkink-polygon-5.1.5.tgz",
++      "integrity": "sha1-ewGEfFD7V0riV54Z5Ey6hSbSE8M=",
++      "requires": {
++        "@turf/area": "^5.1.5",
++        "@turf/boolean-point-in-polygon": "^5.1.5",
++        "@turf/helpers": "^5.1.5",
++        "@turf/meta": "^5.1.5",
++        "rbush": "^2.0.1"
++      },
++      "dependencies": {
++        "quickselect": {
++          "version": "1.1.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/quickselect/-/quickselect-1.1.1.tgz",
++          "integrity": "sha1-hS5BLOQY8jetW2YNcM/6xkeulMI="
++        },
++        "rbush": {
++          "version": "2.0.2",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/rbush/-/rbush-2.0.2.tgz",
++          "integrity": "sha1-u2AFwnMbe6HVqaA1dykn0WphRgU=",
++          "requires": {
++            "quickselect": "^1.0.1"
++          }
++        }
++      }
++    },
++    "@turf/voronoi": {
++      "version": "5.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/@turf/voronoi/-/voronoi-5.1.5.tgz",
++      "integrity": "sha1-6FbpQG3MLyXWbdyJhYTifC6/ymY=",
++      "requires": {
++        "@turf/helpers": "^5.1.5",
++        "@turf/invariant": "^5.1.5",
++        "d3-voronoi": "1.1.2"
++      }
++    },
+     "@types/glob": {
+       "version": "7.1.3",
+       "resolved": "https://registry.npm.taobao.org/@types/glob/download/@types/glob-7.1.3.tgz",
+@@ -1917,6 +3290,15 @@
+         "regex-parser": "^2.2.11"
+       }
+     },
++    "adler-32": {
++      "version": "1.2.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/adler-32/-/adler-32-1.2.0.tgz",
++      "integrity": "sha1-aj5r8KY5ALoVZSgIyxXGgT0aXyU=",
++      "requires": {
++        "exit-on-epipe": "~1.0.1",
++        "printj": "~1.1.0"
++      }
++    },
+     "adm-zip": {
+       "version": "0.4.16",
+       "resolved": "https://registry.npm.taobao.org/adm-zip/download/adm-zip-0.4.16.tgz?cache=0&sync_timestamp=1592901689763&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fadm-zip%2Fdownload%2Fadm-zip-0.4.16.tgz",
+@@ -1942,7 +3324,6 @@
+       "version": "3.5.2",
+       "resolved": "https://registry.npm.taobao.org/agentkeepalive/download/agentkeepalive-3.5.2.tgz?cache=0&sync_timestamp=1592193880993&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fagentkeepalive%2Fdownload%2Fagentkeepalive-3.5.2.tgz",
+       "integrity": "sha1-oROSTdP6JKC8O3gQjEUMKr7gD2c=",
+-      "dev": true,
+       "requires": {
+         "humanize-ms": "^1.2.1"
+       }
+@@ -2328,6 +3709,35 @@
+         "object.assign": "^4.1.0"
+       }
+     },
++    "babel-plugin-external-helpers": {
++      "version": "6.22.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/babel-plugin-external-helpers/-/babel-plugin-external-helpers-6.22.0.tgz",
++      "integrity": "sha1-IoX0iwK9Xe3oUXXK+MYuhq3M76E=",
++      "requires": {
++        "babel-runtime": "^6.22.0"
++      }
++    },
++    "babel-runtime": {
++      "version": "6.26.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/babel-runtime/-/babel-runtime-6.26.0.tgz",
++      "integrity": "sha1-llxwWGaOgrVde/4E/yM3vItWR/4=",
++      "requires": {
++        "core-js": "^2.4.0",
++        "regenerator-runtime": "^0.11.0"
++      },
++      "dependencies": {
++        "core-js": {
++          "version": "2.6.12",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/core-js/-/core-js-2.6.12.tgz",
++          "integrity": "sha1-2TM9+nsGXjR8xWgiGdb2kIWcwuw="
++        },
++        "regenerator-runtime": {
++          "version": "0.11.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz",
++          "integrity": "sha1-vgWtf5v30i4Fb5cmzuUBf78Z4uk="
++        }
++      }
++    },
+     "backo2": {
+       "version": "1.0.2",
+       "resolved": "https://registry.npm.taobao.org/backo2/download/backo2-1.0.2.tgz",
+@@ -2807,7 +4217,6 @@
+       "version": "1.0.0",
+       "resolved": "https://registry.npm.taobao.org/call-bind/download/call-bind-1.0.0.tgz?cache=0&sync_timestamp=1604117008862&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcall-bind%2Fdownload%2Fcall-bind-1.0.0.tgz",
+       "integrity": "sha1-JBJwVLs/m9y0sfuCQYGGBy93uM4=",
+-      "dev": true,
+       "requires": {
+         "function-bind": "^1.1.1",
+         "get-intrinsic": "^1.0.0"
+@@ -2879,6 +4288,16 @@
+       "integrity": "sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=",
+       "dev": true
+     },
++    "cfb": {
++      "version": "1.2.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/cfb/-/cfb-1.2.0.tgz",
++      "integrity": "sha1-ak0IcrUl7WA0nh71H7Swv3Psqag=",
++      "requires": {
++        "adler-32": "~1.2.0",
++        "crc-32": "~1.2.0",
++        "printj": "~1.1.2"
++      }
++    },
+     "chalk": {
+       "version": "2.4.2",
+       "resolved": "https://registry.npm.taobao.org/chalk/download/chalk-2.4.2.tgz?cache=0&sync_timestamp=1591686984650&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fchalk%2Fdownload%2Fchalk-2.4.2.tgz",
+@@ -3140,6 +4559,22 @@
+         }
+       }
+     },
++    "codepage": {
++      "version": "1.14.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/codepage/-/codepage-1.14.0.tgz",
++      "integrity": "sha1-jL4lSBMjVZ19MHVxsP/5HnodL5k=",
++      "requires": {
++        "commander": "~2.14.1",
++        "exit-on-epipe": "~1.0.1"
++      },
++      "dependencies": {
++        "commander": {
++          "version": "2.14.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/commander/-/commander-2.14.1.tgz",
++          "integrity": "sha1-IjUSPjevjKPGXfRbAm29NXsBuao="
++        }
++      }
++    },
+     "collection-visit": {
+       "version": "1.0.0",
+       "resolved": "https://registry.npm.taobao.org/collection-visit/download/collection-visit-1.0.0.tgz",
+@@ -3209,8 +4644,7 @@
+     "commander": {
+       "version": "2.20.3",
+       "resolved": "https://registry.npm.taobao.org/commander/download/commander-2.20.3.tgz",
+-      "integrity": "sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=",
+-      "dev": true
++      "integrity": "sha1-/UhehMA+tIgcIHIrpIA16FMa6zM="
+     },
+     "commondir": {
+       "version": "1.0.1",
+@@ -3304,6 +4738,17 @@
+         "typedarray": "^0.0.6"
+       }
+     },
++    "concaveman": {
++      "version": "1.2.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/concaveman/-/concaveman-1.2.0.tgz",
++      "integrity": "sha1-Q0DyfAihG9wdX6wTR2hioqsJtwM=",
++      "requires": {
++        "point-in-polygon": "^1.0.1",
++        "rbush": "^3.0.0",
++        "robust-predicates": "^2.0.4",
++        "tinyqueue": "^2.0.3"
++      }
++    },
+     "connect": {
+       "version": "3.7.0",
+       "resolved": "https://registry.npm.taobao.org/connect/download/connect-3.7.0.tgz",
+@@ -3517,6 +4962,15 @@
+         "parse-json": "^4.0.0"
+       }
+     },
++    "crc-32": {
++      "version": "1.2.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/crc-32/-/crc-32-1.2.0.tgz",
++      "integrity": "sha1-yy224puIUI4y2d0OwWk+e0Ghggg=",
++      "requires": {
++        "exit-on-epipe": "~1.0.1",
++        "printj": "~1.1.0"
++      }
++    },
+     "create-ecdh": {
+       "version": "4.0.4",
+       "resolved": "https://registry.npm.taobao.org/create-ecdh/download/create-ecdh-4.0.4.tgz?cache=0&sync_timestamp=1596558132413&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcreate-ecdh%2Fdownload%2Fcreate-ecdh-4.0.4.tgz",
+@@ -3912,6 +5366,24 @@
+         "type": "^1.0.1"
+       }
+     },
++    "d3-array": {
++      "version": "1.2.4",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/d3-array/-/d3-array-1.2.4.tgz",
++      "integrity": "sha1-Y1zk1e6nWfb2BYY9vPww7cc39x8="
++    },
++    "d3-geo": {
++      "version": "1.7.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/d3-geo/-/d3-geo-1.7.1.tgz",
++      "integrity": "sha1-RLvHohix/YWfPY/XxEPKg2Vpzpk=",
++      "requires": {
++        "d3-array": "1"
++      }
++    },
++    "d3-voronoi": {
++      "version": "1.1.2",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/d3-voronoi/-/d3-voronoi-1.1.2.tgz",
++      "integrity": "sha1-Fodmfo8TotFYyAwUgMWinLDYlzw="
++    },
+     "damerau-levenshtein": {
+       "version": "1.0.6",
+       "resolved": "https://registry.npm.taobao.org/damerau-levenshtein/download/damerau-levenshtein-1.0.6.tgz",
+@@ -3958,7 +5430,6 @@
+       "version": "1.1.1",
+       "resolved": "https://registry.npm.taobao.org/deep-equal/download/deep-equal-1.1.1.tgz",
+       "integrity": "sha1-tcmMlCzv+vfLBR4k4UNKJaLmB2o=",
+-      "dev": true,
+       "requires": {
+         "is-arguments": "^1.0.4",
+         "is-date-object": "^1.0.1",
+@@ -3991,7 +5462,6 @@
+       "version": "1.1.3",
+       "resolved": "https://registry.npm.taobao.org/define-properties/download/define-properties-1.1.3.tgz",
+       "integrity": "sha1-z4jabL7ib+bbcJT2HYcMvYTO6fE=",
+-      "dev": true,
+       "requires": {
+         "object-keys": "^1.0.12"
+       }
+@@ -4111,6 +5581,11 @@
+       "integrity": "sha1-3zrhmayt+31ECqrgsp4icrJOxhk=",
+       "dev": true
+     },
++    "density-clustering": {
++      "version": "1.3.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/density-clustering/-/density-clustering-1.3.0.tgz",
++      "integrity": "sha1-3J9ZyPCrl+FiSsZJMP0xlIF9ysU="
++    },
+     "depd": {
+       "version": "1.1.2",
+       "resolved": "https://registry.npm.taobao.org/depd/download/depd-1.1.2.tgz",
+@@ -4283,6 +5758,11 @@
+         "stream-shift": "^1.0.0"
+       }
+     },
++    "earcut": {
++      "version": "2.2.2",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/earcut/-/earcut-2.2.2.tgz",
++      "integrity": "sha1-QbC8NfY+D+gNp83f8oUR5+LoDRE="
++    },
+     "ecc-jsbn": {
+       "version": "0.1.2",
+       "resolved": "https://registry.npm.taobao.org/ecc-jsbn/download/ecc-jsbn-0.1.2.tgz",
+@@ -4293,12 +5773,67 @@
+         "safer-buffer": "^2.1.0"
+       }
+     },
++    "echarts": {
++      "version": "4.9.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/echarts/-/echarts-4.9.0.tgz",
++      "integrity": "sha1-qbm6oD8Doqcx5jQMVb77V6nhNH0=",
++      "requires": {
++        "zrender": "4.3.2"
++      }
++    },
+     "ee-first": {
+       "version": "1.1.1",
+       "resolved": "https://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz",
+       "integrity": "sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=",
+       "dev": true
+     },
++    "elasticsearch": {
++      "version": "16.7.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/elasticsearch/-/elasticsearch-16.7.1.tgz",
++      "integrity": "sha1-kl8mPNHB6f92vSRMt2m5PhWsods=",
++      "requires": {
++        "agentkeepalive": "^3.4.1",
++        "chalk": "^1.0.0",
++        "lodash": "^4.17.10"
++      },
++      "dependencies": {
++        "ansi-regex": {
++          "version": "2.1.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/ansi-regex/-/ansi-regex-2.1.1.tgz",
++          "integrity": "sha1-w7M6te42DYbg5ijwRorn7yfWVN8="
++        },
++        "ansi-styles": {
++          "version": "2.2.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/ansi-styles/-/ansi-styles-2.2.1.tgz",
++          "integrity": "sha1-tDLdM1i2NM914eRmQ2gkBTPB3b4="
++        },
++        "chalk": {
++          "version": "1.1.3",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/chalk/-/chalk-1.1.3.tgz",
++          "integrity": "sha1-qBFcVeSnAv5NFQq9OHKCKn4J/Jg=",
++          "requires": {
++            "ansi-styles": "^2.2.1",
++            "escape-string-regexp": "^1.0.2",
++            "has-ansi": "^2.0.0",
++            "strip-ansi": "^3.0.0",
++            "supports-color": "^2.0.0"
++          }
++        },
++        "strip-ansi": {
++          "version": "3.0.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/strip-ansi/-/strip-ansi-3.0.1.tgz",
++          "integrity": "sha1-ajhfuIU9lS1f8F0Oiq+UJ43GPc8=",
++          "requires": {
++            "ansi-regex": "^2.0.0"
++          }
++        },
++        "supports-color": {
++          "version": "2.0.0",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/supports-color/-/supports-color-2.0.0.tgz",
++          "integrity": "sha1-U10EXOa2Nj+kARcIRimZXp3zJMc="
++        }
++      }
++    },
+     "electron-to-chromium": {
+       "version": "1.3.597",
+       "resolved": "https://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.597.tgz?cache=0&sync_timestamp=1605580425226&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Felectron-to-chromium%2Fdownload%2Felectron-to-chromium-1.3.597.tgz",
+@@ -4532,7 +6067,6 @@
+       "version": "1.17.7",
+       "resolved": "https://registry.npm.taobao.org/es-abstract/download/es-abstract-1.17.7.tgz",
+       "integrity": "sha1-pN5hsvZpifx0IWdsHLl4dXOs5Uw=",
+-      "dev": true,
+       "requires": {
+         "es-to-primitive": "^1.2.1",
+         "function-bind": "^1.1.1",
+@@ -4551,7 +6085,6 @@
+       "version": "1.2.1",
+       "resolved": "https://registry.npm.taobao.org/es-to-primitive/download/es-to-primitive-1.2.1.tgz",
+       "integrity": "sha1-5VzUyc3BiLzvsDs2bHNjI/xciYo=",
+-      "dev": true,
+       "requires": {
+         "is-callable": "^1.1.4",
+         "is-date-object": "^1.0.1",
+@@ -4620,8 +6153,7 @@
+     "escape-string-regexp": {
+       "version": "1.0.5",
+       "resolved": "https://registry.npm.taobao.org/escape-string-regexp/download/escape-string-regexp-1.0.5.tgz",
+-      "integrity": "sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=",
+-      "dev": true
++      "integrity": "sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ="
+     },
+     "eslint-scope": {
+       "version": "4.0.3",
+@@ -4726,6 +6258,11 @@
+       "integrity": "sha1-BjJjj42HfMghB9MKD/8aF8uhzQw=",
+       "dev": true
+     },
++    "exit-on-epipe": {
++      "version": "1.0.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/exit-on-epipe/-/exit-on-epipe-1.0.1.tgz",
++      "integrity": "sha1-C92S6H1ShdJn2qgXHQ6wYVlolpI="
++    },
+     "expand-brackets": {
+       "version": "2.1.4",
+       "resolved": "https://registry.npm.taobao.org/expand-brackets/download/expand-brackets-2.1.4.tgz",
+@@ -5013,6 +6550,16 @@
+         "websocket-driver": ">=0.5.1"
+       }
+     },
++    "fetch-ie8": {
++      "version": "1.5.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/fetch-ie8/-/fetch-ie8-1.5.0.tgz",
++      "integrity": "sha1-8RQcP5bLyJN6oxsPvBp3AiD7wVs="
++    },
++    "fetch-jsonp": {
++      "version": "1.1.3",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/fetch-jsonp/-/fetch-jsonp-1.1.3.tgz",
++      "integrity": "sha1-nrnlhboIqvcAVjU40Xu+u81aPbI="
++    },
+     "figgy-pudding": {
+       "version": "3.5.2",
+       "resolved": "https://registry.npm.taobao.org/figgy-pudding/download/figgy-pudding-3.5.2.tgz",
+@@ -5230,6 +6777,11 @@
+       "integrity": "sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=",
+       "dev": true
+     },
++    "frac": {
++      "version": "1.1.2",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/frac/-/frac-1.1.2.tgz",
++      "integrity": "sha1-PXT39keMiKG1AgMG10fcYxPHTQs="
++    },
+     "fragment-cache": {
+       "version": "0.2.1",
+       "resolved": "https://registry.npm.taobao.org/fragment-cache/download/fragment-cache-0.2.1.tgz",
+@@ -5303,8 +6855,7 @@
+     "function-bind": {
+       "version": "1.1.1",
+       "resolved": "https://registry.npm.taobao.org/function-bind/download/function-bind-1.1.1.tgz",
+-      "integrity": "sha1-pWiZ0+o8m6uHS7l3O3xe3pL0iV0=",
+-      "dev": true
++      "integrity": "sha1-pWiZ0+o8m6uHS7l3O3xe3pL0iV0="
+     },
+     "genfun": {
+       "version": "5.0.0",
+@@ -5318,17 +6869,39 @@
+       "integrity": "sha1-MqbudsPX9S1GsrGuXZP+qFgKJeA=",
+       "dev": true
+     },
++    "geojson-equality": {
++      "version": "0.1.6",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/geojson-equality/-/geojson-equality-0.1.6.tgz",
++      "integrity": "sha1-oXE3TvBD5dR5eZWEC65GSOB1LXI=",
++      "requires": {
++        "deep-equal": "^1.0.0"
++      }
++    },
++    "geojson-rbush": {
++      "version": "2.1.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/geojson-rbush/-/geojson-rbush-2.1.0.tgz",
++      "integrity": "sha1-O9c745H8ELCuaT2bis6iquC4Oo0=",
++      "requires": {
++        "@turf/helpers": "*",
++        "@turf/meta": "*",
++        "rbush": "*"
++      }
++    },
+     "get-caller-file": {
+       "version": "2.0.5",
+       "resolved": "https://registry.npm.taobao.org/get-caller-file/download/get-caller-file-2.0.5.tgz",
+       "integrity": "sha1-T5RBKoLbMvNuOwuXQfipf+sDH34=",
+       "dev": true
+     },
++    "get-closest": {
++      "version": "0.0.4",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/get-closest/-/get-closest-0.0.4.tgz",
++      "integrity": "sha1-JprHdtHmAiqg/Vht1wjop9Miaa8="
++    },
+     "get-intrinsic": {
+       "version": "1.0.1",
+       "resolved": "https://registry.npm.taobao.org/get-intrinsic/download/get-intrinsic-1.0.1.tgz?cache=0&sync_timestamp=1604120592084&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fget-intrinsic%2Fdownload%2Fget-intrinsic-1.0.1.tgz",
+       "integrity": "sha1-lKl2j8vdBZWhySc6rPTInQdWMb4=",
+-      "dev": true,
+       "requires": {
+         "function-bind": "^1.1.1",
+         "has": "^1.0.3",
+@@ -5434,7 +7007,6 @@
+       "version": "1.0.3",
+       "resolved": "https://registry.npm.taobao.org/has/download/has-1.0.3.tgz",
+       "integrity": "sha1-ci18v8H2qoJB8W3YFOAR4fQeh5Y=",
+-      "dev": true,
+       "requires": {
+         "function-bind": "^1.1.1"
+       }
+@@ -5443,7 +7015,6 @@
+       "version": "2.0.0",
+       "resolved": "https://registry.npm.taobao.org/has-ansi/download/has-ansi-2.0.0.tgz",
+       "integrity": "sha1-NPUEnOHs3ysGSa8+8k5F7TVBbZE=",
+-      "dev": true,
+       "requires": {
+         "ansi-regex": "^2.0.0"
+       },
+@@ -5451,8 +7022,7 @@
+         "ansi-regex": {
+           "version": "2.1.1",
+           "resolved": "https://registry.npm.taobao.org/ansi-regex/download/ansi-regex-2.1.1.tgz",
+-          "integrity": "sha1-w7M6te42DYbg5ijwRorn7yfWVN8=",
+-          "dev": true
++          "integrity": "sha1-w7M6te42DYbg5ijwRorn7yfWVN8="
+         }
+       }
+     },
+@@ -5488,8 +7058,7 @@
+     "has-symbols": {
+       "version": "1.0.1",
+       "resolved": "https://registry.npm.taobao.org/has-symbols/download/has-symbols-1.0.1.tgz",
+-      "integrity": "sha1-n1IUdYpEGWxAbZvXbOv4HsLdMeg=",
+-      "dev": true
++      "integrity": "sha1-n1IUdYpEGWxAbZvXbOv4HsLdMeg="
+     },
+     "has-value": {
+       "version": "1.0.0",
+@@ -5903,7 +7472,6 @@
+       "version": "1.2.1",
+       "resolved": "https://registry.npm.taobao.org/humanize-ms/download/humanize-ms-1.2.1.tgz",
+       "integrity": "sha1-xG4xWaKT9riW2ikxbYtv6Lt5u+0=",
+-      "dev": true,
+       "requires": {
+         "ms": "^2.0.0"
+       }
+@@ -5926,8 +7494,7 @@
+     "ieee754": {
+       "version": "1.2.1",
+       "resolved": "https://registry.npm.taobao.org/ieee754/download/ieee754-1.2.1.tgz?cache=0&sync_timestamp=1603838235461&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fieee754%2Fdownload%2Fieee754-1.2.1.tgz",
+-      "integrity": "sha1-jrehCmP/8l0VpXsAFYbRd9Gw01I=",
+-      "dev": true
++      "integrity": "sha1-jrehCmP/8l0VpXsAFYbRd9Gw01I="
+     },
+     "iferr": {
+       "version": "0.1.5",
+@@ -6163,8 +7730,7 @@
+     "is-arguments": {
+       "version": "1.0.4",
+       "resolved": "https://registry.npm.taobao.org/is-arguments/download/is-arguments-1.0.4.tgz",
+-      "integrity": "sha1-P6+WbHy6D/Q3+zH2JQCC/PBEjPM=",
+-      "dev": true
++      "integrity": "sha1-P6+WbHy6D/Q3+zH2JQCC/PBEjPM="
+     },
+     "is-arrayish": {
+       "version": "0.2.1",
+@@ -6190,8 +7756,7 @@
+     "is-callable": {
+       "version": "1.2.2",
+       "resolved": "https://registry.npm.taobao.org/is-callable/download/is-callable-1.2.2.tgz",
+-      "integrity": "sha1-x8ZxXNItTdtI0+GZcCI6zquwgNk=",
+-      "dev": true
++      "integrity": "sha1-x8ZxXNItTdtI0+GZcCI6zquwgNk="
+     },
+     "is-color-stop": {
+       "version": "1.1.0",
+@@ -6239,8 +7804,7 @@
+     "is-date-object": {
+       "version": "1.0.2",
+       "resolved": "https://registry.npm.taobao.org/is-date-object/download/is-date-object-1.0.2.tgz?cache=0&sync_timestamp=1576729165697&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fis-date-object%2Fdownload%2Fis-date-object-1.0.2.tgz",
+-      "integrity": "sha1-vac28s2P0G0yhE53Q7+nSUw7/X4=",
+-      "dev": true
++      "integrity": "sha1-vac28s2P0G0yhE53Q7+nSUw7/X4="
+     },
+     "is-descriptor": {
+       "version": "0.1.6",
+@@ -6309,8 +7873,7 @@
+     "is-negative-zero": {
+       "version": "2.0.0",
+       "resolved": "https://registry.npm.taobao.org/is-negative-zero/download/is-negative-zero-2.0.0.tgz",
+-      "integrity": "sha1-lVOxIbD6wohp2p7UWeIMdUN4hGE=",
+-      "dev": true
++      "integrity": "sha1-lVOxIbD6wohp2p7UWeIMdUN4hGE="
+     },
+     "is-number": {
+       "version": "7.0.0",
+@@ -6369,7 +7932,6 @@
+       "version": "1.1.1",
+       "resolved": "https://registry.npm.taobao.org/is-regex/download/is-regex-1.1.1.tgz?cache=0&sync_timestamp=1596555746435&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fis-regex%2Fdownload%2Fis-regex-1.1.1.tgz",
+       "integrity": "sha1-xvmKrMVG9s7FRooHt7FTq1ZKV7k=",
+-      "dev": true,
+       "requires": {
+         "has-symbols": "^1.0.1"
+       }
+@@ -6399,7 +7961,6 @@
+       "version": "1.0.3",
+       "resolved": "https://registry.npm.taobao.org/is-symbol/download/is-symbol-1.0.3.tgz?cache=0&sync_timestamp=1574296307739&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fis-symbol%2Fdownload%2Fis-symbol-1.0.3.tgz",
+       "integrity": "sha1-OOEBS55jKb4N6dJKQU/XRB7GGTc=",
+-      "dev": true,
+       "requires": {
+         "has-symbols": "^1.0.1"
+       }
+@@ -6718,6 +8279,11 @@
+       "integrity": "sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=",
+       "dev": true
+     },
++    "jsonsql": {
++      "version": "0.2.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/jsonsql/-/jsonsql-0.2.5.tgz",
++      "integrity": "sha1-aUDQ6vSs0iRwmaQpnWtMmytDpmE="
++    },
+     "jsprim": {
+       "version": "1.4.1",
+       "resolved": "https://registry.npm.taobao.org/jsprim/download/jsprim-1.4.1.tgz",
+@@ -6982,6 +8548,11 @@
+       "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/lazy-get-decorator/-/lazy-get-decorator-2.2.0.tgz",
+       "integrity": "sha1-3TsdKkMoANQ1wkkQODJPIC8qYg0="
+     },
++    "leaflet": {
++      "version": "1.7.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/leaflet/-/leaflet-1.7.1.tgz",
++      "integrity": "sha1-ENaEkW7f4b9B1oijuXEnwDIqKhk="
++    },
+     "less": {
+       "version": "3.12.2",
+       "resolved": "https://registry.npm.taobao.org/less/download/less-3.12.2.tgz?cache=0&sync_timestamp=1601388912373&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fless%2Fdownload%2Fless-3.12.2.tgz",
+@@ -7084,6 +8655,11 @@
+         "isobject": "^2.0.0"
+       }
+     },
++    "lineclip": {
++      "version": "1.1.5",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/lineclip/-/lineclip-1.1.5.tgz",
++      "integrity": "sha1-K/JgZ9lDVP6r+R5CdoI221YW/RM="
++    },
+     "lines-and-columns": {
+       "version": "1.1.6",
+       "resolved": "https://registry.npm.taobao.org/lines-and-columns/download/lines-and-columns-1.1.6.tgz",
+@@ -7146,6 +8722,11 @@
+       "integrity": "sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=",
+       "dev": true
+     },
++    "lodash.topairs": {
++      "version": "4.3.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/lodash.topairs/-/lodash.topairs-4.3.0.tgz",
++      "integrity": "sha1-O23qo31g+xFnE8RsXxfqGQ7EjWQ="
++    },
+     "lodash.uniq": {
+       "version": "4.5.0",
+       "resolved": "https://registry.npm.taobao.org/lodash.uniq/download/lodash.uniq-4.5.0.tgz",
+@@ -7371,6 +8952,14 @@
+         "object-visit": "^1.0.0"
+       }
+     },
++    "mapv": {
++      "version": "2.0.56",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/mapv/-/mapv-2.0.56.tgz",
++      "integrity": "sha1-CRM9KSriUtFIBjdS6Wt8zeUYEP0=",
++      "requires": {
++        "babel-plugin-external-helpers": "^6.22.0"
++      }
++    },
+     "md5.js": {
+       "version": "1.3.5",
+       "resolved": "https://registry.npm.taobao.org/md5.js/download/md5.js-1.3.5.tgz",
+@@ -7445,6 +9034,11 @@
+       "integrity": "sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=",
+       "dev": true
+     },
++    "mgrs": {
++      "version": "1.0.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/mgrs/-/mgrs-1.0.0.tgz",
++      "integrity": "sha1-+5FYjnjJACVnI5XLQLJffNatGCk="
++    },
+     "micromatch": {
+       "version": "4.0.2",
+       "resolved": "https://registry.npm.taobao.org/micromatch/download/micromatch-4.0.2.tgz",
+@@ -7694,8 +9288,7 @@
+     "ms": {
+       "version": "2.1.2",
+       "resolved": "https://registry.npm.taobao.org/ms/download/ms-2.1.2.tgz",
+-      "integrity": "sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk=",
+-      "dev": true
++      "integrity": "sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk="
+     },
+     "multicast-dns": {
+       "version": "6.2.3",
+@@ -8057,8 +9650,7 @@
+     "object-assign": {
+       "version": "4.1.1",
+       "resolved": "https://registry.npm.taobao.org/object-assign/download/object-assign-4.1.1.tgz",
+-      "integrity": "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=",
+-      "dev": true
++      "integrity": "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM="
+     },
+     "object-component": {
+       "version": "0.0.3",
+@@ -8100,14 +9692,12 @@
+     "object-inspect": {
+       "version": "1.8.0",
+       "resolved": "https://registry.npm.taobao.org/object-inspect/download/object-inspect-1.8.0.tgz?cache=0&sync_timestamp=1592545177285&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fobject-inspect%2Fdownload%2Fobject-inspect-1.8.0.tgz",
+-      "integrity": "sha1-34B+Xs9TpgnMa/6T6sPMe+WzqdA=",
+-      "dev": true
++      "integrity": "sha1-34B+Xs9TpgnMa/6T6sPMe+WzqdA="
+     },
+     "object-is": {
+       "version": "1.1.3",
+       "resolved": "https://registry.npm.taobao.org/object-is/download/object-is-1.1.3.tgz",
+       "integrity": "sha1-LjueZVYBN0Ve471irsTZCi6hzIE=",
+-      "dev": true,
+       "requires": {
+         "define-properties": "^1.1.3",
+         "es-abstract": "^1.18.0-next.1"
+@@ -8117,7 +9707,6 @@
+           "version": "1.18.0-next.1",
+           "resolved": "https://registry.npm.taobao.org/es-abstract/download/es-abstract-1.18.0-next.1.tgz",
+           "integrity": "sha1-bjoKS9pxflAjqzuOkL7DYQjSLGg=",
+-          "dev": true,
+           "requires": {
+             "es-to-primitive": "^1.2.1",
+             "function-bind": "^1.1.1",
+@@ -8138,8 +9727,7 @@
+     "object-keys": {
+       "version": "1.1.1",
+       "resolved": "https://registry.npm.taobao.org/object-keys/download/object-keys-1.1.1.tgz",
+-      "integrity": "sha1-HEfyct8nfzsdrwYWd9nILiMixg4=",
+-      "dev": true
++      "integrity": "sha1-HEfyct8nfzsdrwYWd9nILiMixg4="
+     },
+     "object-visit": {
+       "version": "1.0.1",
+@@ -8162,7 +9750,6 @@
+       "version": "4.1.2",
+       "resolved": "https://registry.npm.taobao.org/object.assign/download/object.assign-4.1.2.tgz?cache=0&sync_timestamp=1604115183005&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fobject.assign%2Fdownload%2Fobject.assign-4.1.2.tgz",
+       "integrity": "sha1-DtVKNC7Os3s4/3brgxoOeIy2OUA=",
+-      "dev": true,
+       "requires": {
+         "call-bind": "^1.0.0",
+         "define-properties": "^1.1.3",
+@@ -8773,6 +10360,15 @@
+       "integrity": "sha1-hO0BwKe6OAr+CdkKjBgNzZ0DBDs=",
+       "dev": true
+     },
++    "pbf": {
++      "version": "3.2.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/pbf/-/pbf-3.2.1.tgz",
++      "integrity": "sha1-tMG55yr5Zs2CxlMWkRFcwECf/io=",
++      "requires": {
++        "ieee754": "^1.1.12",
++        "resolve-protobuf-schema": "^2.1.0"
++      }
++    },
+     "pbkdf2": {
+       "version": "3.1.1",
+       "resolved": "https://registry.npm.taobao.org/pbkdf2/download/pbkdf2-3.1.1.tgz?cache=0&sync_timestamp=1591275684229&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpbkdf2%2Fdownload%2Fpbkdf2-3.1.1.tgz",
+@@ -8837,6 +10433,11 @@
+         "ts-pnp": "^1.1.6"
+       }
+     },
++    "point-in-polygon": {
++      "version": "1.0.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/point-in-polygon/-/point-in-polygon-1.0.1.tgz",
++      "integrity": "sha1-1Ztk6P7kHElFiqyCtWcYxZV7Kvc="
++    },
+     "portfinder": {
+       "version": "1.0.28",
+       "resolved": "https://registry.npm.taobao.org/portfinder/download/portfinder-1.0.28.tgz?cache=0&sync_timestamp=1596019946887&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fportfinder%2Fdownload%2Fportfinder-1.0.28.tgz",
+@@ -9496,6 +11097,11 @@
+       "integrity": "sha1-RD9qIM7WSBor2k+oUypuVdeJoss=",
+       "dev": true
+     },
++    "printj": {
++      "version": "1.1.2",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/printj/-/printj-1.1.2.tgz",
++      "integrity": "sha1-2Q3rKXWoufYA+zoclOP0xTx4oiI="
++    },
+     "process": {
+       "version": "0.11.10",
+       "resolved": "https://registry.npm.taobao.org/process/download/process-0.11.10.tgz",
+@@ -9508,12 +11114,26 @@
+       "integrity": "sha1-eCDZsWEgzFXKmud5JoCufbptf+I=",
+       "dev": true
+     },
++    "proj4": {
++      "version": "2.6.2",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/proj4/-/proj4-2.6.2.tgz",
++      "integrity": "sha1-RmXXy8MP01Y3UAfC/tU7B9vaHWc=",
++      "requires": {
++        "mgrs": "1.0.0",
++        "wkt-parser": "^1.2.4"
++      }
++    },
+     "promise-inflight": {
+       "version": "1.0.1",
+       "resolved": "https://registry.npm.taobao.org/promise-inflight/download/promise-inflight-1.0.1.tgz",
+       "integrity": "sha1-mEcocL8igTL8vdhoEputEsPAKeM=",
+       "dev": true
+     },
++    "promise-polyfill": {
++      "version": "8.1.3",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/promise-polyfill/-/promise-polyfill-8.1.3.tgz",
++      "integrity": "sha1-jJmzz1PzqRxoIm/9573oHX+QQRY="
++    },
+     "promise-retry": {
+       "version": "1.1.1",
+       "resolved": "https://registry.npm.taobao.org/promise-retry/download/promise-retry-1.1.1.tgz?cache=0&sync_timestamp=1592142423530&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fpromise-retry%2Fdownload%2Fpromise-retry-1.1.1.tgz",
+@@ -9532,6 +11152,11 @@
+         }
+       }
+     },
++    "protocol-buffers-schema": {
++      "version": "3.4.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/protocol-buffers-schema/-/protocol-buffers-schema-3.4.0.tgz",
++      "integrity": "sha1-Lw6jHKlmJ9aAvy/vrn6/orZFPq4="
++    },
+     "protoduck": {
+       "version": "5.0.1",
+       "resolved": "https://registry.npm.taobao.org/protoduck/download/protoduck-5.0.1.tgz",
+@@ -10003,6 +11628,11 @@
+       "integrity": "sha1-M0WUG0FTy50ILY7uTNogFqmu9/Y=",
+       "dev": true
+     },
++    "quickselect": {
++      "version": "2.0.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/quickselect/-/quickselect-2.0.0.tgz",
++      "integrity": "sha1-8ZaApIal7vtYEwPgI+mPqvJd0Bg="
++    },
+     "randombytes": {
+       "version": "2.1.0",
+       "resolved": "https://registry.npm.taobao.org/randombytes/download/randombytes-2.1.0.tgz",
+@@ -10071,6 +11701,14 @@
+         }
+       }
+     },
++    "rbush": {
++      "version": "3.0.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/rbush/-/rbush-3.0.1.tgz",
++      "integrity": "sha1-X6+op5s7mv3+UAhAOnIMwd6ILs8=",
++      "requires": {
++        "quickselect": "^2.0.0"
++      }
++    },
+     "read-cache": {
+       "version": "1.0.0",
+       "resolved": "https://registry.npm.taobao.org/read-cache/download/read-cache-1.0.0.tgz",
+@@ -10168,7 +11806,6 @@
+       "version": "1.3.0",
+       "resolved": "https://registry.npm.taobao.org/regexp.prototype.flags/download/regexp.prototype.flags-1.3.0.tgz",
+       "integrity": "sha1-erqJs8E6ZFCdq888qNn7ub31y3U=",
+-      "dev": true,
+       "requires": {
+         "define-properties": "^1.1.3",
+         "es-abstract": "^1.17.0-next.1"
+@@ -10308,6 +11945,14 @@
+       "integrity": "sha1-six699nWiBvItuZTM17rywoYh0g=",
+       "dev": true
+     },
++    "resolve-protobuf-schema": {
++      "version": "2.1.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/resolve-protobuf-schema/-/resolve-protobuf-schema-2.1.0.tgz",
++      "integrity": "sha1-nKmp5pzxkrva8QBuwZc5SKpKN1g=",
++      "requires": {
++        "protocol-buffers-schema": "^3.3.1"
++      }
++    },
+     "resolve-url": {
+       "version": "0.2.1",
+       "resolved": "https://registry.npm.taobao.org/resolve-url/download/resolve-url-0.2.1.tgz",
+@@ -10481,6 +12126,11 @@
+         "inherits": "^2.0.1"
+       }
+     },
++    "robust-predicates": {
++      "version": "2.0.4",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/robust-predicates/-/robust-predicates-2.0.4.tgz",
++      "integrity": "sha1-CiNnqTq9mWdtB1mBcH8pz7QCJIs="
++    },
+     "rollup": {
+       "version": "2.32.1",
+       "resolved": "https://registry.npm.taobao.org/rollup/download/rollup-2.32.1.tgz?cache=0&sync_timestamp=1605363437526&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frollup%2Fdownload%2Frollup-2.32.1.tgz",
+@@ -10922,6 +12572,11 @@
+         }
+       }
+     },
++    "skmeans": {
++      "version": "0.9.7",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/skmeans/-/skmeans-0.9.7.tgz",
++      "integrity": "sha1-cmcM67coUI9W4pwOENEeYjUpzl0="
++    },
+     "slash": {
+       "version": "3.0.0",
+       "resolved": "https://registry.npm.taobao.org/slash/download/slash-3.0.0.tgz",
+@@ -11487,6 +13142,14 @@
+       "integrity": "sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=",
+       "dev": true
+     },
++    "ssf": {
++      "version": "0.11.2",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/ssf/-/ssf-0.11.2.tgz",
++      "integrity": "sha1-C5lpiyN1SNCI/EPN8rcMGnUSwGw=",
++      "requires": {
++        "frac": "~1.1.2"
++      }
++    },
+     "sshpk": {
+       "version": "1.16.1",
+       "resolved": "https://registry.npm.taobao.org/sshpk/download/sshpk-1.16.1.tgz",
+@@ -11630,7 +13293,6 @@
+       "version": "1.0.2",
+       "resolved": "https://registry.npm.taobao.org/string.prototype.trimend/download/string.prototype.trimend-1.0.2.tgz",
+       "integrity": "sha1-bd2ah5a8cUtImjriIkaiCPN7+kY=",
+-      "dev": true,
+       "requires": {
+         "define-properties": "^1.1.3",
+         "es-abstract": "^1.18.0-next.1"
+@@ -11640,7 +13302,6 @@
+           "version": "1.18.0-next.1",
+           "resolved": "https://registry.npm.taobao.org/es-abstract/download/es-abstract-1.18.0-next.1.tgz",
+           "integrity": "sha1-bjoKS9pxflAjqzuOkL7DYQjSLGg=",
+-          "dev": true,
+           "requires": {
+             "es-to-primitive": "^1.2.1",
+             "function-bind": "^1.1.1",
+@@ -11662,7 +13323,6 @@
+       "version": "1.0.2",
+       "resolved": "https://registry.npm.taobao.org/string.prototype.trimstart/download/string.prototype.trimstart-1.0.2.tgz?cache=0&sync_timestamp=1603220012476&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fstring.prototype.trimstart%2Fdownload%2Fstring.prototype.trimstart-1.0.2.tgz",
+       "integrity": "sha1-ItRdqBAVMJzQzdeXh+iRn8XGE+c=",
+-      "dev": true,
+       "requires": {
+         "define-properties": "^1.1.3",
+         "es-abstract": "^1.18.0-next.1"
+@@ -11672,7 +13332,6 @@
+           "version": "1.18.0-next.1",
+           "resolved": "https://registry.npm.taobao.org/es-abstract/download/es-abstract-1.18.0-next.1.tgz",
+           "integrity": "sha1-bjoKS9pxflAjqzuOkL7DYQjSLGg=",
+-          "dev": true,
+           "requires": {
+             "es-to-primitive": "^1.2.1",
+             "function-bind": "^1.1.1",
+@@ -12005,6 +13664,11 @@
+       "integrity": "sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=",
+       "dev": true
+     },
++    "tinyqueue": {
++      "version": "2.0.3",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/tinyqueue/-/tinyqueue-2.0.3.tgz",
++      "integrity": "sha1-ZNhJLr8554Ade9NAYuKbRbIDXwg="
++    },
+     "tmp": {
+       "version": "0.0.33",
+       "resolved": "https://registry.npm.taobao.org/tmp/download/tmp-0.0.33.tgz?cache=0&sync_timestamp=1588178571895&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftmp%2Fdownload%2Ftmp-0.0.33.tgz",
+@@ -12079,6 +13743,22 @@
+       "integrity": "sha1-fhvjRw8ed5SLxD2Uo8j013UrpVM=",
+       "dev": true
+     },
++    "topojson-client": {
++      "version": "3.1.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/topojson-client/-/topojson-client-3.1.0.tgz",
++      "integrity": "sha1-Iuix7QiiuSL+60r29Ttu8JpGe5k=",
++      "requires": {
++        "commander": "2"
++      }
++    },
++    "topojson-server": {
++      "version": "3.0.1",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/topojson-server/-/topojson-server-3.0.1.tgz",
++      "integrity": "sha1-0rPsCVtnMimb52pIQGERsyAaNPU=",
++      "requires": {
++        "commander": "2"
++      }
++    },
+     "tough-cookie": {
+       "version": "2.5.0",
+       "resolved": "https://registry.npm.taobao.org/tough-cookie/download/tough-cookie-2.5.0.tgz",
+@@ -12186,6 +13866,11 @@
+         "safe-buffer": "^5.0.1"
+       }
+     },
++    "turf-jsts": {
++      "version": "1.2.3",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/turf-jsts/-/turf-jsts-1.2.3.tgz",
++      "integrity": "sha1-WXV/VCr7/5pXe79BHxg7j0jTiqQ="
++    },
+     "tweetnacl": {
+       "version": "0.14.5",
+       "resolved": "https://registry.npm.taobao.org/tweetnacl/download/tweetnacl-0.14.5.tgz?cache=0&sync_timestamp=1581391510540&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftweetnacl%2Fdownload%2Ftweetnacl-0.14.5.tgz",
+@@ -13578,6 +15263,21 @@
+       "integrity": "sha1-p30g5SAMb6qsl55LOq3Hs91/j+w=",
+       "dev": true
+     },
++    "wkt-parser": {
++      "version": "1.2.4",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/wkt-parser/-/wkt-parser-1.2.4.tgz",
++      "integrity": "sha1-5CunuW8TrvgqLakFbi2H2g/sU5M="
++    },
++    "wmf": {
++      "version": "1.0.2",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/wmf/-/wmf-1.0.2.tgz",
++      "integrity": "sha1-fRnWIQcaCMK9xrfmiKnENSmMwto="
++    },
++    "word": {
++      "version": "0.3.0",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/word/-/word-0.3.0.tgz",
++      "integrity": "sha1-hUIVfk+OhJ9KNjooiZLUdhLbmWE="
++    },
+     "worker-farm": {
+       "version": "1.7.0",
+       "resolved": "https://registry.npm.taobao.org/worker-farm/download/worker-farm-1.7.0.tgz",
+@@ -13684,6 +15384,29 @@
+         "async-limiter": "~1.0.0"
+       }
+     },
++    "xlsx": {
++      "version": "0.16.8",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/xlsx/-/xlsx-0.16.8.tgz",
++      "integrity": "sha1-VUbemwuhUWmzZ3DU5DskeQ0/8bg=",
++      "requires": {
++        "adler-32": "~1.2.0",
++        "cfb": "^1.1.4",
++        "codepage": "~1.14.0",
++        "commander": "~2.17.1",
++        "crc-32": "~1.2.0",
++        "exit-on-epipe": "~1.0.1",
++        "ssf": "~0.11.2",
++        "wmf": "~1.0.1",
++        "word": "~0.3.0"
++      },
++      "dependencies": {
++        "commander": {
++          "version": "2.17.1",
++          "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/commander/-/commander-2.17.1.tgz",
++          "integrity": "sha1-vXerfebelCBc6sxy8XFtKfIKd78="
++        }
++      }
++    },
+     "xml2js": {
+       "version": "0.4.23",
+       "resolved": "https://registry.npm.taobao.org/xml2js/download/xml2js-0.4.23.tgz",
+@@ -13822,6 +15545,11 @@
+       "version": "0.10.3",
+       "resolved": "https://registry.npm.taobao.org/zone.js/download/zone.js-0.10.3.tgz",
+       "integrity": "sha1-Pl5NoDxgfJ3NkuN901aHoUoUDBY="
++    },
++    "zrender": {
++      "version": "4.3.2",
++      "resolved": "http://192.168.15.210:9400/nexus/repository/hb-npm-group/zrender/-/zrender-4.3.2.tgz",
++      "integrity": "sha1-7HQy+UFcgsc1hLa3uMR+GwFiCcY="
+     }
+   }
+ }
