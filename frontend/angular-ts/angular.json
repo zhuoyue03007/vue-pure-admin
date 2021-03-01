@@ -47,6 +47,16 @@
             ],
             "scripts": [
               "node_modules/leaflet/dist/leaflet.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "fetch-jsonp",
+              "jsonsql",
+              "echarts",
+              "pbf",
+              "@mapbox/vector-tile",
+              "xlsx",
+              "lodash",
+              "elasticsearch"
             ]
           },
           "configurations": {
@@ -105,7 +115,11 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.scss",
