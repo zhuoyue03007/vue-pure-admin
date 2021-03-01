@@ -1,1 +1,10 @@
-<p>wind works!</p>
+<div class='map-box'>
+  <div class='map' id='cesiumContainer'></div>
+  <canvas id="wind" #wind></canvas>
+
+  <div class='control'>
+    <nz-radio-group [(ngModel)]="checkedOpenWindList" (ngModelChange)='selectionWindType()'>
+      <label nz-radio [nzValue]='item.value' *ngFor='let item of openWindList' >{{item.name}}</label>
+    </nz-radio-group>
+  </div>
+</div>
