@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { NgForage } from 'ngforage';
-
 
 @Component({
   selector: 'app-root',
@@ -8,8 +6,4 @@ import { NgForage } from 'ngforage';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-ts';
-  constructor(
-  ) {
-  }
 }

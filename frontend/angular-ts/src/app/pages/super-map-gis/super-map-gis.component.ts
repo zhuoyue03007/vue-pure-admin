@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 import * as _ from 'lodash';
 
-import { SuperMapGisService } from './super-map-gis.service';
+import {SuperMapGisService} from './super-map-gis.service';
 
 declare var Cesium;
 
@@ -151,7 +151,7 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
       // 将笛卡尔坐标转化为经纬度坐标
       // const cartographic = Cesium.Cartographic.fromCartesian(position);
 
-      const pick = this.viewer.scene.pick(e.position); // 获取点击点位信息
+      const pick = this.viewer.scene.pickPosition(e.position); // 获取点击点位信息
 
       console.log(pick);
       console.log(pick);
@@ -196,7 +196,7 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
           // disableDepthTestDistance: Number.POSITIVE_INFINITY,
         },
         billboard: {
-          image: '../../../assets/images/icon-air-city-level1.svg',
+          image: 'assets/images/icon-air-city-level1.svg',
           verticalOrigin: Cesium.VerticalOrigin.BOTTOM, // 垂直位置
           horizontalOrigin: Cesium.HorizontalOrigin.CENTER, // 水平位置
           height: 42,

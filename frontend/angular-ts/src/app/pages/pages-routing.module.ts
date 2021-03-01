@@ -11,7 +11,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'map',
+        redirectTo: 'superMapGis',
       },
       {
         path: 'superMapGis',

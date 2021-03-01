@@ -8,6 +8,7 @@ import { filter, map, last, first } from 'rxjs/operators';
   styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent implements OnInit, OnChanges {
+  isCollapsed = false;
 
   constructor(
     private router: Router

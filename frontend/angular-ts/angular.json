@@ -28,10 +28,21 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              {
+                "glob": "**/*",
+                "input": "src/assets/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
+              "src/theme.less",
               "src/styles.scss",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": [
@@ -98,6 +109,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": [
