@@ -11,14 +11,11 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'superMapGis',
+        redirectTo: 'cesium',
       },
       {
-        path: 'superMapGis',
-        loadChildren: () => import('./super-map-gis/super-map-gis.module').then(m => m.SuperMapGisModule),
-        resolve: {
-          data: DataResolverService
-        }
+        path: 'cesium',
+        loadChildren: () => import('./cesium/cesium.module').then(m => m.CesiumModule),
       },
       {
         path: 'map',

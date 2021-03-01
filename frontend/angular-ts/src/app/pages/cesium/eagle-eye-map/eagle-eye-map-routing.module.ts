@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SuperMapGisComponent } from './super-map-gis.component'
+
+import {EagleEyeMapComponent} from './eagle-eye-map.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SuperMapGisComponent
+    component: EagleEyeMapComponent
   }
 ];
 
@@ -13,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SuperMapGisRoutingModule { }
+export class EagleEyeMapRoutingModule { }

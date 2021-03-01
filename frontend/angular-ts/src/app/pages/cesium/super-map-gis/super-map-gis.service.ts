@@ -13,6 +13,6 @@ export class SuperMapGisService {
   ) { }
 
   getZhengZhouData(): Observable<any> {
-    return this.http.get('../../../assets/json/zhengzhou.json');
+    return this.http.get('assets/json/zhengzhou.json');
   }
 }
