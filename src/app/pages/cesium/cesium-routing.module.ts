@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'gis',
+    redirectTo: '/gis',
   },
   {
     path: 'gis',

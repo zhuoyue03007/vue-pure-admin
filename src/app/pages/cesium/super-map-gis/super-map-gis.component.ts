@@ -196,7 +196,7 @@ export class SuperMapGisComponent implements OnInit, AfterViewInit {
           // disableDepthTestDistance: Number.POSITIVE_INFINITY,
         },
         billboard: {
-          image: 'assets/images/icon-air-city-level1.svg',
+          image: 'assets/images/icon/icon-air-city-level1.svg',
           verticalOrigin: Cesium.VerticalOrigin.BOTTOM, // 垂直位置
           horizontalOrigin: Cesium.HorizontalOrigin.CENTER, // 水平位置
           height: 42,

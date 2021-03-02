@@ -11,7 +11,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'cesium',
+        redirectTo: '/cesium',
       },
       {
         path: 'cesium',
