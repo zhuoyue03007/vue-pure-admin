@@ -2,12 +2,12 @@
 
 ## 安装依赖
 ```
-npm install
+yarn install
 ```
 
 ## 项目启动
 ```
-npm run dev
+yarn dev
 ```
 
 ## Swagger文档访问地址
