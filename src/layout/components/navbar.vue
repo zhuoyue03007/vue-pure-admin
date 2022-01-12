@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { emitter } from "/@/utils/mitt";
+import Notice from "./notice/index.vue";
+import avatars from "/@/assets/avatars.jpg";
+import { transformI18n } from "/@/plugins/i18n";
 import Hamburger from "./sidebar/hamBurger.vue";
 import { useRouter, useRoute } from "vue-router";
 import { storageSession } from "/@/utils/storage";
@@ -10,6 +14,7 @@ import { unref, watch, getCurrentInstance } from "vue";
 import { deviceDetection } from "/@/utils/deviceDetection";
 import screenfull from "../components/screenfull/index.vue";
 import globalization from "/@/assets/svg/globalization.svg";
+import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 
 const instance =
   getCurrentInstance().appContext.config.globalProperties.$storage;
@@ -17,13 +22,26 @@ const pureApp = useAppStoreHook();
 const router = useRouter();
 const route = useRoute();
 let usename = storageSession.getItem("info")?.username;
-const { locale, t } = useI18n();
+const { locale } = useI18n();
+
+const getDropdownItemStyle = computed(() => {
+  return t => {
+    return {
+      background: locale.value === t ? useEpThemeStoreHook().epThemeColor : "",
+      color: locale.value === t ? "#f4f4f5" : "#000"
+    };
+  };
+});
 
 watch(
   () => locale.value,
   () => {
     //@ts-ignore
-    document.title = t(unref(route.meta.title)); // 动态title
+    document.title = transformI18n(
+      //@ts-ignore
+      unref(route.meta.title),
+      unref(route.meta.i18n)
+    ); // 动态title
   }
 );
 
@@ -65,27 +83,27 @@ function translationEn() {
     <Breadcrumb class="breadcrumb-container" />
 
     <div class="vertical-header-right">
+      <!-- 通知 -->
+      <Notice id="header-notice" />
       <!-- 全屏 -->
-      <screenfull v-show="!deviceDetection()" />
+      <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
-      <el-dropdown trigger="click">
+      <el-dropdown id="header-translation" trigger="click">
         <globalization />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
-              :style="{
-                background: locale === 'zh' ? '#1b2a47' : '',
-                color: locale === 'zh' ? '#f4f4f5' : '#000'
-              }"
+              :style="getDropdownItemStyle('zh')"
               @click="translationCh"
+              ><el-icon class="check-zh" v-show="locale === 'zh'"
+                ><check /></el-icon
               >简体中文</el-dropdown-item
             >
             <el-dropdown-item
-              :style="{
-                background: locale === 'en' ? '#1b2a47' : '',
-                color: locale === 'en' ? '#f4f4f5' : '#000'
-              }"
+              :style="getDropdownItemStyle('en')"
               @click="translationEn"
+              ><el-icon class="check-en" v-show="locale === 'en'"
+                ><check /></el-icon
               >English</el-dropdown-item
             >
           </el-dropdown-menu>
@@ -94,24 +112,25 @@ function translationEn() {
       <!-- 退出登陆 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <img
-            src="https://avatars.githubusercontent.com/u/44761321?s=400&u=30907819abd29bb3779bc247910873e7c7f7c12f&v=4"
-          />
+          <img :src="avatars" />
           <p>{{ usename }}</p>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
-            <el-dropdown-item icon="el-icon-switch-button" @click="logout">{{
-              $t("message.hsLoginOut")
-            }}</el-dropdown-item>
+            <el-dropdown-item @click="logout">
+              <i class="ri-logout-circle-r-line"></i
+              >{{ $t("buttons.hsLoginOut") }}</el-dropdown-item
+            >
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <i
+      <el-icon
         class="el-icon-setting"
-        :title="$t('message.hssystemSet')"
+        :title="$t('buttons.hssystemSet')"
         @click="onPanel"
-      ></i>
+      >
+        <Setting />
+      </el-icon>
     </div>
   </div>
 </template>
@@ -131,10 +150,6 @@ function translationEn() {
     cursor: pointer;
     transition: background 0.3s;
     -webkit-tap-highlight-color: transparent;
-
-    &:hover {
-      background: rgba(0, 0, 0, 0.025);
-    }
   }
 
   .vertical-header-right {
@@ -144,6 +159,12 @@ function translationEn() {
     align-items: center;
     color: #000000d9;
     justify-content: flex-end;
+
+    :deep(.dropdown-badge) {
+      &:hover {
+        background: #f6f6f6;
+      }
+    }
 
     .screen-full {
       cursor: pointer;
@@ -191,8 +212,8 @@ function translationEn() {
 
     .el-icon-setting {
       height: 48px;
-      width: 40px;
-      padding: 11px;
+      width: 38px;
+      padding: 12px;
       display: flex;
       cursor: pointer;
       align-items: center;
@@ -210,7 +231,7 @@ function translationEn() {
 
 .translation {
   .el-dropdown-menu__item {
-    padding: 0 40px !important;
+    padding: 5px 40px !important;
   }
 
   .el-dropdown-menu__item:focus,
@@ -218,11 +239,25 @@ function translationEn() {
     color: #606266;
     background: #f0f0f0;
   }
+
+  .check-zh {
+    position: absolute;
+    left: 20px;
+  }
+
+  .check-en {
+    position: absolute;
+    left: 20px;
+  }
 }
 
 .logout {
+  max-width: 120px;
+
   .el-dropdown-menu__item {
-    padding: 0 18px !important;
+    min-width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
   }
 
   .el-dropdown-menu__item:focus,

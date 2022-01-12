@@ -1,129 +1,27 @@
-import {
-  Router,
-  createRouter,
-  RouteComponent,
-  createWebHashHistory,
-  RouteRecordNormalized
-} from "vue-router";
-import { split } from "lodash-es";
-import { i18n } from "/@/plugins/i18n";
+import { toRouteType } from "./types";
 import { openLink } from "/@/utils/link";
 import NProgress from "/@/utils/progress";
-import { useTimeoutFn } from "@vueuse/core";
-import { storageSession, storageLocal } from "/@/utils/storage";
-import { usePermissionStoreHook } from "/@/store/modules/permission";
-
-// 静态路由
-import homeRouter from "./modules/home";
-import Layout from "/@/layout/index.vue";
-import errorRouter from "./modules/error";
-import editorRouter from "./modules/editor";
-import nestedRouter from "./modules/nested";
-import externalLink from "./modules/externalLink";
+import { constantRoutes } from "./modules";
+import { split, findIndex } from "lodash-es";
+import { transformI18n } from "/@/plugins/i18n";
 import remainingRouter from "./modules/remaining";
-import flowChartRouter from "./modules/flowchart";
-import componentsRouter from "./modules/components";
-// 动态路由
-import { getAsyncRoutes } from "/@/api/routes";
-
-// https://cn.vitejs.dev/guide/features.html#glob-import
-const modulesRoutes = import.meta.glob("/src/views/*/*/*.vue");
-
-const constantRoutes: Array<RouteComponent> = [
-  homeRouter,
-  flowChartRouter,
-  editorRouter,
-  componentsRouter,
-  nestedRouter,
-  externalLink,
-  errorRouter
-];
-
-// 按照路由中meta下的rank等级升序来排序路由
-export const ascending = arr => {
-  return arr.sort((a: any, b: any) => {
-    return a?.meta?.rank - b?.meta?.rank;
-  });
-};
-
-// 将所有静态路由导出
-export const constantRoutesArr: Array<RouteComponent> = ascending(
-  constantRoutes
-).concat(...remainingRouter);
-
-// 过滤meta中showLink为false的路由
-export const filterTree = data => {
-  const newTree = data.filter(v => v.meta.showLink);
-  newTree.forEach(v => v.children && (v.children = filterTree(v.children)));
-  return newTree;
-};
-
-// 从路由中提取keepAlive为true的name组成数组（此处本项目中并没有用到，只是暴露个方法）
-export const getAliveRoute = () => {
-  const alivePageList = [];
-  const recursiveSearch = treeLists => {
-    if (!treeLists || !treeLists.length) {
-      return;
-    }
-    for (let i = 0; i < treeLists.length; i++) {
-      if (treeLists[i]?.meta?.keepAlive) alivePageList.push(treeLists[i].name);
-      recursiveSearch(treeLists[i].children);
-    }
-  };
-  recursiveSearch(router.options.routes);
-  return alivePageList;
-};
-
-// 处理缓存路由（添加、删除、刷新）
-export const handleAliveRoute = (
-  matched: RouteRecordNormalized[],
-  mode?: string
-) => {
-  switch (mode) {
-    case "add":
-      matched.forEach(v => {
-        usePermissionStoreHook().cacheOperate({ mode: "add", name: v.name });
-      });
-      break;
-    case "delete":
-      usePermissionStoreHook().cacheOperate({
-        mode: "delete",
-        name: matched[matched.length - 1].name
-      });
-      break;
-    default:
-      usePermissionStoreHook().cacheOperate({
-        mode: "delete",
-        name: matched[matched.length - 1].name
-      });
-      useTimeoutFn(() => {
-        matched.forEach(v => {
-          usePermissionStoreHook().cacheOperate({ mode: "add", name: v.name });
-        });
-      }, 100);
-  }
-};
-
-// 过滤后端传来的动态路由 重新生成规范路由
-export const addAsyncRoutes = (arrRoutes: Array<RouteComponent>) => {
-  if (!arrRoutes || !arrRoutes.length) return;
-  arrRoutes.forEach((v: any) => {
-    if (v.redirect) {
-      v.component = Layout;
-    } else {
-      v.component = modulesRoutes[`/src/views${v.path}/index.vue`];
-    }
-    if (v.children) {
-      addAsyncRoutes(v.children);
-    }
-  });
-  return arrRoutes;
-};
+import { storageSession } from "/@/utils/storage";
+import { useMultiTagsStoreHook } from "/@/store/modules/multiTags";
+import { usePermissionStoreHook } from "/@/store/modules/permission";
+import { Router, RouteMeta, createRouter, RouteRecordName } from "vue-router";
+import {
+  initRouter,
+  getHistoryMode,
+  getParentPaths,
+  findRouteByPath,
+  handleAliveRoute
+} from "./utils";
 
 // 创建路由实例
 export const router: Router = createRouter({
-  history: createWebHashHistory(),
-  routes: filterTree(ascending(constantRoutes)).concat(...remainingRouter),
+  history: getHistoryMode(),
+  routes: constantRoutes.concat(...remainingRouter),
+  strict: true,
   scrollBehavior(to, from, savedPosition) {
     return new Promise(resolve => {
       if (savedPosition) {
@@ -139,53 +37,10 @@ export const router: Router = createRouter({
   }
 });
 
-// 初始化路由
-export const initRouter = name => {
-  return new Promise(resolve => {
-    getAsyncRoutes({ name }).then(({ info }) => {
-      if (info.length === 0) {
-        usePermissionStoreHook().changeSetting(info);
-      } else {
-        addAsyncRoutes(info).map((v: any) => {
-          // 防止重复添加路由
-          if (
-            router.options.routes.findIndex(value => value.path === v.path) !==
-            -1
-          ) {
-            return;
-          } else {
-            // 切记将路由push到routes后还需要使用addRoute，这样路由才能正常跳转
-            router.options.routes.push(v);
-            // 最终路由进行升序
-            ascending(router.options.routes);
-            router.addRoute(v.name, v);
-            usePermissionStoreHook().changeSetting(info);
-          }
-          resolve(router);
-        });
-      }
-      router.addRoute({
-        path: "/:pathMatch(.*)",
-        redirect: "/error/404"
-      });
-    });
-  });
-};
-
-// 重置路由
-export function resetRouter() {
-  router.getRoutes().forEach(route => {
-    const { name } = route;
-    if (name) {
-      router.hasRoute(name) && router.removeRoute(name);
-    }
-  });
-}
-
 // 路由白名单
-const whiteList = ["/login", "/register"];
+const whiteList = ["/login"];
 
-router.beforeEach((to, _from, next) => {
+router.beforeEach((to: toRouteType, _from, next) => {
   if (to.meta?.keepAlive) {
     const newMatched = to.matched;
     handleAliveRoute(newMatched, "add");
@@ -197,10 +52,15 @@ router.beforeEach((to, _from, next) => {
   const name = storageSession.getItem("info");
   NProgress.start();
   const externalLink = to?.redirectedFrom?.fullPath;
-  // @ts-ignore
-  const { t } = i18n.global;
-  // @ts-ignore
-  if (!externalLink) to.meta.title ? (document.title = t(to.meta.title)) : "";
+  if (!externalLink)
+    to.matched.some(item => {
+      item.meta.title
+        ? (document.title = transformI18n(
+            item.meta.title as string,
+            item.meta?.i18n as boolean
+          ))
+        : "";
+    });
   if (name) {
     if (_from?.name) {
       // 如果路由包含http 则是超链接 反之是普通路由
@@ -212,23 +72,75 @@ router.beforeEach((to, _from, next) => {
       }
     } else {
       // 刷新
-      if (usePermissionStoreHook().wholeRoutes.length === 0)
+      if (usePermissionStoreHook().wholeMenus.length === 0)
         initRouter(name.username).then((router: Router) => {
-          router.push(to.path);
-          // 刷新页面更新标签栏与页面路由匹配
-          const localRoutes = storageLocal.getItem(
-            "responsive-routesInStorage"
-          );
-          const optionsRoutes = router.options?.routes;
-          const newLocalRoutes = [];
-          optionsRoutes.forEach(ors => {
-            localRoutes.forEach(lrs => {
-              if (ors.path === lrs.parentPath) {
-                newLocalRoutes.push(lrs);
+          if (!useMultiTagsStoreHook().getMultiTagsCache) {
+            const handTag = (
+              path: string,
+              parentPath: string,
+              name: RouteRecordName,
+              meta: RouteMeta
+            ): void => {
+              useMultiTagsStoreHook().handleTags("push", {
+                path,
+                parentPath,
+                name,
+                meta
+              });
+            };
+            // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对静态路由）
+            if (to.meta?.refreshRedirect) {
+              const routes = router.options.routes;
+              const { refreshRedirect } = to.meta;
+              const { name, meta } = findRouteByPath(refreshRedirect, routes);
+              handTag(
+                refreshRedirect,
+                getParentPaths(refreshRedirect, routes)[1],
+                name,
+                meta
+              );
+              return router.push(refreshRedirect);
+            } else {
+              const { path } = to;
+              const index = findIndex(remainingRouter, v => {
+                return v.path == path;
+              });
+              const routes =
+                index === -1
+                  ? router.options.routes[0].children
+                  : router.options.routes;
+              const route = findRouteByPath(path, routes);
+              const routePartent = getParentPaths(path, routes);
+              // 未开启标签页缓存，刷新页面重定向到顶级路由（参考标签页操作例子，只针对动态路由）
+              if (
+                path !== routes[0].path &&
+                route?.meta?.rank !== 0 &&
+                routePartent.length === 0
+              ) {
+                if (!route?.meta?.refreshRedirect) return;
+                const { name, meta } = findRouteByPath(
+                  route.meta.refreshRedirect,
+                  routes
+                );
+                handTag(
+                  route.meta?.refreshRedirect,
+                  getParentPaths(route.meta?.refreshRedirect, routes)[0],
+                  name,
+                  meta
+                );
+                return router.push(route.meta?.refreshRedirect);
+              } else {
+                handTag(
+                  route.path,
+                  routePartent[routePartent.length - 1],
+                  route.name,
+                  route.meta
+                );
+                return router.push(path);
               }
-            });
-          });
-          storageLocal.setItem("responsive-routesInStorage", newLocalRoutes);
+            }
+          }
+          router.push(to.fullPath);
         });
       next();
     }

@@ -1,7 +1,6 @@
 import "xe-utils";
 import { App } from "vue";
 import { i18n } from "../i18n/index";
-import "font-awesome/css/font-awesome.css";
 import {
   // 核心
   VXETable,
@@ -66,8 +65,8 @@ VXETable.setup({
   i18n: (key, args) => i18n.global.t(key, args),
   // 可选，对参数中的列头、校验提示..等进行自动翻译（只对支持国际化的有效）
   translate(key, args) {
-    // 例如，只翻译 "message." 开头的键值
-    if (key && key.indexOf("message.") > -1) {
+    // 例如，只翻译 "buttons." 开头的键值
+    if (key && key.indexOf("buttons.") > -1) {
       return i18n.global.t(key, args);
     }
     if (key && key.indexOf("el.") > -1) {

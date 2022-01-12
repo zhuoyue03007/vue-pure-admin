@@ -1,3 +1,4 @@
+import { $t } from "/@/plugins/i18n";
 import Layout from "/@/layout/index.vue";
 
 const errorRouter = {
@@ -6,9 +7,10 @@ const errorRouter = {
   component: Layout,
   redirect: "/error/401",
   meta: {
-    icon: "el-icon-position",
-    title: "message.hserror",
+    icon: "Position",
+    title: $t("menus.hserror"),
     showLink: true,
+    i18n: true,
     rank: 7
   },
   children: [
@@ -17,7 +19,8 @@ const errorRouter = {
       name: "401",
       component: () => import("/@/views/error/401.vue"),
       meta: {
-        title: "message.hsfourZeroOne",
+        title: $t("menus.hsfourZeroOne"),
+        i18n: true,
         showLink: true
       }
     },
@@ -26,7 +29,8 @@ const errorRouter = {
       name: "404",
       component: () => import("/@/views/error/404.vue"),
       meta: {
-        title: "message.hsfourZeroFour",
+        title: $t("menus.hsfourZeroFour"),
+        i18n: true,
         showLink: true
       }
     }

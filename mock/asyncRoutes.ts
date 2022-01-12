@@ -5,28 +5,32 @@ import { MockMethod } from "vite-plugin-mock";
 const systemRouter = {
   path: "/system",
   name: "system",
-  redirect: "/system/user",
+  redirect: "/system/user/index",
   meta: {
-    icon: "el-icon-setting",
-    title: "message.hssysManagement",
+    icon: "Setting",
+    title: "menus.hssysManagement",
+    i18n: true,
     showLink: true,
     rank: 6
   },
   children: [
     {
-      path: "/system/user",
+      path: "/system/user/index",
       name: "user",
       meta: {
-        title: "message.hsBaseinfo",
+        title: "menus.hsBaseinfo",
+        i18n: true,
         showLink: true
       }
     },
     {
-      path: "/system/dict",
+      path: "/system/dict/index",
       name: "dict",
       meta: {
-        title: "message.hsDict",
-        showLink: true
+        title: "menus.hsDict",
+        i18n: true,
+        showLink: true,
+        keepAlive: true
       }
     }
   ]
@@ -35,29 +39,67 @@ const systemRouter = {
 const permissionRouter = {
   path: "/permission",
   name: "permission",
-  redirect: "/permission/page",
+  redirect: "/permission/page/index",
   meta: {
-    title: "message.permission",
-    icon: "el-icon-lollipop",
+    title: "menus.permission",
+    icon: "Lollipop",
+    i18n: true,
     showLink: true,
     rank: 3
   },
   children: [
     {
-      path: "/permission/page",
+      path: "/permission/page/index",
       name: "permissionPage",
       meta: {
-        title: "message.permissionPage",
+        title: "menus.permissionPage",
+        i18n: true,
         showLink: true
       }
     },
     {
-      path: "/permission/button",
+      path: "/permission/button/index",
       name: "permissionButton",
       meta: {
-        title: "message.permissionButton",
+        title: "menus.permissionButton",
+        i18n: true,
         showLink: true,
         authority: []
+      }
+    }
+  ]
+};
+
+const tabsRouter = {
+  path: "/tabs",
+  name: "reTabs",
+  redirect: "/tabs/index",
+  meta: {
+    icon: "IF-team-icontabs",
+    title: "menus.hstabs",
+    i18n: true,
+    showLink: true,
+    rank: 8
+  },
+  children: [
+    {
+      path: "/tabs/index",
+      name: "reTabs",
+      meta: {
+        title: "menus.hstabs",
+        showLink: true,
+        i18n: true
+      }
+    },
+    {
+      path: "/tabs/detail",
+      name: "tabDetail",
+      meta: {
+        title: "",
+        showLink: false,
+        i18n: false,
+        dynamicLevel: 3,
+        refreshRedirect: "/tabs/index"
       }
     }
   ]
@@ -77,12 +119,16 @@ export default [
       if (query.name === "admin") {
         return {
           code: 0,
-          info: [systemRouter, setDifAuthority("v-admin", permissionRouter)]
+          info: [
+            tabsRouter,
+            systemRouter,
+            setDifAuthority("v-admin", permissionRouter)
+          ]
         };
       } else {
         return {
           code: 0,
-          info: [setDifAuthority("v-test", permissionRouter)]
+          info: [tabsRouter, setDifAuthority("v-test", permissionRouter)]
         };
       }
     }

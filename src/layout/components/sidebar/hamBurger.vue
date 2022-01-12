@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from "vue";
+import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
 export interface Props {
   isActive: boolean;
 }
@@ -6,6 +8,8 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   isActive: false
 });
+
+const fillColor = ref<string>("");
 
 const emit = defineEmits<{
   (e: "toggleClick"): void;
@@ -17,8 +21,15 @@ const toggleClick = () => {
 </script>
 
 <template>
-  <div :class="classes.container" @click="toggleClick">
+  <div
+    :class="classes.container"
+    :title="props.isActive ? '点击折叠' : '点击展开'"
+    @click="toggleClick"
+    @mouseenter="fillColor = useEpThemeStoreHook().epThemeColor"
+    @mouseleave="fillColor = ''"
+  >
     <svg
+      :fill="fillColor"
       :class="['hamburger', props.isActive ? 'is-active' : '']"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"

@@ -1,37 +1,36 @@
 <h1>vue-pure-admin</h1>
 
-[![license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin.svg)](LICENSE)
+![GitHub license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin?style=flat)
+![GitHub stars](https://img.shields.io/github/stars/xiaoxian521/vue-pure-admin?color=fa6470&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/xiaoxian521/vue-pure-admin?style=flat)
 
 **English** | [中文](./README.md)
 
 ## Introduction
 
-vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3`, `vite2`, `TypeScript`, `Element-Plus` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
+vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3` `vite2` `Element-Plus` `TypeScript` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
+
+## Supporting Video
+
+- [Click Watch Tutorial](https://www.bilibili.com/video/BV1534y1S7HV)
+- [Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
+
+## Docs
+
+- [Click Watch Docs](https://pure-admin-doc.vercel.app)
+
+## Thin
+
+- [Click Watch Thin](https://github.com/xiaoxian521/pure-admin-thin)
 
 ## Preview
 
 - [vue-pure-admin](http://yiming_chang.gitee.io/manages)
 
-Click to log in without password
-
 <p align="center">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5ee80eee1014fb4a53c5bb37574a5f5~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dec0672a62e141f3b7f626c22ff6c7ef~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f586f1353de74b1b88cc9f89fce2146e~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a28fc0af7ac44e3b8f30469cba4a9993~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a17e54329cda4d76aa9c1c4f2a4715d3~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d884fb611da74ee0bdc17c29014d0260~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abed44ac1f2744e897c28d1689bcb517~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf2f068650f44a0787c699f5a20c75a6~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/73c575dd06474731ad8ab9d853f1ddfd~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99389b90f5ac4db9b0d61d99dd9a1454~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1546f1c6014446db6c9983934aedc86~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cfb0093b77c34e87b094daaa4304bc2d~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fe133cc6db3245f9b1b37f231d040550~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3110a12d63e4f6fb314e60bf18bdb66~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/45b93ec453e3406a939affe65ddcc803~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdc2dc88c1ef4aafbaaade820442c986~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f4c91b162206485b88cc58a72ff54a01~tplv-k3u1fbpfcp-watermark.image">
+  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4857fc7eb7d4c0f8deeefc644c1f7dd~tplv-k3u1fbpfcp-watermark.awebp?">
+  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/549c3184697f4d268a78c9833e5ec2ea~tplv-k3u1fbpfcp-watermark.awebp?">
+  <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/381fc957fac143db9f06efdd389d88a3~tplv-k3u1fbpfcp-watermark.awebp?">
 </p>
 
 ### Use Gitpod
@@ -55,20 +54,20 @@ git clone https://github.com.cnpmjs.org/xiaoxian521/vue-pure-admin.git
 ```bash
 cd vue-pure-admin
 
-yarn install
+pnpm install
 
 ```
 
 - run
 
 ```bash
-yarn serve
+pnpm serve
 ```
 
 - build
 
 ```bash
-yarn build
+pnpm build
 ```
 
 ## Change Log
@@ -121,16 +120,32 @@ Support modern browsers, not IE
 
 ## Donate
 
-If you think this project is helpful to you, you can help the author buy a cup of coffee to show your support!
+If you think this project is helpful to you, you can help the author buy a cup of coffee to show your support
 
-![donate](http://yiming_chang.gitee.io/manages/pay.jpg)
+<img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
 
-## Exchange Group
+## WeChat Exchange Group
 
-Please scan the code to join the WeChat exchange group, if you have any questions, you can communicate in the group!
+For the better development of the project, you can choose to donate 10 yuan and add the following WeChat to pull you into the group. After adding, please consciously send a screenshot of the donation
 
-![group](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c5f882422bd47b5af691906ea994ccf~tplv-k3u1fbpfcp-watermark.awebp?)
+<img src="http://yiming_chang.gitee.io/manages/kf.jpg" width="150px" height="195px" />
 
 ## License
 
+In principle, no fees and copyrights are charged, so you can use it with confidence
+
 [MIT © xiaoxian521-2020](./LICENSE)
+
+## Backers
+
+Thank you very much for your support, I believe the project will get better and better! ! ! :heart:
+
+|                                                                xueyuheng                                                                 |                                                                taolei1990                                                                 |                                                                hang-kim                                                                 |                                                               madwolfcrazy                                                                |                                                                limuen                                                                 |
+| :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/hang-kim"><img src="https://avatars.githubusercontent.com/u/52914259?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/madwolfcrazy"><img src="https://avatars.githubusercontent.com/u/223671?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/limuen"><img src="https://avatars.githubusercontent.com/u/31790606?v=4" width="60px" height="60px" /></a> |
+
+## Contributors
+
+This project exists thanks to all the people who contribute!!! :heart:
+
+<a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>

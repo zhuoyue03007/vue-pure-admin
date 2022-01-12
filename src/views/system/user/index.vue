@@ -1,12 +1,19 @@
+<script lang="ts">
+export default {
+  name: "user"
+};
+</script>
+
 <script setup lang="ts">
 import { reactive } from "vue";
+import { $t } from "/@/plugins/i18n";
 import { VxeGridProps } from "vxe-table";
 
 const gridOptions = reactive({
   border: true,
   resizable: true,
   keepSource: true,
-  height: 500,
+  height: 578,
   printConfig: {},
   importConfig: {},
   exportConfig: {},
@@ -23,19 +30,19 @@ const gridOptions = reactive({
     buttons: [
       {
         code: "insert_actived",
-        name: "message.hsadd",
+        name: $t("buttons.hsadd"),
         status: "perfect",
         icon: "fa fa-plus"
       },
       {
         code: "mark_cancel",
-        name: "message.hsmark",
+        name: $t("buttons.hsmark"),
         status: "perfect",
         icon: "fa fa-trash-o"
       },
       {
         code: "save",
-        name: "message.hssave",
+        name: $t("buttons.hssave"),
         status: "perfect",
         icon: "fa fa-save"
       }
@@ -162,33 +169,6 @@ const gridOptions = reactive({
                 sex: "Man ",
                 age: 35,
                 address: "Guangzhou"
-              },
-              {
-                id: 100011,
-                name: "Test11",
-                nickname: "T11",
-                role: "Test",
-                sex: "Women ",
-                age: 26,
-                address: "vxe-table 从入门到放弃"
-              },
-              {
-                id: 100012,
-                name: "Test12",
-                nickname: "T12",
-                role: "Develop",
-                sex: "Man ",
-                age: 34,
-                address: "Guangzhou"
-              },
-              {
-                id: 100013,
-                name: "Test13",
-                nickname: "T13",
-                role: "Test",
-                sex: "Women ",
-                age: 22,
-                address: "Shenzhen"
               }
             ];
             resolve({
@@ -238,5 +218,5 @@ const gridOptions = reactive({
 </script>
 
 <template>
-  <vxe-grid v-bind="gridOptions" style="width: 98%"></vxe-grid>
+  <vxe-grid v-bind="gridOptions"></vxe-grid>
 </template>

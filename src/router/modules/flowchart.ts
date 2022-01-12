@@ -1,3 +1,4 @@
+import { $t } from "/@/plugins/i18n";
 import Layout from "/@/layout/index.vue";
 
 const flowChartRouter = {
@@ -6,9 +7,10 @@ const flowChartRouter = {
   component: Layout,
   redirect: "/flowChart/index",
   meta: {
-    icon: "el-icon-set-up",
-    title: "message.hsflowChart",
+    icon: "SetUp",
+    title: $t("menus.hsflowChart"),
     showLink: true,
+    i18n: true,
     rank: 1
   },
   children: [
@@ -17,7 +19,8 @@ const flowChartRouter = {
       name: "flowChart",
       component: () => import("/@/views/flow-chart/index.vue"),
       meta: {
-        title: "message.hsflowChart",
+        title: $t("menus.hsflowChart"),
+        i18n: true,
         showLink: true
       }
     }

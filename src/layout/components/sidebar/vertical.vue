@@ -12,8 +12,9 @@ import { usePermissionStoreHook } from "/@/store/modules/permission";
 const route = useRoute();
 const pureApp = useAppStoreHook();
 const router = useRouter().options.routes;
-const routeStore = usePermissionStoreHook();
-const showLogo = ref(storageLocal.getItem("logoVal") || "1");
+const showLogo = ref(
+  storageLocal.getItem("responsive-configure")?.showLogo ?? true
+);
 const isCollapse = computed(() => {
   return !pureApp.getSidebarStatus;
 });
@@ -59,7 +60,7 @@ onBeforeMount(() => {
 
 <template>
   <div :class="['sidebar-container', showLogo ? 'has-logo' : '']">
-    <Logo v-if="showLogo === '1'" :collapse="isCollapse" />
+    <Logo v-if="showLogo" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
@@ -68,12 +69,14 @@ onBeforeMount(() => {
         router
         :collapse-transition="false"
         mode="vertical"
+        class="outer-most"
         @select="menuSelect"
       >
         <sidebar-item
-          v-for="route in routeStore.wholeRoutes"
+          v-for="route in usePermissionStoreHook().wholeMenus"
           :key="route.path"
           :item="route"
+          class="outer-most"
           :base-path="route.path"
         />
       </el-menu>

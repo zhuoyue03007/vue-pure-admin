@@ -10,52 +10,40 @@ const lists = ref([
 </script>
 
 <template>
-  <el-descriptions
-    class="margin-top"
-    direction="vertical"
-    :column="3"
-    size="medium"
-    border
-  >
+  <el-descriptions class="margin-top" direction="vertical" :column="3" border>
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-user"></i>
+        <el-icon><user /></el-icon>
         用户名
       </template>
       xiaoxian
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-mobile-phone"></i>
+        <el-icon><iphone /></el-icon>
         手机号
       </template>
       123456789
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-location-outline"></i>
+        <el-icon><location /></el-icon>
         居住地
       </template>
       上海
     </el-descriptions-item>
   </el-descriptions>
-  <el-descriptions
-    class="margin-top"
-    direction="vertical"
-    :column="2"
-    size="medium"
-    border
-  >
+  <el-descriptions class="margin-top" direction="vertical" :column="2" border>
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-tickets"></i>
+        <el-icon><tickets /></el-icon>
         标签
       </template>
       <el-tag
         v-for="item in lists"
         :key="item.label"
         :type="item.type"
-        size="mini"
+        size="small"
         effect="dark"
       >
         {{ item.label }}
@@ -63,22 +51,16 @@ const lists = ref([
     </el-descriptions-item>
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-office-building"></i>
+        <el-icon><office-building /></el-icon>
         联系地址
       </template>
       上海市徐汇区
     </el-descriptions-item>
   </el-descriptions>
-  <el-descriptions
-    class="margin-top"
-    direction="vertical"
-    :column="1"
-    size="medium"
-    border
-  >
+  <el-descriptions class="margin-top" direction="vertical" :column="1" border>
     <el-descriptions-item>
       <template #label>
-        <i class="el-icon-notebook-1"></i>
+        <el-icon><notebook /></el-icon>
         留言
       </template>
       好好学习，天天向上
@@ -87,7 +69,7 @@ const lists = ref([
 </template>
 
 <style scoped>
-.el-tag--mini {
+.el-tag {
   margin-right: 10px !important;
 }
 </style>

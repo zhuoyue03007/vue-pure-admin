@@ -1,3 +1,4 @@
+import { $t } from "/@/plugins/i18n";
 import Layout from "/@/layout/index.vue";
 
 const homeRouter = {
@@ -6,8 +7,10 @@ const homeRouter = {
   component: Layout,
   redirect: "/welcome",
   meta: {
-    icon: "el-icon-s-home",
+    icon: "HomeFilled",
+    title: $t("menus.hshome"),
     showLink: true,
+    i18n: true,
     rank: 0
   },
   children: [
@@ -16,7 +19,8 @@ const homeRouter = {
       name: "welcome",
       component: () => import("/@/views/welcome.vue"),
       meta: {
-        title: "message.hshome",
+        title: $t("menus.hshome"),
+        i18n: true,
         showLink: true
       }
     }

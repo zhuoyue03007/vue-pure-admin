@@ -71,17 +71,23 @@ onMounted(() => {
     <!-- 画布 -->
     <div id="LF-Turbo"></div>
     <!-- 数据查看面板 -->
-    <el-dialog title="数据" v-model="dataVisible" width="50%">
-      <DataDialog :graphData="graphData"></DataDialog>
+    <el-dialog
+      customClass="flow-dialog"
+      title="数据"
+      v-model="dataVisible"
+      width="50%"
+    >
+      <el-scrollbar>
+        <DataDialog :graphData="graphData"></DataDialog>
+      </el-scrollbar>
     </el-dialog>
   </div>
 </template>
 
 <style scoped>
 #LF-Turbo {
-  width: 100vw;
-  height: 85vh;
-  outline: none;
+  width: 100%;
+  height: calc(100vh - 90px);
 }
 
 .logic-flow-view {
@@ -117,5 +123,22 @@ onMounted(() => {
   overflow: auto;
   margin-top: -30px;
   z-index: 3;
+}
+
+:deep(.flow-dialog) {
+  transform: none;
+  left: 0;
+  top: 5vh;
+  position: relative;
+  margin: 0 auto;
+}
+
+:deep(.flow-dialog) .el-dialog__body {
+  height: 85vh;
+  overflow: auto;
+}
+
+.main-content {
+  margin: 0;
 }
 </style>

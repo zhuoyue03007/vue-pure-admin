@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: "permissionPage"
+};
+</script>
+
 <script setup lang="ts">
 import { ref, unref } from "vue";
 import { storageSession } from "/@/utils/storage";
@@ -22,7 +28,7 @@ function changRole() {
 </script>
 
 <template>
-  <div class="app-container">
+  <div>
     <h4>
       当前角色：
       <span style="font-size: 26px">{{ purview }}</span>

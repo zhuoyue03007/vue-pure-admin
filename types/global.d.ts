@@ -65,21 +65,11 @@ declare global {
 
   declare interface ViteEnv {
     VITE_PORT: number;
-    VITE_TITLE: string;
-    VITE_VERSION: string;
-    VITE_USE_MOCK: boolean;
-    VITE_USE_PWA: boolean;
     VITE_PUBLIC_PATH: string;
-    VITE_PROXY: [string, string][];
-    VITE_GLOB_APP_TITLE: string;
-    VITE_GLOB_APP_SHORT_NAME: string;
-    VITE_USE_CDN: boolean;
-    VITE_DROP_CONSOLE: boolean;
-    VITE_BUILD_COMPRESS: "gzip" | "brotli" | "none";
-    VITE_BUILD_COMPRESS_DELETE_ORIGIN_FILE: boolean;
+    VITE_PROXY_DOMAIN: string;
+    VITE_PROXY_DOMAIN_REAL: string;
+    VITE_ROUTER_HISTORY: string;
     VITE_LEGACY: boolean;
-    VITE_USE_IMAGEMIN: boolean;
-    VITE_GENERATE_UI: string;
   }
 
   declare interface ServerConfigs {
@@ -87,12 +77,21 @@ declare global {
     Title?: string;
     FixedHeader?: boolean;
     HiddenSideBar?: boolean;
+    MultiTagsCache?: boolean;
     KeepAlive?: boolean;
     Locale?: string;
     Layout?: string;
+    Theme?: string;
+    DarkMode?: boolean;
+    Grey?: boolean;
+    Weak?: boolean;
+    HideTabs?: boolean;
+    SidebarStatus?: boolean;
+    EpThemeColor?: string;
+    ShowLogo?: boolean;
+    ShowModel?: string;
     MapConfigure?: {
       amapKey?: string;
-      baiduKey?: string;
       options: {
         resizeEnable?: boolean;
         center?: number[];

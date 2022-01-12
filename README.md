@@ -1,37 +1,36 @@
 <h1>vue-pure-admin</h1>
 
-[![license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin.svg)](LICENSE)
+![GitHub license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin?style=flat)
+![GitHub stars](https://img.shields.io/github/stars/xiaoxian521/vue-pure-admin?color=fa6470&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/xiaoxian521/vue-pure-admin?style=flat)
 
 **中文** | [English](./README.en-US.md)
 
 ## 简介
 
-vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3`,`vite2`,`TypeScript`,`Element-Plus`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+vue-pure-admin 是一个免费开源的中后台模版。使用了最新的`vue3` `vite2` `Element-Plus` `TypeScript`等主流技术开发，开箱即用的中后台前端解决方案，也可用于学习参考。
+
+## 配套视频
+
+- [点我查看教程](https://www.bilibili.com/video/BV1534y1S7HV)
+- [点我查看 UI 设计](https://www.bilibili.com/video/BV17g411T7rq)
+
+## 配套文档
+
+- [点我查看文档](https://pure-admin-doc.vercel.app)
+
+## 精简版
+
+- [点我查看精简版](https://github.com/xiaoxian521/pure-admin-thin)
 
 ## 预览
 
 - [vue-pure-admin](http://yiming_chang.gitee.io/manages)
 
-点击免密登录
-
 <p align="center">
-   <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5ee80eee1014fb4a53c5bb37574a5f5~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dec0672a62e141f3b7f626c22ff6c7ef~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f586f1353de74b1b88cc9f89fce2146e~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a28fc0af7ac44e3b8f30469cba4a9993~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a17e54329cda4d76aa9c1c4f2a4715d3~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d884fb611da74ee0bdc17c29014d0260~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abed44ac1f2744e897c28d1689bcb517~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cf2f068650f44a0787c699f5a20c75a6~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/73c575dd06474731ad8ab9d853f1ddfd~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/99389b90f5ac4db9b0d61d99dd9a1454~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f1546f1c6014446db6c9983934aedc86~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cfb0093b77c34e87b094daaa4304bc2d~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fe133cc6db3245f9b1b37f231d040550~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d3110a12d63e4f6fb314e60bf18bdb66~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/45b93ec453e3406a939affe65ddcc803~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cdc2dc88c1ef4aafbaaade820442c986~tplv-k3u1fbpfcp-watermark.image">
-    <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f4c91b162206485b88cc58a72ff54a01~tplv-k3u1fbpfcp-watermark.image">
+  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4857fc7eb7d4c0f8deeefc644c1f7dd~tplv-k3u1fbpfcp-watermark.awebp?">
+  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/549c3184697f4d268a78c9833e5ec2ea~tplv-k3u1fbpfcp-watermark.awebp?">
+  <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/381fc957fac143db9f06efdd389d88a3~tplv-k3u1fbpfcp-watermark.awebp?">
 </p>
 
 ### 使用 Gitpod
@@ -55,20 +54,20 @@ git clone https://github.com.cnpmjs.org/xiaoxian521/vue-pure-admin.git
 ```bash
 cd vue-pure-admin
 
-yarn install
+pnpm install
 
 ```
 
 - 运行
 
 ```bash
-yarn serve
+pnpm serve
 ```
 
 - 打包
 
 ```bash
-yarn build
+pnpm build
 ```
 
 ## 更新日志
@@ -121,16 +120,32 @@ yarn build
 
 ## 捐赠
 
-如果你觉得这个项目对你有帮助，你可以帮作者买一杯咖啡表示支持!
+如果你觉得这个项目对你有帮助，你可以帮作者买一杯咖啡表示支持
 
-![donate](http://yiming_chang.gitee.io/manages/pay.jpg)
+<img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
 
-## 交流群
+## 微信交流群
 
-请扫码加入微信交流群，有问题可以在群里沟通!
+为了项目更好的发展，你可选择捐赠 10 元后添加下图微信拉你进群，添加后请自觉发捐赠截图
 
-![group](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c5f882422bd47b5af691906ea994ccf~tplv-k3u1fbpfcp-watermark.awebp?)
+<img src="http://yiming_chang.gitee.io/manages/kf.jpg" width="150px" height="195px" />
 
-## License
+## 许可证
+
+原则上不收取任何费用及版权，可以放心使用
 
 [MIT © xiaoxian521-2020](./LICENSE)
+
+## 捐赠者
+
+非常感谢你们的支持，相信项目会越来越好！！！:heart:
+
+|                                                                xueyuheng                                                                 |                                                                taolei1990                                                                 |                                                                hang-kim                                                                 |                                                               madwolfcrazy                                                                |                                                                limuen                                                                 |
+| :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/hang-kim"><img src="https://avatars.githubusercontent.com/u/52914259?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/madwolfcrazy"><img src="https://avatars.githubusercontent.com/u/223671?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/limuen"><img src="https://avatars.githubusercontent.com/u/31790606?v=4" width="60px" height="60px" /></a> |
+
+## 贡献者
+
+这个项目的存在感谢所有做出贡献的人！！！:heart:
+
+<a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>

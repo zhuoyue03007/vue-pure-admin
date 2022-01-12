@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  name: "permissionButton"
+};
+</script>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { storageSession } from "/@/utils/storage";
@@ -14,7 +20,7 @@ function changRole(value) {
 </script>
 
 <template>
-  <div class="app-container">
+  <div>
     <el-radio-group v-model="auth" @change="changRole">
       <el-radio-button label="admin"></el-radio-button>
       <el-radio-button label="test"></el-radio-button>
