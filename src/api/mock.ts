@@ -1,11 +1,11 @@
-import { http } from "../utils/http";
+import { http } from "@/utils/http";
 
-// 地图数据
-export const mapJson = (params?: object) => {
-  return http.request("get", "/getMapInfo", { params });
+type Result = {
+  success: boolean;
+  data: Array<any>;
 };
 
-// echarts数据
-export const echartsJson = (params?: object) => {
-  return http.request("get", "/getEchartsInfo", { params });
+/** 地图数据 */
+export const mapJson = (params?: object) => {
+  return http.request<Result>("get", "/getMapInfo", { params });
 };

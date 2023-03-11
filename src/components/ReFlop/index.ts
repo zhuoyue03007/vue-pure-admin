@@ -1,10 +1,7 @@
-import { App } from "vue";
 import reFlop from "./src/index.vue";
+import { withInstall } from "@pureadmin/utils";
 
-export const ReFlop = Object.assign(reFlop, {
-  install(app: App) {
-    app.component(reFlop.name, reFlop);
-  }
-});
+/** 时间翻牌组件 */
+export const ReFlop = withInstall(reFlop);
 
 export default ReFlop;

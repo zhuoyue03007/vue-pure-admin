@@ -1,28 +1,30 @@
+import type { IconifyIcon } from "@iconify/vue";
+
 export const routerArrays: Array<RouteConfigs> = [
   {
     path: "/welcome",
     parentPath: "/",
     meta: {
       title: "menus.hshome",
-      i18n: true,
-      icon: "HomeFilled",
-      showLink: true
+      icon: "homeFilled"
     }
   }
 ];
+
+export type routeMetaType = {
+  title?: string;
+  icon?: string | IconifyIcon;
+  showLink?: boolean;
+  savedPosition?: boolean;
+  auths?: Array<string>;
+};
 
 export type RouteConfigs = {
   path?: string;
   parentPath?: string;
   query?: object;
-  meta?: {
-    title?: string;
-    i18n?: boolean;
-    icon?: string;
-    showLink?: boolean;
-    savedPosition?: boolean;
-    authority?: Array<string>;
-  };
+  params?: object;
+  meta?: routeMetaType;
   children?: RouteConfigs[];
   name?: string;
 };
@@ -32,7 +34,7 @@ export type multiTagsType = {
 };
 
 export type tagsViewsType = {
-  icon: string;
+  icon: string | IconifyIcon;
   text: string;
   divided: boolean;
   disabled: boolean;
@@ -43,7 +45,7 @@ export interface setType {
   sidebar: {
     opened: boolean;
     withoutAnimation: boolean;
-    isClickHamburger: boolean;
+    isClickCollapse: boolean;
   };
   device: string;
   fixedHeader: boolean;
@@ -64,17 +66,16 @@ export type childrenType = {
   meta?: {
     icon?: string;
     title?: string;
-    i18n?: boolean;
-    extraIcon?: {
-      svg?: boolean;
-      name?: string;
-    };
+    showParent?: boolean;
+    extraIcon?: string;
   };
   showTooltip?: boolean;
+  parentId?: number;
+  pathList?: number[];
 };
 
 export type themeColorsType = {
-  rgb: string;
+  color: string;
   themeColor: string;
 };
 

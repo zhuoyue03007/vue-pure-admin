@@ -8,8 +8,9 @@ export interface ContextProps {
   split: string;
 }
 
+/** 切割面板组件 */
 export default defineComponent({
-  name: "splitPane",
+  name: "SplitPane",
   components: { resizer },
   props: {
     splitSet: {
@@ -35,16 +36,12 @@ export default defineComponent({
       props.splitSet?.split
     ]);
 
-    const userSelect = computed(() => {
-      return active.value ? "none" : "";
-    });
-
     const cursor = computed(() => {
       return active.value
         ? props.splitSet?.split === "vertical"
-          ? "col-resize"
-          : "row-resize"
-        : "";
+          ? { cursor: "col-resize" }
+          : { cursor: "row-resize" }
+        : { cursor: "default" };
     });
 
     const onClick = (): void => {
@@ -109,22 +106,26 @@ export default defineComponent({
       <>
         <div
           class="vue-splitter-container clearfix"
-          style={(unref(cursor), unref(userSelect))}
+          style={unref(cursor)}
           onMouseup={() => onMouseUp()}
-          onMousemove={() => onMouseMove(event)}>
+          onMousemove={() => onMouseMove(event)}
+        >
           <div
             class={unref(leftClass)}
-            style={{ [unref(type)]: unref(percent) + "%" }}>
+            style={{ [unref(type)]: unref(percent) + "%" }}
+          >
             {ctx.slots.paneL()}
           </div>
           <resizer
             style={`${unref([resizeType])}:${unref(percent)}%`}
             split={props.splitSet?.split}
             onMousedown={() => onMouseDown()}
-            onClick={() => onClick()}></resizer>
+            onClick={() => onClick()}
+          ></resizer>
           <div
             class={unref(rightClass)}
-            style={{ [unref(type)]: 100 - unref(percent) + "%" }}>
+            style={{ [unref(type)]: 100 - unref(percent) + "%" }}
+          >
             {ctx.slots.paneR()}
           </div>
           <div v-show={unref(active)} class="vue-splitter-container-mask"></div>

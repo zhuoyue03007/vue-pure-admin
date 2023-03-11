@@ -1,30 +1,25 @@
-import { $t } from "/@/plugins/i18n";
-import Layout from "/@/layout/index.vue";
+import { $t } from "@/plugins/i18n";
+import { home } from "@/router/enums";
+const Layout = () => import("@/layout/index.vue");
 
-const homeRouter = {
+export default {
   path: "/",
-  name: "home",
+  name: "Home",
   component: Layout,
   redirect: "/welcome",
   meta: {
-    icon: "HomeFilled",
+    icon: "homeFilled",
     title: $t("menus.hshome"),
-    showLink: true,
-    i18n: true,
-    rank: 0
+    rank: home
   },
   children: [
     {
       path: "/welcome",
-      name: "welcome",
-      component: () => import("/@/views/welcome.vue"),
+      name: "Welcome",
+      component: () => import("@/views/welcome/index.vue"),
       meta: {
-        title: $t("menus.hshome"),
-        i18n: true,
-        showLink: true
+        title: $t("menus.hshome")
       }
     }
   ]
-};
-
-export default homeRouter;
+} as RouteConfigsTable;

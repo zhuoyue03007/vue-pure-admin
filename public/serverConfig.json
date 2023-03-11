@@ -1,5 +1,5 @@
 {
-  "Version": "2.8.0",
+  "Version": "3.9.7",
   "Title": "PureAdmin",
   "FixedHeader": true,
   "HiddenSideBar": false,
@@ -16,6 +16,9 @@
   "EpThemeColor": "#409EFF",
   "ShowLogo": true,
   "ShowModel": "smart",
+  "MenuArrowIconNoTransition": true,
+  "CachingAsyncRoutes": false,
+  "TooltipEffect": "light",
   "MapConfigure": {
     "amapKey": "97b3248d1553172e81f168cf94ea667e",
     "options": {

@@ -1,15 +1,11 @@
-import { App } from "vue";
 import reNormalCountTo from "./src/normal";
 import reboundCountTo from "./src/rebound";
+import { withInstall } from "@pureadmin/utils";
 
-export const ReNormalCountTo = Object.assign(reNormalCountTo, {
-  install(app: App) {
-    app.component(reNormalCountTo.name, reNormalCountTo);
-  }
-});
+/** 普通数字动画组件 */
+const ReNormalCountTo = withInstall(reNormalCountTo);
 
-export const ReboundCountTo = Object.assign(reboundCountTo, {
-  install(app: App) {
-    app.component(reboundCountTo.name, reboundCountTo);
-  }
-});
+/** 回弹式数字动画组件 */
+const ReboundCountTo = withInstall(reboundCountTo);
+
+export { ReNormalCountTo, ReboundCountTo };

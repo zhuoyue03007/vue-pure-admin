@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import AMapLoader from "@amap/amap-jsapi-loader";
 import { reactive, getCurrentInstance, onBeforeMount, onUnmounted } from "vue";
-import { mapJson } from "/@/api/mock";
-import { deviceDetection } from "/@/utils/deviceDetection";
-import car from "/@/assets/car.png";
+import { deviceDetection } from "@pureadmin/utils";
+import AMapLoader from "@amap/amap-jsapi-loader";
+import { mapJson } from "@/api/mock";
+import car from "@/assets/car.png";
 
 export interface MapConfigureInter {
   on: Fn;
@@ -15,13 +15,9 @@ export interface MapConfigureInter {
   plugin?: Fn;
 }
 
-type resultType = {
-  info: Array<undefined>;
-};
-
-export interface mapInter {
-  loading: boolean;
-}
+defineOptions({
+  name: "Amap"
+});
 
 let MarkerCluster;
 let map: MapConfigureInter;
@@ -43,8 +39,8 @@ const complete = (): void => {
 
 onBeforeMount(() => {
   if (!instance) return;
-  let { MapConfigure } = instance.appContext.config.globalProperties.$config;
-  let { options } = MapConfigure;
+  const { MapConfigure } = instance.appContext.config.globalProperties.$config;
+  const { options } = MapConfigure;
 
   AMapLoader.load({
     key: MapConfigure.amapKey,
@@ -71,10 +67,10 @@ onBeforeMount(() => {
         gridSize: 80,
         maxZoom: 14,
         renderMarker(ctx) {
-          let { marker, data } = ctx;
+          const { marker, data } = ctx;
           if (Array.isArray(data) && data[0]) {
-            var { driver, plateNumber, orientation } = data[0];
-            var content = `<img style="transform: scale(1) rotate(${
+            const { driver, plateNumber, orientation } = data[0];
+            const content = `<img style="transform: scale(1) rotate(${
               360 - Number(orientation)
             }deg);" src='${car}' />`;
             marker.setContent(content);
@@ -96,8 +92,8 @@ onBeforeMount(() => {
 
       // 获取模拟车辆信息
       mapJson()
-        .then((res: resultType) => {
-          let points: object = res.info.map((v: any) => {
+        .then(({ data }) => {
+          const points: object = data.map(v => {
             return {
               lnglat: [v.lng, v.lat],
               ...v
@@ -126,7 +122,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div id="mapview" ref="mapview" v-loading="mapSet.loading"></div>
+  <div id="mapview" ref="mapview" v-loading="mapSet.loading" />
 </template>
 
 <style lang="scss" scoped>

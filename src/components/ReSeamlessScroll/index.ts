@@ -1,10 +1,7 @@
-import { App } from "vue";
 import reSeamlessScroll from "./src/index.vue";
+import { withInstall } from "@pureadmin/utils";
 
-export const ReSeamlessScroll = Object.assign(reSeamlessScroll, {
-  install(app: App) {
-    app.component(reSeamlessScroll.name, reSeamlessScroll);
-  }
-});
+/** 无缝滚动组件 */
+export const ReSeamlessScroll = withInstall(reSeamlessScroll);
 
 export default ReSeamlessScroll;

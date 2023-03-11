@@ -1,31 +1,32 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import NoticeList from "./noticeList.vue";
 import { noticesData } from "./data";
+import NoticeList from "./noticeList.vue";
+import Bell from "@iconify-icons/ep/bell";
 
-const activeName = ref(noticesData[0].name);
+const noticesNum = ref(0);
 const notices = ref(noticesData);
+const activeKey = ref(noticesData[0].key);
 
-let noticesNum = ref(0);
-notices.value.forEach(notice => {
-  noticesNum.value += notice.list.length;
-});
+notices.value.map(v => (noticesNum.value += v.list.length));
 </script>
 
 <template>
   <el-dropdown trigger="click" placement="bottom-end">
-    <span class="dropdown-badge">
+    <span class="dropdown-badge navbar-bg-hover select-none">
       <el-badge :value="noticesNum" :max="99">
-        <el-icon class="header-notice-icon"><bell /></el-icon>
+        <span class="header-notice-icon">
+          <IconifyIconOffline :icon="Bell" />
+        </span>
       </el-badge>
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-tabs v-model="activeName" class="dropdown-tabs">
+        <el-tabs :stretch="true" v-model="activeKey" class="dropdown-tabs">
           <template v-for="item in notices" :key="item.key">
             <el-tab-pane
               :label="`${item.name}(${item.list.length})`"
-              :name="item.name"
+              :name="`${item.key}`"
             >
               <el-scrollbar max-height="330px">
                 <div class="noticeList-container">
@@ -55,26 +56,22 @@ notices.value.forEach(notice => {
 }
 
 .dropdown-tabs {
-  width: 336px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
-  border-radius: 4px;
+  width: 330px;
+
+  .noticeList-container {
+    padding: 15px 24px 0 24px;
+  }
 
   :deep(.el-tabs__header) {
     margin: 0;
-  }
-
-  :deep(.el-tabs__nav-scroll) {
-    display: flex;
-    justify-content: center;
   }
 
   :deep(.el-tabs__nav-wrap)::after {
     height: 1px;
   }
 
-  :deep(.noticeList-container) {
-    padding: 15px 24px 0 24px;
+  :deep(.el-tabs__nav-wrap) {
+    padding: 0 36px 0 36px;
   }
 }
 </style>

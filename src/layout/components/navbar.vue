@@ -1,136 +1,115 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
-import { emitter } from "/@/utils/mitt";
+import Search from "./search/index.vue";
 import Notice from "./notice/index.vue";
-import avatars from "/@/assets/avatars.jpg";
-import { transformI18n } from "/@/plugins/i18n";
-import Hamburger from "./sidebar/hamBurger.vue";
-import { useRouter, useRoute } from "vue-router";
-import { storageSession } from "/@/utils/storage";
+import mixNav from "./sidebar/mixNav.vue";
+import { useNav } from "@/layout/hooks/useNav";
 import Breadcrumb from "./sidebar/breadCrumb.vue";
-import { useAppStoreHook } from "/@/store/modules/app";
-import { unref, watch, getCurrentInstance } from "vue";
-import { deviceDetection } from "/@/utils/deviceDetection";
-import screenfull from "../components/screenfull/index.vue";
-import globalization from "/@/assets/svg/globalization.svg";
-import { useEpThemeStoreHook } from "/@/store/modules/epTheme";
+import topCollapse from "./sidebar/topCollapse.vue";
+import { useTranslationLang } from "../hooks/useTranslationLang";
+import globalization from "@/assets/svg/globalization.svg?component";
+import LogoutCircleRLine from "@iconify-icons/ri/logout-circle-r-line";
+import Setting from "@iconify-icons/ri/settings-3-line";
+import Check from "@iconify-icons/ep/check";
 
-const instance =
-  getCurrentInstance().appContext.config.globalProperties.$storage;
-const pureApp = useAppStoreHook();
-const router = useRouter();
-const route = useRoute();
-let usename = storageSession.getItem("info")?.username;
-const { locale } = useI18n();
+const {
+  layout,
+  device,
+  logout,
+  onPanel,
+  pureApp,
+  username,
+  avatarsStyle,
+  toggleSideBar,
+  getDropdownItemStyle,
+  getDropdownItemClass
+} = useNav();
 
-const getDropdownItemStyle = computed(() => {
-  return t => {
-    return {
-      background: locale.value === t ? useEpThemeStoreHook().epThemeColor : "",
-      color: locale.value === t ? "#f4f4f5" : "#000"
-    };
-  };
-});
-
-watch(
-  () => locale.value,
-  () => {
-    //@ts-ignore
-    document.title = transformI18n(
-      //@ts-ignore
-      unref(route.meta.title),
-      unref(route.meta.i18n)
-    ); // 动态title
-  }
-);
-
-// 退出登录
-const logout = (): void => {
-  storageSession.removeItem("info");
-  router.push("/login");
-};
-
-function onPanel() {
-  emitter.emit("openPanel");
-}
-
-function toggleSideBar() {
-  pureApp.toggleSideBar();
-}
-
-// 简体中文
-function translationCh() {
-  instance.locale = { locale: "zh" };
-  locale.value = "zh";
-}
-
-// English
-function translationEn() {
-  instance.locale = { locale: "en" };
-  locale.value = "en";
-}
+const { t, locale, translationCh, translationEn } = useTranslationLang();
 </script>
 
 <template>
-  <div class="navbar">
-    <Hamburger
-      :is-active="pureApp.sidebar.opened"
+  <div
+    class="navbar bg-[#fff] shadow-sm shadow-[rgba(0, 21, 41, 0.08)] dark:shadow-[#0d0d0d]"
+  >
+    <topCollapse
+      v-if="device === 'mobile'"
       class="hamburger-container"
+      :is-active="pureApp.sidebar.opened"
       @toggleClick="toggleSideBar"
     />
 
-    <Breadcrumb class="breadcrumb-container" />
+    <Breadcrumb
+      v-if="layout !== 'mix' && device !== 'mobile'"
+      class="breadcrumb-container"
+    />
 
-    <div class="vertical-header-right">
+    <mixNav v-if="layout === 'mix'" />
+
+    <div v-if="layout === 'vertical'" class="vertical-header-right">
+      <!-- 菜单搜索 -->
+      <Search />
       <!-- 通知 -->
       <Notice id="header-notice" />
-      <!-- 全屏 -->
-      <screenfull id="header-screenfull" v-show="!deviceDetection()" />
       <!-- 国际化 -->
       <el-dropdown id="header-translation" trigger="click">
-        <globalization />
+        <globalization
+          class="navbar-bg-hover w-[40px] h-[48px] p-[11px] cursor-pointer outline-none"
+        />
         <template #dropdown>
           <el-dropdown-menu class="translation">
             <el-dropdown-item
-              :style="getDropdownItemStyle('zh')"
+              :style="getDropdownItemStyle(locale, 'zh')"
+              :class="['dark:!text-white', getDropdownItemClass(locale, 'zh')]"
               @click="translationCh"
-              ><el-icon class="check-zh" v-show="locale === 'zh'"
-                ><check /></el-icon
-              >简体中文</el-dropdown-item
             >
+              <IconifyIconOffline
+                class="check-zh"
+                v-show="locale === 'zh'"
+                :icon="Check"
+              />
+              简体中文
+            </el-dropdown-item>
             <el-dropdown-item
-              :style="getDropdownItemStyle('en')"
+              :style="getDropdownItemStyle(locale, 'en')"
+              :class="['dark:!text-white', getDropdownItemClass(locale, 'en')]"
               @click="translationEn"
-              ><el-icon class="check-en" v-show="locale === 'en'"
-                ><check /></el-icon
-              >English</el-dropdown-item
             >
+              <span class="check-en" v-show="locale === 'en'">
+                <IconifyIconOffline :icon="Check" />
+              </span>
+              English
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <!-- 退出登陆 -->
+      <!-- 退出登录 -->
       <el-dropdown trigger="click">
-        <span class="el-dropdown-link">
-          <img :src="avatars" />
-          <p>{{ usename }}</p>
+        <span class="el-dropdown-link navbar-bg-hover select-none">
+          <img
+            src="https://avatars.githubusercontent.com/u/44761321?v=4"
+            :style="avatarsStyle"
+          />
+          <p v-if="username" class="dark:text-white">{{ username }}</p>
         </span>
         <template #dropdown>
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="logout">
-              <i class="ri-logout-circle-r-line"></i
-              >{{ $t("buttons.hsLoginOut") }}</el-dropdown-item
-            >
+              <IconifyIconOffline
+                :icon="LogoutCircleRLine"
+                style="margin: 5px"
+              />
+              {{ t("buttons.hsLoginOut") }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <el-icon
-        class="el-icon-setting"
-        :title="$t('buttons.hssystemSet')"
+      <span
+        class="set-icon navbar-bg-hover"
+        :title="t('buttons.hssystemSet')"
         @click="onPanel"
       >
-        <Setting />
-      </el-icon>
+        <IconifyIconOffline :icon="Setting" />
+      </span>
     </div>
   </div>
 </template>
@@ -140,16 +119,12 @@ function translationEn() {
   width: 100%;
   height: 48px;
   overflow: hidden;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
     line-height: 48px;
     height: 100%;
     float: left;
     cursor: pointer;
-    transition: background 0.3s;
-    -webkit-tap-highlight-color: transparent;
   }
 
   .vertical-header-right {
@@ -160,33 +135,7 @@ function translationEn() {
     color: #000000d9;
     justify-content: flex-end;
 
-    :deep(.dropdown-badge) {
-      &:hover {
-        background: #f6f6f6;
-      }
-    }
-
-    .screen-full {
-      cursor: pointer;
-
-      &:hover {
-        background: #f6f6f6;
-      }
-    }
-
-    .globalization {
-      height: 48px;
-      width: 40px;
-      padding: 11px;
-      cursor: pointer;
-
-      &:hover {
-        background: #f6f6f6;
-      }
-    }
-
     .el-dropdown-link {
-      width: 100px;
       height: 48px;
       padding: 10px;
       display: flex;
@@ -194,10 +143,6 @@ function translationEn() {
       justify-content: space-around;
       cursor: pointer;
       color: #000000d9;
-
-      &:hover {
-        background: #f6f6f6;
-      }
 
       p {
         font-size: 14px;
@@ -209,35 +154,17 @@ function translationEn() {
         border-radius: 50%;
       }
     }
-
-    .el-icon-setting {
-      height: 48px;
-      width: 38px;
-      padding: 12px;
-      display: flex;
-      cursor: pointer;
-      align-items: center;
-
-      &:hover {
-        background: #f6f6f6;
-      }
-    }
   }
 
   .breadcrumb-container {
     float: left;
+    margin-left: 16px;
   }
 }
 
 .translation {
-  .el-dropdown-menu__item {
-    padding: 5px 40px !important;
-  }
-
-  .el-dropdown-menu__item:focus,
-  .el-dropdown-menu__item:not(.is-disabled):hover {
-    color: #606266;
-    background: #f0f0f0;
+  ::v-deep(.el-dropdown-menu__item) {
+    padding: 5px 40px;
   }
 
   .check-zh {
@@ -254,16 +181,10 @@ function translationEn() {
 .logout {
   max-width: 120px;
 
-  .el-dropdown-menu__item {
+  ::v-deep(.el-dropdown-menu__item) {
     min-width: 100%;
     display: inline-flex;
     flex-wrap: wrap;
-  }
-
-  .el-dropdown-menu__item:focus,
-  .el-dropdown-menu__item:not(.is-disabled):hover {
-    color: #606266;
-    background: #f0f0f0;
   }
 }
 </style>

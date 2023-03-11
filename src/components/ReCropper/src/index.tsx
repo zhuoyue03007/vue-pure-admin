@@ -8,8 +8,7 @@ import {
   computed,
   PropType
 } from "vue";
-import { templateRef } from "@vueuse/core";
-import { useAttrs } from "/@/utils/useAttrs";
+import { useAttrs } from "@pureadmin/utils";
 
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.css";
@@ -74,11 +73,11 @@ const props = {
 };
 
 export default defineComponent({
-  name: "Cropper",
+  name: "ReCropper",
   props,
   setup(props) {
     const cropper: any = ref<Nullable<Cropper>>(null);
-    const imgElRef = templateRef<HTMLImageElement | null>("imgElRef", null);
+    const imgElRef = ref();
 
     const isReady = ref<boolean>(false);
 
@@ -133,7 +132,8 @@ export default defineComponent({
       <>
         <div
           class={useAttrs({ excludeListeners: true, excludeKeys: ["class"] })}
-          style={this.getWrapperStyle}>
+          style={this.getWrapperStyle}
+        >
           <img
             ref="imgElRef"
             src={this.props.src}

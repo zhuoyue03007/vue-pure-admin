@@ -1,10 +1,7 @@
-import { App } from "vue";
 import reCropper from "./src";
+import { withInstall } from "@pureadmin/utils";
 
-export const ReCropper = Object.assign(reCropper, {
-  install(app: App) {
-    app.component(reCropper.name, reCropper);
-  }
-});
+/** 图片裁剪组件 */
+export const ReCropper = withInstall(reCropper);
 
 export default ReCropper;

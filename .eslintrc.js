@@ -37,7 +37,7 @@ module.exports = {
     "eslint:recommended",
     "@vue/typescript/recommended",
     "@vue/prettier",
-    "@vue/prettier/@typescript-eslint"
+    "@vue/eslint-config-typescript"
   ],
   parser: "vue-eslint-parser",
   parserOptions: {
@@ -49,7 +49,34 @@ module.exports = {
       jsx: true
     }
   },
+  overrides: [
+    {
+      files: ["*.ts", "*.vue"],
+      rules: {
+        "no-undef": "off"
+      }
+    },
+    {
+      files: ["*.vue"],
+      parser: "vue-eslint-parser",
+      parserOptions: {
+        parser: "@typescript-eslint/parser",
+        extraFileExtensions: [".vue"],
+        ecmaVersion: "latest",
+        ecmaFeatures: {
+          jsx: true
+        }
+      },
+      rules: {
+        "no-undef": "off"
+      }
+    }
+  ],
   rules: {
+    "vue/no-v-html": "off",
+    "vue/require-default-prop": "off",
+    "vue/require-explicit-emits": "off",
+    "vue/multi-word-component-names": "off",
     "@typescript-eslint/no-explicit-any": "off", // any
     "no-debugger": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off", // setup()
@@ -57,6 +84,18 @@ module.exports = {
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
+    "vue/html-self-closing": [
+      "error",
+      {
+        html: {
+          void: "always",
+          normal: "always",
+          component: "always"
+        },
+        svg: "always",
+        math: "always"
+      }
+    ],
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
@@ -78,4 +117,4 @@ module.exports = {
       }
     ]
   }
-};
+}

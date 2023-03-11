@@ -1,12 +1,7 @@
-import { App } from "vue";
 import amap from "./src/Amap.vue";
+import { withInstall } from "@pureadmin/utils";
 
-export const Amap = Object.assign(amap, {
-  install(app: App) {
-    app.component(amap.name, amap);
-  }
-});
+/** 高德地图组件 */
+export const Amap = withInstall(amap);
 
-export default {
-  Amap
-};
+export default Amap;

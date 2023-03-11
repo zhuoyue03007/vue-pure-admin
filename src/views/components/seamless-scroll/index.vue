@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref, reactive, unref } from "vue";
-import { templateRef } from "@vueuse/core";
-import SeamlessScroll from "/@/components/ReSeamlessScroll";
+import SeamlessScroll from "@/components/ReSeamlessScroll";
 
-// eslint-disable-next-line no-undef
-const scroll = templateRef<ElRef | null>("scroll", null);
+defineOptions({
+  name: "SeamlessScroll"
+});
 
-let listData = ref([
+const scroll = ref();
+
+const listData = ref([
   {
     title: "无缝滚动第一行无缝滚动第一行！！！！！！！！！！"
   },
@@ -36,60 +38,71 @@ let listData = ref([
   }
 ]);
 
-let classOption = reactive({
+const classOption = reactive({
   direction: "top"
 });
 
 function changeDirection(val) {
-  // @ts-ignore
-  unref(scroll).reset();
+  (unref(scroll) as any).reset();
   unref(classOption).direction = val;
 }
 </script>
 
 <template>
   <el-space wrap>
-    <el-card class="box-card">
+    <el-card class="box-card" shadow="never">
       <template #header>
         <div class="card-header">
           <span>无缝滚动示例</span>
-          <el-button class="button" type="text" @click="changeDirection('top')">
+          <el-button
+            class="button"
+            link
+            type="primary"
+            @click="changeDirection('top')"
+          >
             <span
               :style="{ color: classOption.direction === 'top' ? 'red' : '' }"
-              >向上滚动</span
             >
+              向上滚动
+            </span>
           </el-button>
           <el-button
             class="button"
-            type="text"
+            link
+            type="primary"
             @click="changeDirection('bottom')"
           >
             <span
               :style="{
                 color: classOption.direction === 'bottom' ? 'red' : ''
               }"
-              >向下滚动</span
             >
+              向下滚动
+            </span>
           </el-button>
           <el-button
             class="button"
-            type="text"
+            link
+            type="primary"
             @click="changeDirection('left')"
           >
             <span
               :style="{ color: classOption.direction === 'left' ? 'red' : '' }"
-              >向左滚动</span
             >
+              向左滚动
+            </span>
           </el-button>
           <el-button
             class="button"
-            type="text"
+            link
+            type="primary"
             @click="changeDirection('right')"
           >
             <span
               :style="{ color: classOption.direction === 'right' ? 'red' : '' }"
-              >向右滚动</span
             >
+              向右滚动
+            </span>
           </el-button>
         </div>
       </template>
@@ -101,7 +114,7 @@ function changeDirection(val) {
       >
         <ul class="item">
           <li v-for="(item, index) in listData" :key="index">
-            <span class="title" v-text="item.title"></span>
+            <span class="title" v-text="item.title" />
           </li>
         </ul>
       </SeamlessScroll>

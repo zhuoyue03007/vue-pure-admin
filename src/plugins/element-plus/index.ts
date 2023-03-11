@@ -43,7 +43,22 @@ import {
   ElEmpty,
   ElCollapse,
   ElCollapseItem,
+  ElTable,
+  ElTableColumn,
+  ElLink,
+  ElColorPicker,
+  ElSelect,
+  ElOption,
+  ElTimeline,
+  ElTimelineItem,
+  ElResult,
+  ElSteps,
+  ElStep,
+  ElTree,
   ElTreeV2,
+  ElPopconfirm,
+  ElCheckbox,
+  ElCheckboxGroup,
   // 指令
   ElLoading,
   ElInfiniteScroll
@@ -96,59 +111,22 @@ const components = [
   ElEmpty,
   ElCollapse,
   ElCollapseItem,
-  ElTreeV2
-];
-
-// https://element-plus.org/zh-CN/component/icon.html
-import {
-  Check,
-  Menu,
-  HomeFilled,
-  SetUp,
-  Edit,
-  Setting,
-  Lollipop,
-  Link,
-  Position,
-  Histogram,
-  RefreshRight,
-  ArrowDown,
-  Close,
-  CloseBold,
-  Bell,
-  Guide,
-  User,
-  Iphone,
-  Location,
-  Tickets,
-  OfficeBuilding,
-  Notebook
-} from "@element-plus/icons-vue";
-
-// Icon
-export const iconComponents = [
-  Check,
-  Menu,
-  HomeFilled,
-  SetUp,
-  Edit,
-  Setting,
-  Lollipop,
-  Link,
-  Position,
-  Histogram,
-  RefreshRight,
-  ArrowDown,
-  Close,
-  CloseBold,
-  Bell,
-  Guide,
-  User,
-  Iphone,
-  Location,
-  Tickets,
-  OfficeBuilding,
-  Notebook
+  ElTree,
+  ElTreeV2,
+  ElPopconfirm,
+  ElCheckbox,
+  ElCheckboxGroup,
+  ElTable,
+  ElTableColumn,
+  ElLink,
+  ElColorPicker,
+  ElSelect,
+  ElOption,
+  ElTimeline,
+  ElTimelineItem,
+  ElResult,
+  ElSteps,
+  ElStep
 ];
 
 export function useElementPlus(app: App) {
@@ -159,9 +137,5 @@ export function useElementPlus(app: App) {
   // 注册指令
   plugins.forEach(plugin => {
     app.use(plugin);
-  });
-  // 注册图标
-  iconComponents.forEach((component: Component) => {
-    app.component(component.name, component);
   });
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { PropType } from "vue";
-import NoticeItem from "./noticeItem.vue";
 import { ListItem } from "./data";
+import NoticeItem from "./noticeItem.vue";
 
 const props = defineProps({
   list: {
@@ -17,7 +17,7 @@ const props = defineProps({
       v-for="(item, index) in props.list"
       :noticeItem="item"
       :key="index"
-    ></NoticeItem>
+    />
   </div>
-  <el-empty v-else description="暂无数据"></el-empty>
+  <el-empty v-else description="暂无数据" />
 </template>

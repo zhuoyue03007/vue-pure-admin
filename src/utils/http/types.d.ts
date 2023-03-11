@@ -18,13 +18,13 @@ export interface PureHttpError extends AxiosError {
   isCancelRequest?: boolean;
 }
 
-export interface PureHttpResoponse extends AxiosResponse {
+export interface PureHttpResponse extends AxiosResponse {
   config: PureHttpRequestConfig;
 }
 
 export interface PureHttpRequestConfig extends AxiosRequestConfig {
   beforeRequestCallback?: (request: PureHttpRequestConfig) => void;
-  beforeResponseCallback?: (response: PureHttpResoponse) => void;
+  beforeResponseCallback?: (response: PureHttpResponse) => void;
 }
 
 export default class PureHttp {
@@ -34,6 +34,14 @@ export default class PureHttp {
     param?: AxiosRequestConfig,
     axiosConfig?: PureHttpRequestConfig
   ): Promise<T>;
-  post<T>(url: string, params?: T, config?: PureHttpRequestConfig): Promise<T>;
-  get<T>(url: string, params?: T, config?: PureHttpRequestConfig): Promise<T>;
+  post<T, P>(
+    url: string,
+    params?: T,
+    config?: PureHttpRequestConfig
+  ): Promise<P>;
+  get<T, P>(
+    url: string,
+    params?: T,
+    config?: PureHttpRequestConfig
+  ): Promise<P>;
 }

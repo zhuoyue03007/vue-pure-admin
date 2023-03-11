@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ListItem } from "./data";
 import { ref, PropType, nextTick } from "vue";
+import { useNav } from "@/layout/hooks/useNav";
+import { deviceDetection } from "@pureadmin/utils";
 
 const props = defineProps({
   noticeItem: {
@@ -10,9 +12,11 @@ const props = defineProps({
 });
 
 const titleRef = ref(null);
-const descriptionRef = ref(null);
 const titleTooltip = ref(false);
+const descriptionRef = ref(null);
 const descriptionTooltip = ref(false);
+const { tooltipEffect } = useNav();
+const isMobile = deviceDetection();
 
 function hoverTitle() {
   nextTick(() => {
@@ -24,11 +28,11 @@ function hoverTitle() {
 
 function hoverDescription(event, description) {
   // currentWidth 为文本在页面中所占的宽度，创建标签，加入到页面，获取currentWidth ,最后在移除
-  let tempTag = document.createElement("span");
+  const tempTag = document.createElement("span");
   tempTag.innerText = description;
   tempTag.className = "getDescriptionWidth";
   document.querySelector("body").appendChild(tempTag);
-  let currentWidth = (
+  const currentWidth = (
     document.querySelector(".getDescriptionWidth") as HTMLSpanElement
   ).offsetWidth;
   document.querySelector(".getDescriptionWidth").remove();
@@ -44,20 +48,24 @@ function hoverDescription(event, description) {
 </script>
 
 <template>
-  <div class="notice-container">
+  <div
+    class="notice-container border-b-[1px] border-solid border-[#f0f0f0] dark:border-[#303030]"
+  >
     <el-avatar
       v-if="props.noticeItem.avatar"
       :size="30"
       :src="props.noticeItem.avatar"
       class="notice-container-avatar"
-    ></el-avatar>
+    />
     <div class="notice-container-text">
-      <div class="notice-text-title">
+      <div class="notice-text-title text-[#000000d9] dark:text-white">
         <el-tooltip
           popper-class="notice-title-popper"
+          :effect="tooltipEffect"
           :disabled="!titleTooltip"
           :content="props.noticeItem.title"
           placement="top-start"
+          :enterable="!isMobile"
         >
           <div
             ref="titleRef"
@@ -72,12 +80,14 @@ function hoverDescription(event, description) {
           :type="props.noticeItem?.status"
           size="small"
           class="notice-title-extra"
-          >{{ props.noticeItem?.extra }}
+        >
+          {{ props.noticeItem?.extra }}
         </el-tag>
       </div>
 
       <el-tooltip
         popper-class="notice-title-popper"
+        :effect="tooltipEffect"
         :disabled="!descriptionTooltip"
         :content="props.noticeItem.description"
         placement="top-start"
@@ -90,7 +100,7 @@ function hoverDescription(event, description) {
           {{ props.noticeItem.description }}
         </div>
       </el-tooltip>
-      <div class="notice-text-datetime">
+      <div class="notice-text-datetime text-[#00000073] dark:text-white">
         {{ props.noticeItem.datetime }}
       </div>
     </div>
@@ -108,7 +118,7 @@ function hoverDescription(event, description) {
   align-items: flex-start;
   justify-content: space-between;
   padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
+  // border-bottom: 1px solid #f0f0f0;
 
   .notice-container-avatar {
     margin-right: 16px;
@@ -127,7 +137,6 @@ function hoverDescription(event, description) {
       font-weight: 400;
       font-size: 14px;
       line-height: 1.5715;
-      color: rgba(0, 0, 0, 0.85);
       cursor: pointer;
 
       .notice-title-content {
@@ -149,7 +158,6 @@ function hoverDescription(event, description) {
     .notice-text-datetime {
       font-size: 12px;
       line-height: 1.5715;
-      color: rgba(0, 0, 0, 0.45);
     }
 
     .notice-text-description {

@@ -1,36 +1,46 @@
-// 根据角色动态生成路由
+// 模拟后端动态生成路由
 import { MockMethod } from "vite-plugin-mock";
+import { system, permission, frame, tabs } from "@/router/enums";
 
-// http://mockjs.com/examples.html#Object
+/**
+ * roles：页面级别权限，这里模拟二种 "admin"、"common"
+ * admin：管理员角色
+ * common：普通角色
+ */
+
 const systemRouter = {
   path: "/system",
-  name: "system",
-  redirect: "/system/user/index",
   meta: {
-    icon: "Setting",
+    icon: "setting",
     title: "menus.hssysManagement",
-    i18n: true,
-    showLink: true,
-    rank: 6
+    rank: system
   },
   children: [
     {
       path: "/system/user/index",
-      name: "user",
+      name: "User",
       meta: {
-        title: "menus.hsBaseinfo",
-        i18n: true,
-        showLink: true
+        icon: "flUser",
+        title: "menus.hsUser",
+        roles: ["admin"]
       }
     },
     {
-      path: "/system/dict/index",
-      name: "dict",
+      path: "/system/role/index",
+      name: "Role",
       meta: {
-        title: "menus.hsDict",
-        i18n: true,
-        showLink: true,
-        keepAlive: true
+        icon: "role",
+        title: "menus.hsRole",
+        roles: ["admin"]
+      }
+    },
+    {
+      path: "/system/dept/index",
+      name: "Dept",
+      meta: {
+        icon: "dept",
+        title: "menus.hsDept",
+        roles: ["admin"]
       }
     }
   ]
@@ -38,33 +48,109 @@ const systemRouter = {
 
 const permissionRouter = {
   path: "/permission",
-  name: "permission",
-  redirect: "/permission/page/index",
   meta: {
     title: "menus.permission",
-    icon: "Lollipop",
-    i18n: true,
-    showLink: true,
-    rank: 3
+    icon: "lollipop",
+    rank: permission
   },
   children: [
     {
       path: "/permission/page/index",
-      name: "permissionPage",
+      name: "PermissionPage",
       meta: {
         title: "menus.permissionPage",
-        i18n: true,
-        showLink: true
+        roles: ["admin", "common"]
       }
     },
     {
       path: "/permission/button/index",
-      name: "permissionButton",
+      name: "PermissionButton",
       meta: {
         title: "menus.permissionButton",
-        i18n: true,
-        showLink: true,
-        authority: []
+        roles: ["admin", "common"],
+        auths: ["btn_add", "btn_edit", "btn_delete"]
+      }
+    }
+  ]
+};
+
+const frameRouter = {
+  path: "/iframe",
+  meta: {
+    icon: "monitor",
+    title: "menus.hsExternalPage",
+    rank: frame
+  },
+  children: [
+    {
+      path: "/external",
+      name: "https://yiming_chang.gitee.io/pure-admin-doc",
+      meta: {
+        title: "menus.externalLink",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/pure",
+      name: "FramePure",
+      meta: {
+        title: "menus.hsPureDocument",
+        frameSrc: "https://yiming_chang.gitee.io/pure-admin-doc",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/ep",
+      name: "FrameEp",
+      meta: {
+        title: "menus.hsEpDocument",
+        frameSrc: "https://element-plus.org/zh-CN/",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/vue3",
+      name: "FrameVue",
+      meta: {
+        title: "menus.hsVueDocument",
+        frameSrc: "https://cn.vuejs.org/",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/vite",
+      name: "FrameVite",
+      meta: {
+        title: "menus.hsViteDocument",
+        frameSrc: "https://cn.vitejs.dev/",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/pinia",
+      name: "FramePinia",
+      meta: {
+        title: "menus.hsPiniaDocument",
+        frameSrc: "https://pinia.vuejs.org/zh/index.html",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/vue-router",
+      name: "FrameRouter",
+      meta: {
+        title: "menus.hsRouterDocument",
+        frameSrc: "https://router.vuejs.org/zh/",
+        roles: ["admin", "common"]
+      }
+    },
+    {
+      path: "/iframe/tailwindcss",
+      name: "FrameTailwindcss",
+      meta: {
+        title: "menus.hsTailwindcssDocument",
+        frameSrc: "https://tailwindcss.com/docs/installation",
+        roles: ["admin", "common"]
       }
     }
   ]
@@ -72,65 +158,53 @@ const permissionRouter = {
 
 const tabsRouter = {
   path: "/tabs",
-  name: "reTabs",
-  redirect: "/tabs/index",
   meta: {
-    icon: "IF-team-icontabs",
+    icon: "IF-pure-iconfont-tabs",
     title: "menus.hstabs",
-    i18n: true,
-    showLink: true,
-    rank: 8
+    rank: tabs
   },
   children: [
     {
       path: "/tabs/index",
-      name: "reTabs",
+      name: "Tabs",
       meta: {
         title: "menus.hstabs",
-        showLink: true,
-        i18n: true
+        roles: ["admin", "common"]
       }
     },
+    // query 传参模式
     {
-      path: "/tabs/detail",
-      name: "tabDetail",
+      path: "/tabs/query-detail",
+      name: "TabQueryDetail",
       meta: {
-        title: "",
+        // 不在menu菜单中显示
         showLink: false,
-        i18n: false,
-        dynamicLevel: 3,
-        refreshRedirect: "/tabs/index"
+        roles: ["admin", "common"]
+      }
+    },
+    // params 传参模式
+    {
+      path: "/tabs/params-detail/:id",
+      component: "params-detail",
+      name: "TabParamsDetail",
+      meta: {
+        // 不在menu菜单中显示
+        showLink: false,
+        roles: ["admin", "common"]
       }
     }
   ]
 };
 
-// 添加不同按钮权限到/permission/button页面中
-function setDifAuthority(authority, routes) {
-  routes.children[1].meta.authority = [authority];
-  return routes;
-}
-
 export default [
   {
     url: "/getAsyncRoutes",
     method: "get",
-    response: ({ query }) => {
-      if (query.name === "admin") {
-        return {
-          code: 0,
-          info: [
-            tabsRouter,
-            systemRouter,
-            setDifAuthority("v-admin", permissionRouter)
-          ]
-        };
-      } else {
-        return {
-          code: 0,
-          info: [tabsRouter, setDifAuthority("v-test", permissionRouter)]
-        };
-      }
+    response: () => {
+      return {
+        success: true,
+        data: [systemRouter, permissionRouter, frameRouter, tabsRouter]
+      };
     }
   }
 ] as MockMethod[];

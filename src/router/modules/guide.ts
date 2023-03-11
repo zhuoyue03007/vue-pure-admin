@@ -1,30 +1,22 @@
-import { $t } from "/@/plugins/i18n";
-import Layout from "/@/layout/index.vue";
+import { $t } from "@/plugins/i18n";
+import { guide } from "@/router/enums";
 
-const guideRouter = {
+export default {
   path: "/guide",
-  name: "reGuide",
-  component: Layout,
   redirect: "/guide/index",
   meta: {
-    icon: "Guide",
+    icon: "guide",
     title: $t("menus.hsguide"),
-    i18n: true,
-    showLink: true,
-    rank: 10
+    rank: guide
   },
   children: [
     {
       path: "/guide/index",
-      name: "reGuide",
-      component: () => import("/@/views/guide/index.vue"),
+      name: "Guide",
+      component: () => import("@/views/guide/index.vue"),
       meta: {
-        title: $t("menus.hsguide"),
-        showLink: true,
-        i18n: true
+        title: $t("menus.hsguide")
       }
     }
   ]
-};
-
-export default guideRouter;
+} as RouteConfigsTable;

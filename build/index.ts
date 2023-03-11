@@ -1,13 +1,12 @@
-// 处理环境变量
+/** 处理环境变量 */
 const warpperEnv = (envConf: Recordable): ViteEnv => {
-  // 此处为默认值，无需修改
+  /** 此处为默认值 */
   const ret: ViteEnv = {
     VITE_PORT: 8848,
     VITE_PUBLIC_PATH: "",
-    VITE_PROXY_DOMAIN: "",
-    VITE_PROXY_DOMAIN_REAL: "",
     VITE_ROUTER_HISTORY: "",
-    VITE_LEGACY: false
+    VITE_CDN: false,
+    VITE_COMPRESSION: "none"
   };
 
   for (const envName of Object.keys(envConf)) {
@@ -28,14 +27,4 @@ const warpperEnv = (envConf: Recordable): ViteEnv => {
   return ret;
 };
 
-// 跨域代理重写
-const regExps = (value: string, reg: string): string => {
-  return value.replace(new RegExp(reg, "g"), "");
-};
-
-// 环境变量
-const loadEnv = (): ViteEnv => {
-  return import.meta.env;
-};
-
-export { warpperEnv, regExps, loadEnv };
+export { warpperEnv };

@@ -6,7 +6,7 @@ import {
   getCurrentInstance,
   unref
 } from "vue";
-import { addClass, removeClass, toggleClass } from "/@/utils/operate";
+import { addClass, removeClass, toggleClass } from "@pureadmin/utils";
 import "./index.css";
 
 const stayClass = "stay"; //鼠标点击
@@ -50,7 +50,7 @@ const props = {
 };
 
 export default defineComponent({
-  name: "Selector",
+  name: "ReSelector",
   props,
   emits: ["selectedVal"],
   setup(props, { emit }) {
@@ -254,23 +254,32 @@ export default defineComponent({
       });
 
       addClass(
-        instance.refs["hsdiv" + props.HsKey + item[0]],
+        instance.refs["hsdiv" + props.HsKey + item[0]] as Element,
         activeClass,
         stayClass
       );
-
-      addClass(instance.refs["hstd" + props.HsKey + item[0]], bothLeftSides);
 
       addClass(
-        instance.refs["hsdiv" + props.HsKey + item[1]],
+        instance.refs["hstd" + props.HsKey + item[0]] as Element,
+        bothLeftSides
+      );
+
+      addClass(
+        instance.refs["hsdiv" + props.HsKey + item[1]] as Element,
         activeClass,
         stayClass
       );
 
-      addClass(instance.refs["hstd" + props.HsKey + item[1]], bothRightSides);
+      addClass(
+        instance.refs["hstd" + props.HsKey + item[1]] as Element,
+        bothRightSides
+      );
 
       while (item[1] >= item[0]) {
-        addClass(instance.refs["hstd" + props.HsKey + item[0]], inRange);
+        addClass(
+          instance.refs["hstd" + props.HsKey + item[0]] as Element,
+          inRange
+        );
         item[0]++;
       }
     };
@@ -299,10 +308,12 @@ export default defineComponent({
                       cursor: unref(rateDisabled) ? "auto" : "pointer",
                       textAlign: "center"
                     }}
-                    key={key}>
+                    key={key}
+                  >
                     <div
                       ref={`hsdiv${props.HsKey}${key}`}
-                      class={`hs-item ${[unref(classes)[key] + key]}`}>
+                      class={`hs-item ${[unref(classes)[key] + key]}`}
+                    >
                       <span>{item}</span>
                     </div>
                   </td>

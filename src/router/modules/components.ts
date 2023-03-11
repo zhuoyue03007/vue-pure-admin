@@ -1,38 +1,43 @@
-import { $t } from "/@/plugins/i18n";
-import Layout from "/@/layout/index.vue";
+import { $t } from "@/plugins/i18n";
+import { components } from "@/router/enums";
 
-const componentsRouter = {
+export default {
   path: "/components",
-  name: "components",
-  component: Layout,
   redirect: "/components/video",
   meta: {
-    icon: "Menu",
+    icon: "menu",
     title: $t("menus.hscomponents"),
-    i18n: true,
-    showLink: true,
-    rank: 4
+    rank: components
   },
   children: [
     {
-      path: "/components/video",
-      name: "video",
-      component: () => import("/@/views/components/video/index.vue"),
+      path: "/components/message",
+      name: "Message",
+      component: () => import("@/views/components/message/index.vue"),
       meta: {
-        title: $t("menus.hsvideo"),
-        showLink: true,
-        i18n: true
+        title: $t("menus.hsmessage"),
+        extraIcon: "IF-pure-iconfont-new svg",
+        transition: {
+          enterTransition: "animate__fadeInLeft",
+          leaveTransition: "animate__fadeOutRight"
+        }
+      }
+    },
+    {
+      path: "/components/video",
+      name: "Video",
+      component: () => import("@/views/components/video/index.vue"),
+      meta: {
+        title: $t("menus.hsvideo")
       }
     },
     {
       path: "/components/map",
-      name: "map",
-      component: () => import("/@/views/components/map/index.vue"),
+      name: "Map",
+      component: () => import("@/views/components/map/index.vue"),
       meta: {
         title: $t("menus.hsmap"),
-        showLink: true,
         keepAlive: true,
-        i18n: true,
         transition: {
           name: "fade"
         }
@@ -40,94 +45,95 @@ const componentsRouter = {
     },
     {
       path: "/components/draggable",
-      name: "draggable",
-      component: () => import("/@/views/components/draggable/index.vue"),
+      name: "Draggable",
+      component: () => import("@/views/components/draggable/index.vue"),
       meta: {
         title: $t("menus.hsdraggable"),
-        showLink: true,
-        i18n: true,
         transition: {
           enterTransition: "animate__zoomIn",
           leaveTransition: "animate__zoomOut"
         }
       }
     },
-
     {
       path: "/components/splitPane",
-      name: "splitPane",
-      component: () => import("/@/views/components/split-pane/index.vue"),
+      name: "SplitPane",
+      component: () => import("@/views/components/split-pane/index.vue"),
       meta: {
-        title: $t("menus.hssplitPane"),
-        showLink: true,
-        i18n: true,
-        extraIcon: {
-          svg: true,
-          name: "team-iconxinpinrenqiwang"
-        }
+        title: $t("menus.hssplitPane")
       }
     },
     {
       path: "/components/button",
-      name: "button",
-      component: () => import("/@/views/components/button/index.vue"),
+      name: "Button",
+      component: () => import("@/views/components/button/index.vue"),
       meta: {
-        title: $t("menus.hsbutton"),
-        i18n: true,
-        showLink: true
+        title: $t("menus.hsbutton")
       }
     },
     {
       path: "/components/cropping",
-      name: "cropping",
-      component: () => import("/@/views/components/cropping/index.vue"),
+      name: "Cropping",
+      component: () => import("@/views/components/cropping/index.vue"),
       meta: {
-        title: $t("menus.hscropping"),
-        i18n: true,
-        showLink: true
+        title: $t("menus.hscropping")
       }
     },
     {
       path: "/components/countTo",
-      name: "countTo",
-      component: () => import("/@/views/components/count-to/index.vue"),
+      name: "CountTo",
+      component: () => import("@/views/components/count-to/index.vue"),
       meta: {
-        title: $t("menus.hscountTo"),
-        i18n: true,
-        showLink: true
+        title: $t("menus.hscountTo")
       }
     },
     {
       path: "/components/selector",
-      name: "selector",
-      component: () => import("/@/views/components/selector/index.vue"),
+      name: "Selector",
+      component: () => import("@/views/components/selector/index.vue"),
       meta: {
-        title: $t("menus.hsselector"),
-        i18n: true,
-        showLink: true
+        title: $t("menus.hsselector")
       }
     },
     {
       path: "/components/seamlessScroll",
-      name: "seamlessScroll",
-      component: () => import("/@/views/components/seamless-scroll/index.vue"),
+      name: "SeamlessScroll",
+      component: () => import("@/views/components/seamless-scroll/index.vue"),
       meta: {
-        title: $t("menus.hsseamless"),
-        i18n: true,
-        showLink: true
+        title: $t("menus.hsseamless")
       }
     },
     {
       path: "/components/contextmenu",
-      name: "contextmenu",
-      component: () => import("/@/views/components/contextmenu/index.vue"),
+      name: "ContextMenu",
+      component: () => import("@/views/components/contextmenu/index.vue"),
       meta: {
-        title: $t("menus.hscontextmenu"),
-        i18n: true,
-        showLink: true
+        title: $t("menus.hscontextmenu")
+      }
+    },
+    {
+      path: "/components/typeit",
+      name: "Typeit",
+      component: () => import("@/views/components/typeit/index.vue"),
+      meta: {
+        title: $t("menus.hstypeit")
+      }
+    },
+    {
+      path: "/components/json-editor",
+      name: "JsonEditor",
+      component: () => import("@/views/components/json-editor/index.vue"),
+      meta: {
+        title: $t("menus.hsjsoneditor")
+      }
+    },
+    {
+      path: "/components/danmaku",
+      name: "Danmaku",
+      component: () => import("@/views/components/danmaku/index.vue"),
+      meta: {
+        title: $t("menus.hsdanmaku")
       }
     }
   ]
-};
-
-export default componentsRouter;
+} as RouteConfigsTable;

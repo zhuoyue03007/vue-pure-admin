@@ -1,52 +1,74 @@
 <h1>vue-pure-admin</h1>
 
-![GitHub license](https://img.shields.io/github/license/xiaoxian521/vue-pure-admin?style=flat)
-![GitHub stars](https://img.shields.io/github/stars/xiaoxian521/vue-pure-admin?color=fa6470&style=flat)
-![GitHub forks](https://img.shields.io/github/forks/xiaoxian521/vue-pure-admin?style=flat)
+![GitHub license](https://img.shields.io/github/license/pure-admin/vue-pure-admin?style=flat)
+![GitHub stars](https://img.shields.io/github/stars/pure-admin/vue-pure-admin?color=fa6470&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/pure-admin/vue-pure-admin?style=flat)
 
 **English** | [中文](./README.md)
 
 ## Introduction
 
-vue-pure-admin is a free and open source middle and back-end template. Using the latest `vue3` `vite2` `Element-Plus` `TypeScript` and other mainstream technology development, the out-of-the-box middle and back-end front-end solutions can also be used for learning reference.
+`vue-pure-admin` is an open source free and out-of-the-box middle and background management system template. Developed using the latest mainstream technologies such as `Vue3`, `Vite`, `Element-Plus`, `TypeScript`, `Pinia`, `Tailwindcss`
+
+## Thin version (offering non-internationalized and internationalized versions)
+
+The simplified version is based on the shelf extracted from [vue-pure-admin](https://github.com/pure-admin/vue-pure-admin), which contains main functions and is more suitable for actual project development. The packaged size is introduced globally [element-plus](https://element-plus.org) is still below `2.3MB`, and the full version of the code will be permanently synchronized. After enabling `brotli` compression and `cdn` to replace the local library mode, the package size is less than `350kb`
+
+- [Click me to view the non-internationalized version](https://github.com/pure-admin/pure-admin-thin)
+- [Click me to view Internationalization version](https://github.com/pure-admin/pure-admin-thin/tree/i18n)
 
 ## Supporting Video
 
-- [Click Watch Tutorial](https://www.bilibili.com/video/BV1534y1S7HV)
+- [Click Watch Tutorial](https://www.bilibili.com/video/BV1kg411v7QT)
 - [Click Watch UI Design](https://www.bilibili.com/video/BV17g411T7rq)
 
-## Docs
+## Docs (support `PWA` fast, offline access)
 
-- [Click Watch Docs](https://pure-admin-doc.vercel.app)
+- [Click me to view the domestic documentation site](https://yiming_chang.gitee.io/pure-admin-doc)
+- [Click me to view foreign document site](https://pure-admin.github.io/pure-admin-doc)
 
-## Thin
+## Tauri
 
-- [Click Watch Thin](https://github.com/xiaoxian521/pure-admin-thin)
+- [Click Watch Tauri](https://github.com/pure-admin/tauri-pure-admin)
+
+## Electron
+
+- [Click Watch Electron](https://github.com/pure-admin/electron-pure-admin)
 
 ## Preview
 
-- [vue-pure-admin](http://yiming_chang.gitee.io/manages)
+- [Click me to view the domestic preview station](https://yiming_chang.gitee.io/vue-pure-admin)
+- [Click me to view foreign preview site](https://pure-admin.github.io/vue-pure-admin)
 
+- PC
 <p align="center">
-  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b4857fc7eb7d4c0f8deeefc644c1f7dd~tplv-k3u1fbpfcp-watermark.awebp?">
-  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/549c3184697f4d268a78c9833e5ec2ea~tplv-k3u1fbpfcp-watermark.awebp?">
-  <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/381fc957fac143db9f06efdd389d88a3~tplv-k3u1fbpfcp-watermark.awebp?">
+  <img alt="PureAdmin Logo" width="100%" src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d45c15ccbe674fe291a4faa528d11eda~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp?">
+</p>
+
+- DarkMode
+<p align="center">
+  <img alt="PureAdmin Logo" width="100%" src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/10a351f0d9c94b90ba3b408a786b9ede~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp?">
+</p>
+
+- Mobile
+<p align="center">
+  <img alt="PureAdmin Logo" width="100%" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3061c7b92f6d4cb4bcdf227d966ac696~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp?">
 </p>
 
 ### Use Gitpod
 
 Open the project in Gitpod (free online dev environment for GitHub) and start coding immediately.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/xiaoxian521/vue-pure-admin)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/pure-admin/vue-pure-admin)
 
 ## Install and use
 
 - Get the project code
 
 ```bash
-git clone https://github.com/xiaoxian521/vue-pure-admin.git
+git clone https://github.com/pure-admin/vue-pure-admin.git
 or
-git clone https://github.com.cnpmjs.org/xiaoxian521/vue-pure-admin.git
+git clone https://gitee.com/yiming_chang/vue-pure-admin.git
 ```
 
 - Installation dependencies
@@ -76,7 +98,7 @@ pnpm build
 
 ## How to contribute
 
-You are very welcome to join！[Raise an issue](https://github.com/xiaoxian521/vue-pure-admin/issues/new/choose) Or submit a Pull Request
+You are very welcome to join！[Raise an issue](https://github.com/pure-admin/vue-pure-admin/issues/new/choose) Or submit a Pull Request
 
 **Pull Request:**
 
@@ -116,36 +138,44 @@ Support modern browsers, not IE
 
 ## Maintainer
 
-[xiaoxian521](https://github.com/xiaoxian521)
+[xiaoxian521](https://github.com/xiaoxian521)、[Ten-K](https://github.com/Ten-K)
 
 ## Donate
 
-If you think this project is helpful to you, you can help the author buy a cup of coffee to show your support
+If you think this project is helpful to you, you can help the author buy a glass of juice 🍹 Show your support
 
-<img src="http://yiming_chang.gitee.io/manages/pay.jpg" width="150px" height="150px" />
-
-## WeChat Exchange Group
-
-For the better development of the project, you can choose to donate 10 yuan and add the following WeChat to pull you into the group. After adding, please consciously send a screenshot of the donation
-
-<img src="http://yiming_chang.gitee.io/manages/kf.jpg" width="150px" height="195px" />
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f69bf13c5b854ed5b699807cafa0e3ce~tplv-k3u1fbpfcp-zoom-in-crop-mark:1304:0:0:0.awebp?" width="150px" height="150px" />
 
 ## License
 
-In principle, no fees and copyrights are charged, so you can use it with confidence
+In principle, no fees and copyrights are charged, and you can use it with confidence, but if you need secondary open source, please contact the author for permission!
 
-[MIT © xiaoxian521-2020](./LICENSE)
+[MIT © xiaoxian521-2023](./LICENSE)
 
 ## Backers
 
-Thank you very much for your support, I believe the project will get better and better! ! ! :heart:
+Thank you very much for your support, I believe the project will get better and better :heart:
 
-|                                                                xueyuheng                                                                 |                                                                taolei1990                                                                 |                                                                hang-kim                                                                 |                                                               madwolfcrazy                                                                |                                                                limuen                                                                 |
-| :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/hang-kim"><img src="https://avatars.githubusercontent.com/u/52914259?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/madwolfcrazy"><img src="https://avatars.githubusercontent.com/u/223671?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/limuen"><img src="https://avatars.githubusercontent.com/u/31790606?v=4" width="60px" height="60px" /></a> |
+|                                                                xueyuheng                                                                 |                                                                taolei1990                                                                 |                                                                hang-kim                                                                 |                                                               madwolfcrazy                                                                |                                                                limuen                                                                 |                                                                BenLakes                                                                 |
+| :--------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------: |
+| <a href="https://github.com/xueyuheng"><img src="https://avatars.githubusercontent.com/u/48202935?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/taolei1990"><img src="https://avatars.githubusercontent.com/u/23173640?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/hang-kim"><img src="https://avatars.githubusercontent.com/u/52914259?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/madwolfcrazy"><img src="https://avatars.githubusercontent.com/u/223671?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/limuen"><img src="https://avatars.githubusercontent.com/u/31790606?v=4" width="60px" height="60px" /></a> | <a href="https://github.com/BenLakes"><img src="https://avatars.githubusercontent.com/u/15206046?v=4" width="60px" height="60px" /></a> |
+|                                                                mollerzhu                                                                 |                                                                  TLovers                                                                  |                                                                  cnyyk                                                                  |                                                                                                                                           |                                                                                                                                       |                                                                                                                                         |
+| <a href="https://github.com/mollerzhu"><img src="https://avatars.githubusercontent.com/u/49627902?v=4" width="60px" height="60px" /></a> |  <a href="https://github.com/TLovers"><img src="https://avatars.githubusercontent.com/u/26561694?v=4" width="60px" height="60px" /></a>   |   <a href="https://github.com/cnyyk"><img src="https://avatars.githubusercontent.com/u/275233?v=4" width="60px" height="60px" /></a>    |                                                                                                                                           |                                                                                                                                       |                                                                                                                                         |
 
 ## Contributors
 
-This project exists thanks to all the people who contribute!!! :heart:
+Thanks to all the people who contribute :heart:
 
-<a href="https://github.com/xiaoxian521/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=xiaoxian521/vue-pure-admin" /></a>
+<a href="https://github.com/pure-admin/vue-pure-admin/graphs/contributors"><img src="https://contrib.rocks/image?repo=pure-admin/vue-pure-admin" /></a>
+
+## `Star`
+
+Many thanks to the kind individuals who leave a star. Your support is much appreciated :heart:
+
+[![Stargazers for vue-pure-admin](https://reporoster.com/stars/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/stargazers)
+
+## `Fork`
+
+It's so cool that you study hard :heart:
+
+[![Forkers repo roster for vue-pure-admin](https://reporoster.com/forks/pure-admin/vue-pure-admin)](https://github.com/pure-admin/vue-pure-admin/network/members)
