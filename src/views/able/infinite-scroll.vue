@@ -13,12 +13,12 @@ const dataTemplate = new Array(10).fill({
 });
 
 const data = ref([]);
-const disabled = ref(false);
 const page = ref(0);
 const total = ref(10);
+const isBottom = ref(false);
 
 const load = () => {
-  if (disabled.value) return;
+  if (isBottom.value) return;
 
   page.value++;
   if (page.value <= total.value) {
@@ -26,7 +26,7 @@ const load = () => {
   }
 
   if (page.value === total.value) {
-    disabled.value = true;
+    isBottom.value = true;
   }
 };
 </script>
@@ -35,34 +35,34 @@ const load = () => {
   <el-card shadow="never">
     <template #header>
       <div class="font-medium">
-        表格无限滚动（
         <el-link
           href="https://github.com/yujinpan/el-table-infinite-scroll"
           target="_blank"
-          style="font-size: 16px; margin: 0 5px 4px 0"
+          style="margin: 0 5px 4px 0; font-size: 16px"
         >
-          github地址
+          表格无限滚动
         </el-link>
-        ）
       </div>
-    </template>
-    <div>
-      <p class="mb-2">
-        <span>loaded page(total: {{ total }}): {{ page }}, </span>
-        disabled:
-        <el-switch v-model="disabled" :disabled="page >= total" />
-      </p>
-      <el-table
-        v-el-table-infinite-scroll="load"
-        :data="data"
-        :infinite-scroll-disabled="disabled"
-        height="435px"
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/infinite-scroll.vue"
+        target="_blank"
       >
-        <el-table-column type="index" />
-        <el-table-column prop="date" label="date" />
-        <el-table-column prop="name" label="name" />
-        <el-table-column prop="age" label="age" />
-      </el-table>
-    </div>
+        代码位置 src/views/able/infinite-scroll.vue
+      </el-link>
+    </template>
+    <p class="mb-2">{{ isBottom ? "已加载全部页" : `加载到第 ${page} 页` }}</p>
+    <el-table
+      v-el-table-infinite-scroll="load"
+      border
+      height="435px"
+      :data="data"
+      :infinite-scroll-disabled="isBottom"
+    >
+      <el-table-column width="80" type="index" label="序号" />
+      <el-table-column prop="date" label="日期" />
+      <el-table-column prop="name" label="名称" />
+      <el-table-column prop="age" label="年龄" />
+    </el-table>
   </el-card>
 </template>

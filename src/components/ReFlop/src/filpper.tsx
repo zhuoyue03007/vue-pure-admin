@@ -1,6 +1,6 @@
-import { defineComponent, ref } from "vue";
-import propTypes from "@/utils/propTypes";
 import "./filpper.css";
+import propTypes from "@/utils/propTypes";
+import { defineComponent, ref } from "vue";
 
 const props = {
   // front paper text
@@ -18,7 +18,6 @@ export default defineComponent({
   name: "ReFlop",
   props,
   setup(props) {
-    // eslint-disable-next-line vue/no-setup-props-destructure
     const { frontText, backText, duration } = props;
     const isFlipping = ref(false);
     const flipType = ref("down");

@@ -1,28 +1,28 @@
 import {
-  RouterHistory,
-  RouteRecordRaw,
-  RouteComponent,
+  type RouterHistory,
+  type RouteRecordRaw,
+  type RouteComponent,
   createWebHistory,
-  createWebHashHistory,
-  RouteRecordNormalized
+  createWebHashHistory
 } from "vue-router";
 import { router } from "./index";
 import { isProxy, toRaw } from "vue";
 import { useTimeoutFn } from "@vueuse/core";
-import { RouteConfigs } from "@/layout/types";
 import {
   isString,
   cloneDeep,
   isAllEmpty,
   intersection,
-  storageSession,
+  storageLocal,
   isIncludeAllChildren
 } from "@pureadmin/utils";
 import { getConfig } from "@/config";
 import { buildHierarchyTree } from "@/utils/tree";
-import { sessionKey, type DataInfo } from "@/utils/auth";
+import { userKey, type DataInfo } from "@/utils/auth";
+import { type menuType, routerArrays } from "@/layout/types";
+import { useMultiTagsStoreHook } from "@/store/modules/multiTags";
 import { usePermissionStoreHook } from "@/store/modules/permission";
-const IFrame = () => import("@/layout/frameView.vue");
+const IFrame = () => import("@/layout/frame.vue");
 // https://cn.vitejs.dev/guide/features.html#glob-import
 const modulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
 
@@ -81,10 +81,10 @@ function isOneOfArray(a: Array<string>, b: Array<string>) {
     : true;
 }
 
-/** 从sessionStorage里取出当前登陆用户的角色roles，过滤无权限的菜单 */
+/** 从localStorage里取出当前登录用户的角色roles，过滤无权限的菜单 */
 function filterNoPermissionTree(data: RouteComponent[]) {
   const currentRoles =
-    storageSession().getItem<DataInfo<number>>(sessionKey)?.roles ?? [];
+    storageLocal().getItem<DataInfo<number>>(userKey)?.roles ?? [];
   const newTree = cloneDeep(data).filter((v: any) =>
     isOneOfArray(v.meta?.roles, currentRoles)
   );
@@ -94,30 +94,20 @@ function filterNoPermissionTree(data: RouteComponent[]) {
   return filterChildrenTree(newTree);
 }
 
-/** 批量删除缓存路由(keepalive) */
-function delAliveRoutes(delAliveRouteList: Array<RouteConfigs>) {
-  delAliveRouteList.forEach(route => {
-    usePermissionStoreHook().cacheOperate({
-      mode: "delete",
-      name: route?.name
-    });
-  });
-}
-
-/** 通过path获取父级路径 */
-function getParentPaths(path: string, routes: RouteRecordRaw[]) {
+/** 通过指定 `key` 获取父级路径集合，默认 `key` 为 `path` */
+function getParentPaths(value: string, routes: RouteRecordRaw[], key = "path") {
   // 深度遍历查找
-  function dfs(routes: RouteRecordRaw[], path: string, parents: string[]) {
+  function dfs(routes: RouteRecordRaw[], value: string, parents: string[]) {
     for (let i = 0; i < routes.length; i++) {
       const item = routes[i];
-      // 找到path则返回父级path
-      if (item.path === path) return parents;
+      // 返回父级path
+      if (item[key] === value) return parents;
       // children不存在或为空则不递归
       if (!item.children || !item.children.length) continue;
       // 往下查找时将当前path入栈
       parents.push(item.path);
 
-      if (dfs(item.children, path, parents).length) return parents;
+      if (dfs(item.children, value, parents).length) return parents;
       // 深度遍历查找未找到时当前path 出栈
       parents.pop();
     }
@@ -125,10 +115,10 @@ function getParentPaths(path: string, routes: RouteRecordRaw[]) {
     return [];
   }
 
-  return dfs(routes, path, []);
+  return dfs(routes, value, []);
 }
 
-/** 查找对应path的路由信息 */
+/** 查找对应 `path` 的路由信息 */
 function findRouteByPath(path: string, routes: RouteRecordRaw[]) {
   let res = routes.find((item: { path: string }) => item.path == path);
   if (res) {
@@ -188,15 +178,23 @@ function handleAsyncRoutes(routeList) {
     );
     usePermissionStoreHook().handleWholeMenus(routeList);
   }
+  if (!useMultiTagsStoreHook().getMultiTagsCache) {
+    useMultiTagsStoreHook().handleTags("equal", [
+      ...routerArrays,
+      ...usePermissionStoreHook().flatteningRoutes.filter(
+        v => v?.meta?.fixedTag
+      )
+    ]);
+  }
   addPathMatch();
 }
 
 /** 初始化路由（`new Promise` 写法防止在异步请求中造成无限循环）*/
 function initRouter() {
   if (getConfig()?.CachingAsyncRoutes) {
-    // 开启动态路由缓存本地sessionStorage
+    // 开启动态路由缓存本地localStorage
     const key = "async-routes";
-    const asyncRouteList = storageSession().getItem(key) as any;
+    const asyncRouteList = storageLocal().getItem(key) as any;
     if (asyncRouteList && asyncRouteList?.length > 0) {
       return new Promise(resolve => {
         handleAsyncRoutes(asyncRouteList);
@@ -206,7 +204,7 @@ function initRouter() {
       return new Promise(resolve => {
         getAsyncRoutes().then(({ data }) => {
           handleAsyncRoutes(cloneDeep(data));
-          storageSession().setItem(key, data);
+          storageLocal().setItem(key, data);
           resolve(router);
         });
       });
@@ -266,27 +264,35 @@ function formatTwoStageRoutes(routesList: RouteRecordRaw[]) {
 }
 
 /** 处理缓存路由（添加、删除、刷新） */
-function handleAliveRoute(matched: RouteRecordNormalized[], mode?: string) {
+function handleAliveRoute({ name }: ToRouteType, mode?: string) {
   switch (mode) {
     case "add":
-      matched.forEach(v => {
-        usePermissionStoreHook().cacheOperate({ mode: "add", name: v.name });
+      usePermissionStoreHook().cacheOperate({
+        mode: "add",
+        name
       });
       break;
     case "delete":
       usePermissionStoreHook().cacheOperate({
         mode: "delete",
-        name: matched[matched.length - 1].name
+        name
+      });
+      break;
+    case "refresh":
+      usePermissionStoreHook().cacheOperate({
+        mode: "refresh",
+        name
       });
       break;
     default:
       usePermissionStoreHook().cacheOperate({
         mode: "delete",
-        name: matched[matched.length - 1].name
+        name
       });
       useTimeoutFn(() => {
-        matched.forEach(v => {
-          usePermissionStoreHook().cacheOperate({ mode: "add", name: v.name });
+        usePermissionStoreHook().cacheOperate({
+          mode: "add",
+          name
         });
       }, 100);
   }
@@ -361,17 +367,38 @@ function hasAuth(value: string | Array<string>): boolean {
   return isAuths ? true : false;
 }
 
+function handleTopMenu(route) {
+  if (route?.children && route.children.length > 1) {
+    if (route.redirect) {
+      return route.children.filter(cur => cur.path === route.redirect)[0];
+    } else {
+      return route.children[0];
+    }
+  } else {
+    return route;
+  }
+}
+
+/** 获取所有菜单中的第一个菜单（顶级菜单）*/
+function getTopMenu(tag = false): menuType {
+  const topMenu = handleTopMenu(
+    usePermissionStoreHook().wholeMenus[0]?.children[0]
+  );
+  tag && useMultiTagsStoreHook().handleTags("push", topMenu);
+  return topMenu;
+}
+
 export {
   hasAuth,
   getAuths,
   ascending,
   filterTree,
   initRouter,
+  getTopMenu,
   addPathMatch,
   isOneOfArray,
   getHistoryMode,
   addAsyncRoutes,
-  delAliveRoutes,
   getParentPaths,
   findRouteByPath,
   handleAliveRoute,

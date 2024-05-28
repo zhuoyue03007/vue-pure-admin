@@ -17,11 +17,11 @@ const showAllPages = ref(false);
 const rotations = [0, 90, 180, 270];
 
 const source =
-  "https://pure-admin.github.io/pure-admin-doc/pdf/Cookie%E5%92%8CSession%E5%8C%BA%E5%88%AB%E7%94%A8%E6%B3%95.pdf";
+  "https://xiaoxian521.github.io/hyperlink/pdf/Cookie%E5%92%8CSession%E5%8C%BA%E5%88%AB%E7%94%A8%E6%B3%95.pdf";
 
 const handleDocumentRender = () => {
   loading.value = false;
-  pageCount.value = pdfRef.value.pageCount;
+  pageCount.value = pdfRef.value.doc.numPages;
 };
 
 const showAllPagesChange = () => {
@@ -29,6 +29,7 @@ const showAllPagesChange = () => {
 };
 
 const onPrint = () => {
+  // 如果在打印时，打印页面是本身的两倍，在打印配置 页面 设置 仅限页码为奇数的页面 即可
   pdfRef.value.print();
 };
 </script>
@@ -37,21 +38,26 @@ const onPrint = () => {
   <el-card shadow="never">
     <template #header>
       <div class="font-medium">
-        PDF预览（
         <el-link
           href="https://github.com/hrynko/vue-pdf-embed"
           target="_blank"
-          style="font-size: 16px; margin: 0 5px 4px 0"
+          style="margin: 0 5px 4px 0; font-size: 16px"
         >
-          github地址
+          PDF预览
         </el-link>
-        ）
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/pdf.vue"
+        target="_blank"
+      >
+        代码位置 src/views/able/pdf.vue
+      </el-link>
     </template>
     <div
-      class="h-[calc(100vh-239px)]"
       v-loading="loading"
-      :element-loading-text="t('status.hsLoad')"
+      class="h-[calc(100vh-295px)]"
+      :element-loading-text="t('status.pureLoad')"
     >
       <div class="flex justify-between items-center h-9">
         <div v-if="showAllPages" class="font-medium ml-1.25 text-xl">
@@ -59,9 +65,9 @@ const onPrint = () => {
         </div>
         <div v-else>
           <el-pagination
+            v-model:current-page="currentPage"
             background
             layout="prev, slot, next"
-            v-model:current-page="currentPage"
             :page-size="1"
             :total="pageCount"
           >
@@ -72,34 +78,34 @@ const onPrint = () => {
           <el-checkbox v-model="showAllPages" @change="showAllPagesChange">
             显示所有页面
           </el-checkbox>
-          <el-tooltip
-            effect="dark"
-            :content="`翻转（当前角度${rotations[currentRotation]}度）`"
-            placement="top"
-          >
-            <IconifyIconOnline
-              icon="ic:baseline-rotate-90-degrees-ccw"
-              class="cursor-pointer outline-transparent"
-              @click="
-                currentRotation === 3
-                  ? (currentRotation = 0)
-                  : (currentRotation += 1)
-              "
-            />
-          </el-tooltip>
-          <el-tooltip effect="dark" content="打印" placement="top">
-            <IconifyIconOnline
-              icon="ri:printer-line"
-              class="cursor-pointer outline-transparent"
-              @click="onPrint"
-            />
-          </el-tooltip>
+          <IconifyIconOnline
+            v-tippy="{
+              maxWidth: 'none',
+              content: `翻转（当前角度${rotations[currentRotation]}度）`
+            }"
+            icon="ic:baseline-rotate-90-degrees-ccw"
+            class="cursor-pointer outline-transparent"
+            @click="
+              currentRotation === 3
+                ? (currentRotation = 0)
+                : (currentRotation += 1)
+            "
+          />
+          <IconifyIconOnline
+            v-tippy="{
+              maxWidth: 'none',
+              content: '打印'
+            }"
+            icon="ri:printer-line"
+            class="cursor-pointer outline-transparent"
+            @click="onPrint"
+          />
         </div>
       </div>
       <el-scrollbar>
         <vue-pdf-embed
-          class="h-full container overflow-auto"
           ref="pdfRef"
+          class="h-full container overflow-auto"
           :rotation="rotations[currentRotation]"
           :page="currentPage"
           :source="source"

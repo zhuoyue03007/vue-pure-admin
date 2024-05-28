@@ -5,20 +5,20 @@ export default {
   path: "/list",
   redirect: "/list/card",
   meta: {
-    icon: "listCheck",
-    title: $t("menus.hsList"),
+    icon: "ri:list-check",
+    title: $t("menus.pureList"),
     rank: list
   },
   children: [
     {
       path: "/list/card",
-      name: "ListCard",
+      name: "CardList",
       component: () => import("@/views/list/card/index.vue"),
       meta: {
-        icon: "card",
-        title: $t("menus.hsListCard"),
+        icon: "ri:bank-card-line",
+        title: $t("menus.pureCardList"),
         showParent: true
       }
     }
   ]
-} as RouteConfigsTable;
+} satisfies RouteConfigsTable;

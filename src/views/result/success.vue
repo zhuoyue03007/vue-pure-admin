@@ -27,6 +27,13 @@ const columns = [
       <div class="card-header">
         <span class="font-medium">成功页</span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/result/success.vue"
+        target="_blank"
+      >
+        代码位置 src/views/result/success.vue
+      </el-link>
     </template>
     <el-result
       icon="success"
@@ -41,7 +48,7 @@ const columns = [
         </div>
       </template>
     </el-result>
-    <div class="p-6 ml-10 mr-10 bg-[#fafafa] dark:bg-[#1d1d1d]">
+    <div class="p-6 w-[90%] m-auto bg-[#fafafa] dark:bg-[#1d1d1d]">
       <PureDescriptions title="项目名称" :columns="columns" class="mb-5" />
       <el-steps :active="2">
         <el-step title="创建项目">
@@ -58,7 +65,7 @@ const columns = [
                 role="img"
                 aria-label="dingding"
                 class="anticon anticon-dingding flex items-center cursor-pointer"
-                style="color: rgb(0, 160, 233); margin-left: 8px"
+                style="margin-left: 8px; color: rgb(0 160 233)"
               >
                 <svg
                   viewBox="64 64 896 896"

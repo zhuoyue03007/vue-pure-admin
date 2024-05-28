@@ -1,12 +1,13 @@
 import App from "./App.vue";
 import router from "./router";
 import { setupStore } from "@/store";
-import ElementPlus from "element-plus";
 import { useI18n } from "@/plugins/i18n";
-import { getServerConfig } from "./config";
-import { createApp, Directive } from "vue";
+import { getPlatformConfig } from "./config";
 import { MotionPlugin } from "@vueuse/motion";
 import { useEcharts } from "@/plugins/echarts";
+import { createApp, type Directive } from "vue";
+import { useVxeTable } from "@/plugins/vxeTable";
+import { useElementPlus } from "@/plugins/elementPlus";
 import { injectResponsiveStorage } from "@/utils/responsive";
 
 import Table from "@pureadmin/table";
@@ -31,7 +32,7 @@ Object.keys(directives).forEach(key => {
   app.directive(key, (directives as { [key: string]: Directive })[key]);
 });
 
-// 全局注册`@iconify/vue`图标库
+// 全局注册@iconify/vue图标库
 import {
   IconifyIconOffline,
   IconifyIconOnline,
@@ -45,16 +46,23 @@ app.component("FontIcon", FontIcon);
 import { Auth } from "@/components/ReAuth";
 app.component("Auth", Auth);
 
-getServerConfig(app).then(async config => {
+// 全局注册vue-tippy
+import "tippy.js/dist/tippy.css";
+import "tippy.js/themes/light.css";
+import VueTippy from "vue-tippy";
+app.use(VueTippy);
+
+getPlatformConfig(app).then(async config => {
+  setupStore(app);
   app.use(router);
   await router.isReady();
   injectResponsiveStorage(app, config);
-  setupStore(app);
   app
     .use(MotionPlugin)
     .use(useI18n)
-    .use(ElementPlus)
+    .use(useElementPlus)
     .use(Table)
+    .use(useVxeTable)
     .use(PureDescriptions)
     .use(useEcharts);
   app.mount("#app");

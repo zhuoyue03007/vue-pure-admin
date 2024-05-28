@@ -1,25 +1,27 @@
 import { $t } from "@/plugins/i18n";
 import { formdesign } from "@/router/enums";
-const IFrame = () => import("@/layout/frameView.vue");
+const IFrame = () => import("@/layout/frame.vue");
 
 export default {
-  path: "/formDesign",
-  redirect: "/formDesign/index",
+  path: "/form-design",
+  redirect: "/form-design/index",
   meta: {
-    icon: "terminalWindowLine",
-    title: $t("menus.hsFormDesign"),
+    icon: "ri:terminal-window-line",
+    title: $t("menus.pureFormDesign"),
     rank: formdesign
   },
   children: [
     {
-      path: "/formDesign/index",
+      path: "/form-design/index",
       name: "FormDesign",
       component: IFrame,
       meta: {
-        title: $t("menus.hsFormDesign"),
+        title: $t("menus.pureFormDesign"),
+        keepAlive: true,
         frameSrc:
-          "https://haixin-fang.github.io/starfish-vue3-lowcode/playground/index.html#/"
+          "https://haixin-fang.github.io/vue-form-design/playground/index.html",
+        frameLoading: false
       }
     }
   ]
-} as RouteConfigsTable;
+} satisfies RouteConfigsTable;

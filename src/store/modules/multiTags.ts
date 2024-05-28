@@ -1,38 +1,62 @@
 import { defineStore } from "pinia";
-import { store } from "@/store";
-import { routerArrays } from "@/layout/types";
-import { multiType, positionType } from "./types";
-import { isEqual, isBoolean, isUrl, storageLocal } from "@pureadmin/utils";
+import {
+  type multiType,
+  type positionType,
+  store,
+  isUrl,
+  isEqual,
+  isNumber,
+  isBoolean,
+  getConfig,
+  routerArrays,
+  storageLocal,
+  responsiveStorageNameSpace
+} from "../utils";
+import { usePermissionStoreHook } from "./permission";
 
 export const useMultiTagsStore = defineStore({
   id: "pure-multiTags",
   state: () => ({
     // 存储标签页信息（路由信息）
-    multiTags: storageLocal().getItem<StorageConfigs>("responsive-configure")
-      ?.multiTagsCache
-      ? storageLocal().getItem<StorageConfigs>("responsive-tags")
-      : [...routerArrays],
+    multiTags: storageLocal().getItem<StorageConfigs>(
+      `${responsiveStorageNameSpace()}configure`
+    )?.multiTagsCache
+      ? storageLocal().getItem<StorageConfigs>(
+          `${responsiveStorageNameSpace()}tags`
+        )
+      : [
+          ...routerArrays,
+          ...usePermissionStoreHook().flatteningRoutes.filter(
+            v => v?.meta?.fixedTag
+          )
+        ],
     multiTagsCache: storageLocal().getItem<StorageConfigs>(
-      "responsive-configure"
+      `${responsiveStorageNameSpace()}configure`
     )?.multiTagsCache
   }),
   getters: {
-    getMultiTagsCache() {
-      return this.multiTagsCache;
+    getMultiTagsCache(state) {
+      return state.multiTagsCache;
     }
   },
   actions: {
     multiTagsCacheChange(multiTagsCache: boolean) {
       this.multiTagsCache = multiTagsCache;
       if (multiTagsCache) {
-        storageLocal().setItem("responsive-tags", this.multiTags);
+        storageLocal().setItem(
+          `${responsiveStorageNameSpace()}tags`,
+          this.multiTags
+        );
       } else {
-        storageLocal().removeItem("responsive-tags");
+        storageLocal().removeItem(`${responsiveStorageNameSpace()}tags`);
       }
     },
     tagsCache(multiTags) {
       this.getMultiTagsCache &&
-        storageLocal().setItem("responsive-tags", multiTags);
+        storageLocal().setItem(
+          `${responsiveStorageNameSpace()}tags`,
+          multiTags
+        );
     },
     handleTags<T>(
       mode: string,
@@ -90,6 +114,14 @@ export const useMultiTagsStore = defineStore({
             }
             this.multiTags.push(value);
             this.tagsCache(this.multiTags);
+            if (
+              getConfig()?.MaxTagsLevel &&
+              isNumber(getConfig().MaxTagsLevel)
+            ) {
+              if (this.multiTags.length > getConfig().MaxTagsLevel) {
+                this.multiTags.splice(1, 1);
+              }
+            }
           }
           break;
         case "splice":

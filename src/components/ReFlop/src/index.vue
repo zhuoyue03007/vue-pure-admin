@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { ref, unref, nextTick, onUnmounted } from "vue";
 import flippers from "./filpper";
+import { ref, unref, nextTick, onUnmounted } from "vue";
+
+defineOptions({
+  name: "ReFlop"
+});
 
 const timer = ref(null);
 const flipObjs = ref([]);
@@ -123,9 +127,9 @@ onUnmounted(() => {
 
 .flip-clock em {
   display: inline-block;
-  line-height: 102px;
   font-size: 66px;
   font-style: normal;
+  line-height: 102px;
   vertical-align: top;
 }
 </style>

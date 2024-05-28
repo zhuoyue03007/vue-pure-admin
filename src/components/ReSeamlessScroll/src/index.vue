@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { computed, ref, unref, nextTick } from "vue";
-import type { CSSProperties, PropType } from "vue";
+import {
+  type PropType,
+  type CSSProperties,
+  ref,
+  unref,
+  nextTick,
+  computed
+} from "vue";
 import {
   tryOnMounted,
   tryOnUnmounted,
@@ -51,20 +57,21 @@ let startPosX = null;
 let isHover = false;
 let ease = "ease-in";
 
-// eslint-disable-next-line vue/no-setup-props-destructure
-const { classOption } = props;
-
-if (classOption["key"] === undefined) {
-  classOption["key"] = 0;
+if (props.classOption["key"] === undefined) {
+  // eslint-disable-next-line vue/no-mutating-props
+  props.classOption["key"] = 0;
 }
 
-const wrap = templateRef<HTMLElement | null>(`wrap${classOption["key"]}`, null);
+const wrap = templateRef<HTMLElement | null>(
+  `wrap${props.classOption["key"]}`,
+  null
+);
 const slotList = templateRef<HTMLElement | null>(
-  `slotList${classOption["key"]}`,
+  `slotList${props.classOption["key"]}`,
   null
 );
 const realBox = templateRef<HTMLElement | null>(
-  `realBox${classOption["key"]}`,
+  `realBox${props.classOption["key"]}`,
   null
 );
 
@@ -107,7 +114,7 @@ const defaultOption = computed(() => {
 
 const options = computed(() => {
   // @ts-expect-error
-  return copyObj({}, unref(defaultOption), classOption);
+  return copyObj({}, unref(defaultOption), props.classOption);
 });
 
 const leftSwitchClass = computed(() => {
@@ -300,7 +307,7 @@ function touchMove(e) {
 
 function touchEnd() {
   if (!unref(canTouchScroll)) return;
-  // eslint-disable-next-line prefer-const
+
   let timer: any;
   const direction = unref(options).direction;
   delay.value = 50;
@@ -497,16 +504,16 @@ defineExpose({
 <template>
   <div :ref="'wrap' + classOption['key']">
     <div
-      :style="leftSwitch"
       v-if="navigation"
+      :style="leftSwitch"
       :class="leftSwitchClass"
       @click="leftSwitchClick"
     >
       <slot name="left-switch" />
     </div>
     <div
-      :style="rightSwitch"
       v-if="navigation"
+      :style="rightSwitch"
       :class="rightSwitchClass"
       @click="rightSwitchClick"
     >
@@ -525,7 +532,7 @@ defineExpose({
       <div :ref="'slotList' + classOption['key']" :style="float">
         <slot />
       </div>
-      <div v-html="copyHtml" :style="float" />
+      <div :style="float" v-html="copyHtml" />
     </div>
   </div>
 </template>

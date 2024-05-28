@@ -16,7 +16,7 @@ const base64 =
 
 function down() {
   axios
-    .get("https://pure-admin.github.io/pure-admin-doc/img/pure.png", {
+    .get("https://xiaoxian521.github.io/hyperlink/img/pure.png", {
       responseType: "blob"
     })
     .then(({ data }) => {
@@ -28,13 +28,20 @@ function down() {
 <template>
   <el-card shadow="never">
     <template #header>
-      <span class="font-medium">文件下载功能</span>
+      <p class="font-medium">文件下载功能</p>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/download.vue"
+        target="_blank"
+      >
+        代码位置 src/views/able/download.vue
+      </el-link>
     </template>
     <div class="flex flex-wrap">
       <el-button
         @click="
           downloadByOnlineUrl(
-            'https://pure-admin.github.io/pure-admin-doc/img/pure.png',
+            'https://xiaoxian521.github.io/hyperlink/img/pure.png',
             'test-url.png'
           )
         "

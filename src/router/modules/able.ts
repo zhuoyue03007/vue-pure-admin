@@ -5,25 +5,42 @@ export default {
   path: "/able",
   redirect: "/able/watermark",
   meta: {
-    icon: "ubuntuFill",
-    title: $t("menus.hsAble"),
+    icon: "ri:ubuntu-fill",
+    title: $t("menus.pureAble"),
     rank: able
   },
   children: [
+    {
+      path: "/able/mqtt-client",
+      name: "MqttClient",
+      component: () => import("@/views/able/mqtt-client.vue"),
+      meta: {
+        title: $t("menus.pureMqtt"),
+        extraIcon: "IF-pure-iconfont-new svg"
+      }
+    },
+    {
+      path: "/able/verify",
+      name: "Verify",
+      component: () => import("@/views/able/verify.vue"),
+      meta: {
+        title: $t("menus.pureVerify")
+      }
+    },
     {
       path: "/able/watermark",
       name: "WaterMark",
       component: () => import("@/views/able/watermark.vue"),
       meta: {
-        title: $t("menus.hsWatermark")
+        title: $t("menus.pureWatermark")
       }
     },
     {
       path: "/able/print",
       name: "Print",
-      component: () => import("@/views/able/print.vue"),
+      component: () => import("@/views/able/print/index.vue"),
       meta: {
-        title: $t("menus.hsPrint")
+        title: $t("menus.purePrint")
       }
     },
     {
@@ -31,39 +48,23 @@ export default {
       name: "Download",
       component: () => import("@/views/able/download.vue"),
       meta: {
-        title: $t("menus.hsDownload")
+        title: $t("menus.pureDownload")
       }
     },
     {
-      path: "/able/iconSelect",
-      name: "IconSelect",
-      component: () => import("@/views/able/icon-select.vue"),
+      path: "/able/excel",
+      name: "Excel",
+      component: () => import("@/views/able/excel.vue"),
       meta: {
-        title: $t("menus.hsIconSelect")
+        title: $t("menus.pureExcel")
       }
     },
     {
-      path: "/able/timeline",
-      name: "TimeLine",
-      component: () => import("@/views/able/timeline.vue"),
+      path: "/components/ripple",
+      name: "Ripple",
+      component: () => import("@/views/able/ripple.vue"),
       meta: {
-        title: $t("menus.hsTimeline")
-      }
-    },
-    {
-      path: "/able/menuTree",
-      name: "MenuTree",
-      component: () => import("@/views/able/menu-tree.vue"),
-      meta: {
-        title: $t("menus.hsMenuTree")
-      }
-    },
-    {
-      path: "/able/lineTree",
-      name: "LineTree",
-      component: () => import("@/views/able/line-tree.vue"),
-      meta: {
-        title: $t("menus.hsLineTree")
+        title: $t("menus.pureRipple")
       }
     },
     {
@@ -71,47 +72,27 @@ export default {
       name: "Debounce",
       component: () => import("@/views/able/debounce.vue"),
       meta: {
-        title: $t("menus.hsDebounce")
+        title: $t("menus.pureDebounce")
       }
     },
     {
-      path: "/able/barcode",
-      name: "BarCode",
-      component: () => import("@/views/able/barcode.vue"),
+      path: "/able/directives",
+      name: "Directives",
+      component: () => import("@/views/able/directives.vue"),
       meta: {
-        title: $t("menus.hsBarcode")
+        title: $t("menus.pureOptimize")
       }
     },
     {
-      path: "/able/qrcode",
-      name: "QrCode",
-      component: () => import("@/views/able/qrcode.vue"),
+      path: "/able/draggable",
+      name: "Draggable",
+      component: () => import("@/views/able/draggable.vue"),
       meta: {
-        title: $t("menus.hsQrcode")
-      }
-    },
-    {
-      path: "/able/cascader",
-      name: "Cascader",
-      component: () => import("@/views/able/cascader.vue"),
-      meta: {
-        title: $t("menus.hsCascader")
-      }
-    },
-    {
-      path: "/able/swiper",
-      name: "Swiper",
-      component: () => import("@/views/able/swiper.vue"),
-      meta: {
-        title: $t("menus.hsSwiper")
-      }
-    },
-    {
-      path: "/able/virtualList",
-      name: "VirtualList",
-      component: () => import("@/views/able/virtual-list/index.vue"),
-      meta: {
-        title: $t("menus.hsVirtualList")
+        title: $t("menus.pureDraggable"),
+        transition: {
+          enterTransition: "animate__zoomIn",
+          leaveTransition: "animate__zoomOut"
+        }
       }
     },
     {
@@ -119,24 +100,116 @@ export default {
       name: "Pdf",
       component: () => import("@/views/able/pdf.vue"),
       meta: {
-        title: $t("menus.hsPdf")
+        title: $t("menus.purePdf")
       }
     },
     {
-      path: "/able/execl",
-      name: "Execl",
-      component: () => import("@/views/able/execl.vue"),
+      path: "/able/barcode",
+      name: "BarCode",
+      component: () => import("@/views/able/barcode.vue"),
       meta: {
-        title: $t("menus.hsExecl")
+        title: $t("menus.pureBarcode")
       }
     },
     {
-      path: "/able/infiniteScroll",
+      path: "/able/qrcode",
+      name: "QrCode",
+      component: () => import("@/views/able/qrcode.vue"),
+      meta: {
+        title: $t("menus.pureQrcode")
+      }
+    },
+    {
+      path: "/able/map",
+      name: "MapPage",
+      component: () => import("@/views/able/map.vue"),
+      meta: {
+        title: $t("menus.pureMap"),
+        keepAlive: true,
+        transition: {
+          name: "fade"
+        }
+      }
+    },
+    {
+      path: "/able/wavesurfer",
+      name: "Wavesurfer",
+      component: () => import("@/views/able/wavesurfer/index.vue"),
+      meta: {
+        title: $t("menus.pureWavesurfer")
+      }
+    },
+    {
+      path: "/able/video",
+      name: "VideoPage",
+      component: () => import("@/views/able/video.vue"),
+      meta: {
+        title: $t("menus.pureVideo")
+      }
+    },
+    {
+      path: "/able/video-frame",
+      name: "VideoFrame",
+      component: () => import("@/views/able/video-frame/index.vue"),
+      meta: {
+        title: $t("menus.pureVideoFrame")
+      }
+    },
+    {
+      path: "/able/danmaku",
+      name: "Danmaku",
+      component: () => import("@/views/able/danmaku/index.vue"),
+      meta: {
+        title: $t("menus.pureDanmaku")
+      }
+    },
+    {
+      path: "/able/infinite-scroll",
       name: "InfiniteScroll",
       component: () => import("@/views/able/infinite-scroll.vue"),
       meta: {
-        title: $t("menus.hsInfiniteScroll")
+        title: $t("menus.pureInfiniteScroll")
+      }
+    },
+    {
+      path: "/able/menu-tree",
+      name: "MenuTree",
+      component: () => import("@/views/able/menu-tree.vue"),
+      meta: {
+        title: $t("menus.pureMenuTree")
+      }
+    },
+    {
+      path: "/able/line-tree",
+      name: "LineTree",
+      component: () => import("@/views/able/line-tree.vue"),
+      meta: {
+        title: $t("menus.pureLineTree")
+      }
+    },
+    {
+      path: "/able/typeit",
+      name: "Typeit",
+      component: () => import("@/views/able/typeit.vue"),
+      meta: {
+        title: $t("menus.pureTypeit")
+      }
+    },
+    {
+      path: "/able/sensitive",
+      name: "Sensitive",
+      component: () => import("@/views/able/sensitive.vue"),
+      meta: {
+        title: $t("menus.pureSensitive")
+      }
+    },
+    {
+      path: "/able/pinyin",
+      name: "Pinyin",
+      component: () => import("@/views/able/pinyin.vue"),
+      meta: {
+        title: $t("menus.purePinyin")
       }
     }
   ]
-} as RouteConfigsTable;
+} satisfies RouteConfigsTable;

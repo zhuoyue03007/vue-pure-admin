@@ -105,37 +105,34 @@ onMounted(() => {
         @mouseenter.prevent="onEnter(key)"
         @mouseleave.prevent="focusIndex = -1"
       >
-        <el-tooltip
-          :content="item.text"
-          :visible="focusIndex === key"
-          placement="right"
+        <button
+          :ref="'controlButton' + key"
+          v-tippy="{
+            content: item.text
+          }"
+          :disabled="item.disabled"
+          :style="{
+            cursor: item.disabled === false ? 'pointer' : 'not-allowed',
+            color: item.disabled === false ? '' : '#00000040',
+            background: 'transparent'
+          }"
+          @click="onControl(item, key)"
         >
-          <button
-            :ref="'controlButton' + key"
-            :disabled="item.disabled"
-            :style="{
-              cursor: item.disabled === false ? 'pointer' : 'not-allowed',
-              color: item.disabled === false ? '' : '#00000040',
-              background: 'transparent'
-            }"
-            @click="onControl(item, key)"
-          >
-            <span
-              :class="'iconfont ' + item.icon"
-              :style="{ fontSize: `${item.size}px` }"
-            />
-          </button>
-        </el-tooltip>
+          <span
+            :class="'iconfont ' + item.icon"
+            :style="{ fontSize: `${item.size}px` }"
+          />
+        </button>
       </li>
     </ul>
   </div>
 </template>
 
 <style scoped>
-@import "./assets/iconfont/iconfont.css";
+@import url("./assets/iconfont/iconfont.css");
 
 .control-container {
-  background: hsla(0, 0%, 100%, 0.8);
+  background: hsl(0deg 0% 100% / 80%);
   box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
 }
 

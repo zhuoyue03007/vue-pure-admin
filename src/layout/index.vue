@@ -3,21 +3,37 @@ import "animate.css";
 // 引入 src/components/ReIcon/src/offlineIcon.ts 文件中所有使用addIcon添加过的本地图标
 import "@/components/ReIcon/src/offlineIcon";
 import { setType } from "./types";
-import { emitter } from "@/utils/mitt";
+import { useI18n } from "vue-i18n";
 import { useLayout } from "./hooks/useLayout";
 import { useAppStoreHook } from "@/store/modules/app";
 import { useSettingStoreHook } from "@/store/modules/settings";
-import { deviceDetection, useDark, useGlobal } from "@pureadmin/utils";
-import { h, reactive, computed, onMounted, defineComponent } from "vue";
+import { useDataThemeChange } from "@/layout/hooks/useDataThemeChange";
+import {
+  h,
+  ref,
+  reactive,
+  computed,
+  onMounted,
+  onBeforeMount,
+  defineComponent
+} from "vue";
+import {
+  useDark,
+  useGlobal,
+  deviceDetection,
+  useResizeObserver
+} from "@pureadmin/utils";
 
-import navbar from "./components/navbar.vue";
-import tag from "./components/tag/index.vue";
-import appMain from "./components/appMain.vue";
-import setting from "./components/setting/index.vue";
-import Vertical from "./components/sidebar/vertical.vue";
-import Horizontal from "./components/sidebar/horizontal.vue";
-import backTop from "@/assets/svg/back_top.svg?component";
+import LayTag from "./components/lay-tag/index.vue";
+import LayNavbar from "./components/lay-navbar/index.vue";
+import LayContent from "./components/lay-content/index.vue";
+import LaySetting from "./components/lay-setting/index.vue";
+import NavVertical from "./components/lay-sidebar/NavVertical.vue";
+import NavHorizontal from "./components/lay-sidebar/NavHorizontal.vue";
+import BackTopIcon from "@/assets/svg/back_top.svg?component";
 
+const { t } = useI18n();
+const appWrapperRef = ref();
 const { isDark } = useDark();
 const { layout } = useLayout();
 const isMobile = deviceDetection();
@@ -58,7 +74,9 @@ function setTheme(layoutModel: string) {
     theme: $storage.layout?.theme,
     darkMode: $storage.layout?.darkMode,
     sidebarStatus: $storage.layout?.sidebarStatus,
-    epThemeColor: $storage.layout?.epThemeColor
+    epThemeColor: $storage.layout?.epThemeColor,
+    themeColor: $storage.layout?.themeColor,
+    overallStyle: $storage.layout?.overallStyle
   };
 }
 
@@ -70,10 +88,11 @@ function toggle(device: string, bool: boolean) {
 // 判断是否可自动关闭菜单栏
 let isAutoCloseSidebar = true;
 
-// 监听容器
-emitter.on("resize", ({ detail }) => {
+useResizeObserver(appWrapperRef, entries => {
   if (isMobile) return;
-  const { width } = detail;
+  const entry = entries[0];
+  const [{ inlineSize: width, blockSize: height }] = entry.borderBoxSize;
+  useAppStoreHook().setViewportSize({ width, height });
   width <= 760 ? setTheme("vertical") : setTheme(useAppStoreHook().layout);
   /** width app-wrapper类容器宽度
    * 0 < width <= 760 隐藏侧边栏
@@ -88,11 +107,12 @@ emitter.on("resize", ({ detail }) => {
       toggle("desktop", false);
       isAutoCloseSidebar = false;
     }
-  } else if (width > 990) {
-    if (!set.sidebar.isClickCollapse) {
-      toggle("desktop", true);
-      isAutoCloseSidebar = true;
-    }
+  } else if (width > 990 && !set.sidebar.isClickCollapse) {
+    toggle("desktop", true);
+    isAutoCloseSidebar = true;
+  } else {
+    toggle("desktop", false);
+    isAutoCloseSidebar = false;
   }
 });
 
@@ -102,7 +122,12 @@ onMounted(() => {
   }
 });
 
-const layoutHeader = defineComponent({
+onBeforeMount(() => {
+  useDataThemeChange().dataThemeChange($storage.layout?.overallStyle);
+});
+
+const LayHeader = defineComponent({
+  name: "LayHeader",
   render() {
     return h(
       "div",
@@ -120,12 +145,12 @@ const layoutHeader = defineComponent({
         default: () => [
           !pureSetting.hiddenSideBar &&
           (layout.value.includes("vertical") || layout.value.includes("mix"))
-            ? h(navbar)
+            ? h(LayNavbar)
             : null,
           !pureSetting.hiddenSideBar && layout.value.includes("horizontal")
-            ? h(Horizontal)
+            ? h(NavHorizontal)
             : null,
-          h(tag)
+          h(LayTag)
         ]
       }
     );
@@ -134,7 +159,7 @@ const layoutHeader = defineComponent({
 </script>
 
 <template>
-  <div :class="['app-wrapper', set.classes]" v-resize>
+  <div ref="appWrapperRef" :class="['app-wrapper', set.classes]">
     <div
       v-show="
         set.device === 'mobile' &&
@@ -144,7 +169,7 @@ const layoutHeader = defineComponent({
       class="app-mask"
       @click="useAppStoreHook().toggleSideBar()"
     />
-    <Vertical
+    <NavVertical
       v-show="
         !pureSetting.hiddenSideBar &&
         (layout.includes('vertical') || layout.includes('mix'))
@@ -157,42 +182,38 @@ const layoutHeader = defineComponent({
       ]"
     >
       <div v-if="set.fixedHeader">
-        <layout-header />
+        <LayHeader />
         <!-- 主体内容 -->
-        <app-main :fixed-header="set.fixedHeader" />
+        <LayContent :fixed-header="set.fixedHeader" />
       </div>
       <el-scrollbar v-else>
         <el-backtop
-          title="回到顶部"
+          :title="t('buttons.pureBackTop')"
           target=".main-container .el-scrollbar__wrap"
         >
-          <backTop />
+          <BackTopIcon />
         </el-backtop>
-        <layout-header />
+        <LayHeader />
         <!-- 主体内容 -->
-        <app-main :fixed-header="set.fixedHeader" />
+        <LayContent :fixed-header="set.fixedHeader" />
       </el-scrollbar>
     </div>
     <!-- 系统设置 -->
-    <setting />
+    <LaySetting />
   </div>
 </template>
 
 <style lang="scss" scoped>
-@mixin clearfix {
+.app-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
   &::after {
-    content: "";
     display: table;
     clear: both;
+    content: "";
   }
-}
-
-.app-wrapper {
-  @include clearfix;
-
-  position: relative;
-  height: 100%;
-  width: 100%;
 
   &.mobile.openSidebar {
     position: fixed;
@@ -201,13 +222,13 @@ const layoutHeader = defineComponent({
 }
 
 .app-mask {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
   background: #000;
   opacity: 0.3;
-  width: 100%;
-  top: 0;
-  height: 100%;
-  position: absolute;
-  z-index: 999;
 }
 
 .re-screen {

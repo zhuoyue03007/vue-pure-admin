@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>基本使用</h1>
+    <p class="mb-2">基础用法</p>
     <div v-contextmenu:contextmenu class="wrapper">
       <code>右键点击此区域</code>
     </div>
@@ -63,12 +63,12 @@ export default defineComponent({
 <style scoped>
 .wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   width: 300px;
   height: 200px;
-  border: 3px dashed rgba(90, 167, 164, 0.9);
+  background-color: rgb(90 167 164 / 20%);
+  border: 3px dashed rgb(90 167 164 / 90%);
   border-radius: 8px;
-  background-color: rgba(90, 167, 164, 0.2);
 }
 </style>

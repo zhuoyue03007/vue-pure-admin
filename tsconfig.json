@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "Node",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": false,
     "jsx": "preserve",
     "importHelpers": true,
@@ -17,21 +17,25 @@
     "baseUrl": ".",
     "allowJs": false,
     "resolveJsonModule": true,
-    "lib": ["dom", "esnext"],
-    "incremental": true,
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
     "paths": {
-      "@/*": ["src/*"],
-      "@build/*": ["build/*"]
+      "@/*": [
+        "src/*"
+      ],
+      "@build/*": [
+        "build/*"
+      ]
     },
     "types": [
       "node",
       "vite/client",
       "element-plus/global",
       "@pureadmin/table/volar",
-      "@pureadmin/descriptions/volar",
-      "unplugin-vue-define-options/macros-global"
-    ],
-    "typeRoots": ["./node_modules/@types/", "./types"]
+      "@pureadmin/descriptions/volar"
+    ]
   },
   "include": [
     "mock/*.ts",
@@ -41,5 +45,9 @@
     "types/*.d.ts",
     "vite.config.ts"
   ],
-  "exclude": ["node_modules", "dist", "**/*.js"]
+  "exclude": [
+    "dist",
+    "**/*.js",
+    "node_modules"
+  ]
 }

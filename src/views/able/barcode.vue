@@ -38,12 +38,19 @@ const barcodes = [
           <el-link
             href="https://lindell.me/JsBarcode/"
             target="_blank"
-            style="font-size: 16px; margin: 0 5px 4px 0"
+            style="margin: 0 5px 4px 0; font-size: 16px"
           >
             JsBarcode
           </el-link>
           生成）
         </div>
+        <el-link
+          class="mt-2"
+          href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/able/barcode.vue"
+          target="_blank"
+        >
+          代码位置 src/views/able/barcode.vue
+        </el-link>
       </template>
       <el-row :gutter="12">
         <template v-for="(item, index) in barcodes" :key="index">

@@ -13,6 +13,13 @@ const { columns } = useColumns();
       <div class="card-header">
         <span class="font-medium">失败页</span>
       </div>
+      <el-link
+        class="mt-2"
+        href="https://github.com/pure-admin/vue-pure-admin/blob/main/src/views/result/fail.vue"
+        target="_blank"
+      >
+        代码位置 src/views/result/fail.vue
+      </el-link>
     </template>
     <el-result
       icon="error"
@@ -26,7 +33,7 @@ const { columns } = useColumns();
     <PureDescriptions
       :columns="columns"
       title="您提交的内容有如下错误："
-      class="p-6 ml-10 mr-10 bg-[#fafafa] dark:bg-[#1d1d1d]"
+      class="p-6 w-[90%] m-auto bg-[#fafafa] dark:bg-[#1d1d1d]"
     />
   </el-card>
 </template>

@@ -1,11 +1,11 @@
 import { ppt } from "@/router/enums";
-const IFrame = () => import("@/layout/frameView.vue");
+const IFrame = () => import("@/layout/frame.vue");
 
 export default {
   path: "/ppt",
   redirect: "/ppt/index",
   meta: {
-    icon: "ppt",
+    icon: "ri:file-ppt-2-line",
     title: "PPT",
     rank: ppt
   },
@@ -16,9 +16,10 @@ export default {
       component: IFrame,
       meta: {
         title: "PPT",
+        keepAlive: true,
         frameSrc: "https://pipipi-pikachu.github.io/PPTist/",
         frameLoading: false
       }
     }
   ]
-} as RouteConfigsTable;
+} satisfies RouteConfigsTable;
